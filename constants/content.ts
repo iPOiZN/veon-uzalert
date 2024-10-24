@@ -71,12 +71,14 @@ export const join = {
 			{
 				id: 'name',
 				label: 'Имя',
+				placeholder: 'Ваше имя',
 				type: 'text',
 				required: true,
 			},
 			{
 				id: 'last_name',
 				label: 'Фамилия',
+				placeholder: 'Ваша фамилия',
 				type: 'text',
 				required: true,
 			},

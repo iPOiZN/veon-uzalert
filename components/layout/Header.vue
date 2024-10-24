@@ -1,14 +1,19 @@
 <template>
 	<header class="header" :class="{ scrolled: isScrolled }">
 		<div class="header__container container">
-			<nav class="nav">
+			<div class="header__logo">
 				<button class="nav__menu-btn" @click="asideStore.isOpen = !asideStore.isOpen">
 					<Icon v-if="asideStore.isOpen" name="mdi:close" />
 					<Icon v-else name="mdi:menu" />
 				</button>
+				<NuxtImg src="/images/logo/adtech_black_left.png" width="100" />
+				<NuxtImg src="/images/logo/uzalert.png" width="50" />
+			</div>
+
+			<nav class="nav">
 				<ul class="nav__menu" :class="asideStore.isOpen ? 'nav__menu--open' : ''">
 					<li v-for="(item, i) in menuItems" :key="i" class="nav__menu-item">
-						<NuxtLinkLocale :to="item.path" class="nav__menu-link">{{ item.name }}</NuxtLinkLocale>
+						<NuxtLink :to="item.path" class="nav__menu-link">{{ item.name }}</NuxtLink>
 					</li>
 				</ul>
 				<Teleport to="body">
@@ -18,8 +23,6 @@
 				</Teleport>
 			</nav>
 			<div class="header__action">
-				<NuxtImg src="/images/logo/uzalert.png" width="50" />
-				<NuxtImg src="/images/logo/adtech_black_center.png" width="100" />
 				<div>
 					<button>Ру</button>
 					<button>Uz</button>
@@ -31,6 +34,10 @@
 
 <script setup lang="ts">
 	import { menuItems } from '~/constants/menu'
+
+	definePageMeta({
+		path: '/',
+	})
 
 	const asideStore = useAsideStore()
 
@@ -58,11 +65,15 @@
 </script>
 
 <style scoped lang="scss">
+	:deep(.router-link-active) {
+		color: var(--orange);
+		transition: 0.3s color;
+	}
 	.header {
 		// height: 74px;
 		position: sticky;
 		top: 0;
-		z-index: 1;
+		z-index: 2;
 		background-color: var(--white);
 		border-bottom: 1px solid var(--border);
 		transition: 0.3s transform;
@@ -74,12 +85,17 @@
 			align-items: center;
 			justify-content: space-between;
 		}
+		&__logo {
+			display: flex;
+			align-items: center;
+		}
 		&__action {
 			display: flex;
 			align-items: center;
 			gap: 12px;
 		}
 	}
+
 	.nav {
 		&__menu {
 			display: flex;
@@ -94,7 +110,7 @@
 				top: 59px;
 				left: 0;
 				height: 100%;
-				min-width: 150px;
+				min-width: 250px;
 				padding: 16px;
 				transform: translateX(-100%);
 				transition: 0.3s transform;
@@ -108,6 +124,12 @@
 				// width: 100%;
 				// height: 100vh;
 				// background-color: var(--white);
+				&-item {
+					width: 100%;
+					padding: 8px;
+					border-radius: 10px;
+					font-weight: 600;
+				}
 			}
 
 			&--open {
@@ -121,6 +143,7 @@
 			}
 		}
 	}
+
 	.layout-cover {
 		position: fixed;
 		top: 0;

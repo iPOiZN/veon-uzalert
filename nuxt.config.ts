@@ -7,9 +7,9 @@ export default defineNuxtConfig({
 	},
 	ssr: true,
 	app: {
-		layoutTransition: { name: 'layout', mode: 'default' },
+		// layoutTransition: { name: 'layout', mode: 'default' },
 		// pageTransition: { name: 'page', mode: 'out-in' },
-		pageTransition: { name: 'page', mode: 'out-in' },
+		// pageTransition: { name: 'page', mode: 'out-in' },
 		head: {
 			// title: 'Beeline Fintech',
 			meta: [
