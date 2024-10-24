@@ -1,0 +1,29 @@
+@use '@/assets/scss/_settings.scss' as *;
+@use '@/assets/scss/_variables.scss' as *;
+@use '@/assets/scss/_mixins.scss' as *;
+
+body {
+	font-family: 'Inter', sans-serif;
+	background-color: var(--bg-main);
+	&:has(.layout-cover) {
+		@media (max-width: 1199.98px) {
+			overflow: hidden;
+		}
+	}
+}
+
+.container {
+	max-width: 1140px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 16px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.3s;
+}
+.fade-enter-from,
+.fade-leave-to {
+	opacity: 0;
+}
