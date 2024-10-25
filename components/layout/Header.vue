@@ -35,10 +35,6 @@
 <script setup lang="ts">
 	import { menuItems } from '~/constants/menu'
 
-	definePageMeta({
-		path: '/',
-	})
-
 	const asideStore = useAsideStore()
 
 	const isScrolled = ref(false)
