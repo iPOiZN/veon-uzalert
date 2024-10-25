@@ -23,25 +23,27 @@
 		}
 		&__title {
 			color: var(--orange);
-			@media (max-width: 767.98px) {
-				margin-bottom: 32px;
-			}
+			margin-bottom: 32px;
 		}
 		&__content {
 			display: grid;
 			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-			gap: 24px;
+			gap: 48px;
 		}
 		&__article {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			justify-content: center;
+			justify-content: flex-start;
 			text-align: center;
-			min-height: 300px;
+			// min-height: 300px;
 			gap: 24px;
+			color: var(--orange);
 			@media (max-width: 767.98px) {
 				min-height: auto;
+			}
+			&-description {
+				color: var(--black);
 			}
 		}
 	}

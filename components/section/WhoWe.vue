@@ -9,7 +9,7 @@
 					</p>
 				</div>
 				<div class="whowe__article-img-wrapper">
-					<NuxtImg src="/images/whowe.jpg" format="webp" class="whowe__article-img" height="350px" />
+					<NuxtImg :src="whoWeAre.img" format="webp" class="whowe__article-img" height="350px" />
 				</div>
 			</article>
 		</div>

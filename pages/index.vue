@@ -4,6 +4,9 @@
 		<SectionWhoWe />
 		<SectionSearchSteps />
 		<SectionJoin />
+		<SectionFaq />
+		<SectionContactUs />
+		<SectionPartners />
 	</main>
 </template>
 
@@ -16,6 +19,6 @@
 	// }
 	.main {
 		display: grid;
-		gap: 48px;
+		gap: 64px;
 	}
 </style>
