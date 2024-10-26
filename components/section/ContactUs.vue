@@ -41,7 +41,7 @@
 	.contact {
 		&__content {
 			display: grid;
-            align-items: center;
+			align-items: center;
 			grid-template-columns: 1fr 1fr;
 			gap: 24px;
 			@media (max-width: 767.98px) {
@@ -59,6 +59,11 @@
 			}
 		}
 		&__block {
+			&-img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
 			&-contacts {
 				display: grid;
 				gap: 12px;
@@ -68,9 +73,9 @@
 					align-items: center;
 					gap: 12px;
 					font-weight: bold;
-                    &:hover{
-                        text-decoration: underline;
-                    }
+					&:hover {
+						text-decoration: underline;
+					}
 					.iconify {
 						color: var(--orange);
 					}

@@ -158,6 +158,7 @@ export default defineNuxtConfig({
 	},
 	css: ['@/assets/scss/main.scss', '@/assets/scss/_mixins.scss'],
 	modules: [
+		'nuxt-swiper',
 		'@nuxt/icon',
 		'@nuxt/eslint',
 		'@pinia/nuxt',
@@ -193,6 +194,14 @@ export default defineNuxtConfig({
 				dir: './assets/icons',
 			},
 		],
+	},
+	swiper: {
+		// Swiper options
+		//----------------------
+		prefix: 'Swiper',
+		styleLang: 'scss',
+		modules: ['autoplay', 'free-mode'],
+		// modules: ['navigation', 'pagination', 'mousewheel', 'autoplay', 'free-mode'], // all modules are imported by default
 	},
 	// plugins: ['~/plugins/gsap.client.ts'],
 })
