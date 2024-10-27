@@ -2,22 +2,31 @@
 	<section class="partners">
 		<div class="partners__container container">
 			<UIHeading level="3" class="partners__title">{{ partners.title }}</UIHeading>
-			<swiper
-				:autoplay="true"
+			<Swiper
+				:autoplay="{
+					delay: 0.5,
+					disableOnInteraction: false,
+				}"
 				:css-mode="false"
+				:modules="[Autoplay, FreeMode]"
 				:speed="5000"
 				:loop="true"
-				:loop-additional-slides="2"
-				:slides-per-view="1"
-				:space-between="12"
+				:initial-slide="1"
+				:slides-per-view="partners.items.length > 3 ? 4 : 3"
+				:space-between="24"
 				:free-mode="false"
+				
 				class="partners__carousel">
 				<!-- <div class="partners__carousel-content"> -->
-				<SwiperSlide v-for="(partner, i) in partners.items" :key="i" class="partners__carousel-item">
-					<NuxtImg :src="partner.img" class="partners__carousel-img" />
+				<SwiperSlide
+					v-for="(partner, i) in [...partners.items, ...partners.items]"
+					:key="i"
+					class="partners__carousel-item">
+					<NuxtImg :src="partner.img" class="partners__carousel-img" loading="lazy" />
 				</SwiperSlide>
+
 				<!-- </div> -->
-			</swiper>
+			</Swiper>
 			<a :href="partners.actionBtn.href">
 				<button class="partners__action-btn">{{ partners.actionBtn.text }}</button>
 			</a>
@@ -26,11 +35,15 @@
 </template>
 
 <script setup lang="ts">
+	import { Autoplay, FreeMode } from 'swiper/modules'
+	import { Swiper, SwiperSlide } from 'swiper/vue'
 	import { partners } from '~/constants/content'
 </script>
 
 <style scoped lang="scss">
 	.partners {
+		overflow: hidden;
+		position: relative;
 		&__container {
 			place-items: center;
 			display: grid;
@@ -40,29 +53,31 @@
 			color: var(--orange);
 		}
 		&__carousel {
-			max-width: 800px;
+			// max-width: max-content;
+			width: 100%;
+			position: relative;
+			&::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 50%;
+				height: 100%;
+				background: linear-gradient(-90deg, rgba(255, 255, 255, 0) 0%, var(--bg-main) 100%);
+				z-index: 2;
+			}
+			&::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 50%;
+				height: 100%;
+				background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, var(--bg-main) 100%);
+				z-index: 2;
+			}
 			:deep(.swiper-wrapper) {
-				position: relative;
-				&::before {
-					content: '';
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 50%;
-					height: 100%;
-					background: linear-gradient(-90deg, rgba(255, 255, 255, 0) 0%, var(--bg-main) 100%);
-					z-index: 2;
-				}
-				&::after {
-					content: '';
-					position: absolute;
-					top: 0;
-					right: 0;
-					width: 50%;
-					height: 100%;
-					background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, var(--bg-main) 100%);
-					z-index: 2;
-				}
+				transition-timing-function: linear;
 			}
 			&-item {
 				display: flex;

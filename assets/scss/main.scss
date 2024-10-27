@@ -1,6 +1,8 @@
 @use '@/assets/scss/_settings.scss' as *;
 @use '@/assets/scss/_variables.scss' as *;
 @use '@/assets/scss/_mixins.scss' as *;
+@use '../../node_modules/swiper/swiper.scss' as *;
+@use '../../node_modules/swiper/swiper-vars.scss' as *;
 
 body {
 	font-family: 'Inter', sans-serif;

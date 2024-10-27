@@ -3,7 +3,7 @@
 		<div class="contact__container container">
 			<div class="contact__content">
 				<div class="contact__block">
-					<NuxtImg :src="contact.img" format="webp" class="contact__block-img" height="400px" />
+					<NuxtImg :src="contact.img" format="webp" class="contact__block-img" height="400px" loading="lazy" />
 				</div>
 				<div class="contact__block">
 					<UIHeading level="3" class="contact__title">{{ contact.title }}</UIHeading>

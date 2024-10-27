@@ -4,7 +4,7 @@
 			<UIHeading level="3" class="faq__title">{{ faq.title }}</UIHeading>
 			<div class="faq__content">
 				<div class="faq__block">
-					<NuxtImg :src="faq.img" format="webp" class="faq__block-img" height="500px" />
+					<NuxtImg :src="faq.img" format="webp" class="faq__block-img" height="500px" loading="lazy" />
 				</div>
 				<div class="faq__block">
 					<div class="faq__accordion">
@@ -53,10 +53,13 @@
 			}
 		}
 		&__block {
-			&:has(img){
-				position: sticky;
-				top: 24px;
+			@media (min-width: 767.98px) {
+				&:has(img) {
+					position: sticky;
+					top: 24px;
+				}
 			}
+
 			&-img {
 				width: 100%;
 				max-height: 500px;
