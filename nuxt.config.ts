@@ -9,7 +9,7 @@ export default defineNuxtConfig({
 	app: {
 		// layoutTransition: { name: 'layout', mode: 'default' },
 		// pageTransition: { name: 'page', mode: 'out-in' },
-		// pageTransition: { name: 'page', mode: 'out-in' },
+		pageTransition: { name: 'page', mode: 'out-in' },
 		head: {
 			// title: 'Beeline Fintech',
 			meta: [
@@ -126,7 +126,7 @@ export default defineNuxtConfig({
 			devSourcemap: true,
 			preprocessorOptions: {
 				scss: {
-					api: 'modern',
+					api: 'modern-compiler',
 					sourceMap: true,
 					// additionalData: '@use "@/assets/scss/settings"; @use "@/assets/scss/variables";',
 					// additionalData: '@import "@/assets/scss/mixins";',
@@ -139,6 +139,7 @@ export default defineNuxtConfig({
 			outDir: 'build',
 			minify: 'esbuild',
 			manifest: true,
+
 			// sourcemap: 'inline',
 			reportCompressedSize: true,
 			rollupOptions: {
@@ -194,6 +195,28 @@ export default defineNuxtConfig({
 				dir: './assets/icons',
 			},
 		],
+	},
+	i18n: {
+		locales: [
+			{
+				code: 'ru',
+				file: 'ru.json',
+				language: 'ru-RU',
+				name: 'Русский',
+			},
+			{
+				code: 'uz',
+				file: 'uz.json',
+				language: 'uz-UZ',
+				name: 'Узбекский',
+			},
+		],
+		langDir: 'locales',
+		defaultLocale: 'ru',
+		strategy: 'prefix_and_default',
+		compilation: {
+			strictMessage: false,
+		},
 	},
 	// swiper: {
 	// 	// Swiper options

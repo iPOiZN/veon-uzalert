@@ -3,7 +3,12 @@
 		<div class="contact__container container">
 			<div class="contact__content">
 				<div class="contact__block">
-					<NuxtImg :src="contact.img" format="webp" class="contact__block-img" height="400px" loading="lazy" />
+					<NuxtImg
+						:src="contact.img"
+						format="webp"
+						class="contact__block-img"
+						height="400px"
+						loading="lazy" />
 				</div>
 				<div class="contact__block">
 					<UIHeading level="3" class="contact__title">{{ contact.title }}</UIHeading>
@@ -34,7 +39,9 @@
 </template>
 
 <script setup lang="ts">
-	import { contact } from '~/constants/content'
+	import { useContent } from '~/constants/content'
+
+	const { contact } = useContent()
 </script>
 
 <style scoped lang="scss">
@@ -47,6 +54,7 @@
 			@media (max-width: 767.98px) {
 				display: flex;
 				flex-direction: column;
+				text-align: center;
 			}
 		}
 		&__title {
@@ -68,6 +76,9 @@
 				display: grid;
 				gap: 12px;
 				margin-top: 24px;
+				@media (max-width: 767.98px) {
+					justify-content: center;
+				}
 				&-link {
 					display: flex;
 					align-items: center;
@@ -86,6 +97,9 @@
 				display: flex;
 				align-items: center;
 				gap: 12px;
+				@media (max-width: 767.98px) {
+					justify-content: center;
+				}
 				&-link {
 					display: flex;
 					align-items: center;

@@ -28,13 +28,15 @@
 </template>
 
 <script setup lang="ts">
-	import { faq } from '~/constants/content'
+	import { useContent } from '~/constants/content'
+
+	const { faq } = useContent()
 </script>
 
 <style scoped lang="scss">
 	.faq {
 		&__container {
-			place-items: center;
+			text-align: center;
 		}
 		&__title {
 			color: var(--orange);
@@ -46,6 +48,7 @@
 			align-items: flex-start;
 			gap: 32px;
 			margin-bottom: 24px;
+			text-align: left;
 			@media (max-width: 767.98px) {
 				display: flex;
 				flex-direction: column;

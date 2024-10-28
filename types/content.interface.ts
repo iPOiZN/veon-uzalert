@@ -76,6 +76,45 @@ export interface IContact {
 	}[]
 }
 
+export interface IContactsRequest {
+	title: string
+	inputs: {
+		id: string
+		label: string
+		type: string
+		required?: boolean
+		placeholder?: string
+		inputmode?: string
+		rows?: number
+		name?: string
+		value?: string
+		months?: string[]
+		min?: string
+		max?: string
+		minValue?: string
+		maxValue?: string
+		radios?: {
+			id: string
+			label: string
+			type?: string
+			name?: string
+			checked?: boolean
+		}[]
+		options?: string[]
+		// date?: {
+		// 	placeholder: {
+		// 		day: string
+		// 		month: string
+		// 		year: string
+		// 	}
+		// 	months: string[]
+		// }
+	}[]
+	submitBtn: {
+		text: string
+	}
+}
+
 export interface IContent {
 	intro: IIntro
 	whoWeAre: IWhoWeAre

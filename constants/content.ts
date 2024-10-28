@@ -1,237 +1,436 @@
-import type { IContact, IFaq, IIntro, IJoin, ISearchSteps, IWhoWeAre } from '~/types/content.interface'
+import type {
+	IContact,
+	IContactsRequest,
+	IFaq,
+	IIntro,
+	IJoin,
+	ISearchSteps,
+	IWhoWeAre,
+} from '~/types/content.interface'
 
-export const intro: IIntro = {
-	title: 'Людям нужны люди',
-	buttonOne: 'Стать волонтером',
-	buttonTwo: 'Заявка на поиск',
-}
+// Create a composable to handle all the content
+export const useContent = () => {
+	const { t } = useI18n()
 
-export const whoWeAre: IWhoWeAre = {
-	title: 'Кто мы',
-	text: 'UzAlert это группа волонтёров, которая оказывает помощь в поиске без вести пропавших людей, а также является единственной в Узбекистане связующей и направляющей добровольной группой, куда можно обратиться по вопросам связанным с поиском пропавших людей.',
-	img: '/images/whowe.jpg',
-}
+	const regions = [
+		t('basics.regions.tashkentCity'),
+		t('basics.regions.tashkentRegion'),
+		t('basics.regions.andijan'),
+		t('basics.regions.fergana'),
+		t('basics.regions.namangan'),
+		t('basics.regions.syrdarya'),
+		t('basics.regions.jizzakh'),
+		t('basics.regions.samarkand'),
+		t('basics.regions.navoi'),
+		t('basics.regions.bukhara'),
+		t('basics.regions.kashkadarya'),
+		t('basics.regions.surkhandarya'),
+		t('basics.regions.khorezm'),
+		t('basics.regions.karakalpakstan'),
+	]
 
-export const searchSteps: ISearchSteps = {
-	title: 'Этапы поиска',
-	articles: [
-		{
-			icon: 'local:route',
-			description:
-				'Проведение детального опроса родственников пропавшего лица с целью создания точного ориентировочного портрета',
-		},
-		{
-			icon: 'local:details',
-			description:
-				'Изучение деталей, привычек, маршрутов, составление списков знакомых. Оформление и печатать ориентировки',
-		},
-		{
-			icon: 'local:magnifier',
-			description: 'Привлечение активистов для выезда и обхода территорий, расклеивание ориентировки',
-		},
-		{
-			icon: 'local:people',
-			description:
-				'Систематический обзвон медицинских учреждений (больниц, моргов), приютов для бездомных и религиозных организаций (монастырей). Поддержание постоянной связи с органами внутренних дел.',
-		},
-		{
-			icon: 'local:connection',
-			description:
-				'Распространение информации в интернете (Telegram, Facebook, Одноклассники, Instagram)',
-		},
-		{
-			icon: 'local:handshake',
-			description:
-				'Предоставление подробных инструкций для лиц, столкнувшихся с пропажей близкого человека, а также рекомендации для оказания помощи нуждающимся',
-		},
-	],
-}
+	// const months = [
+	// 	t('basics.months.january'),
+	// 	t('basics.months.february'),
+	// 	t('basics.months.march'),
+	// 	t('basics.months.april'),
+	// 	t('basics.months.may'),
+	// 	t('basics.months.june'),
+	// 	t('basics.months.july'),
+	// 	t('basics.months.august'),
+	// 	t('basics.months.september'),
+	// 	t('basics.months.october'),
+	// 	t('basics.months.november'),
+	// 	t('basics.months.december'),
+	// ]
 
-export const join: IJoin = {
-	title: 'Присоединяйтесь',
-	help: {
-		title: 'Чем вы готовы помогать',
-		checkboxes: [
+	const intro: IIntro = {
+		title: t('intro.title'),
+		buttonOne: t('intro.btnVol'),
+		buttonTwo: t('intro.btnSearch'),
+	}
+
+	const whoWeAre: IWhoWeAre = {
+		title: t('about.title'),
+		text: t('about.text'),
+		img: '/images/whowe.jpg',
+	}
+
+	const searchSteps: ISearchSteps = {
+		title: t('search.title'),
+		articles: [
 			{
-				id: 'walking_search',
-				label: 'Пеший поиск',
+				icon: 'local:route',
+				description: t('search.steps.step1'),
 			},
 			{
-				id: 'car_search',
-				label: 'Поиск на авто',
+				icon: 'local:details',
+				description: t('search.steps.step2'),
 			},
 			{
-				id: 'calling_hospitals',
-				label: 'Обзвон больниц',
+				icon: 'local:magnifier',
+				description: t('search.steps.step3'),
 			},
-			{ id: 'language_translator', label: 'Переводчик русский-узбекский' },
-			{ id: 'posting_flyers', label: 'Printing or posting flyers' },
+			{
+				icon: 'local:people',
+				description: t('search.steps.step4'),
+			},
+			{
+				icon: 'local:connection',
+				description: t('search.steps.step5'),
+			},
+			{
+				icon: 'local:handshake',
+				description: t('search.steps.step6'),
+			},
 		],
-	},
-	contacts: {
-		title: 'Ваши контактные данные',
+	}
+
+	const join: IJoin = {
+		title: t('join.title'),
+		help: {
+			title: t('join.helpTitle'),
+			checkboxes: [
+				{
+					id: 'walking_search',
+					label: t('join.helps.walk'),
+				},
+				{
+					id: 'car_search',
+					label: t('join.helps.car'),
+				},
+				{
+					id: 'calling_hospitals',
+					label: t('join.helps.calls'),
+				},
+				{
+					id: 'language_translator',
+					label: t('join.helps.trans'),
+				},
+				{
+					id: 'posting_flyers',
+					label: t('join.helps.flyers'),
+				},
+			],
+		},
+		contacts: {
+			title: t('join.contact.title'),
+			inputs: [
+				{
+					id: 'name',
+					label: t('join.contact.name'),
+					placeholder: t('join.contact.name'),
+					type: 'text',
+					required: true,
+				},
+				{
+					id: 'last_name',
+					label: t('join.contact.surname'),
+					placeholder: t('join.contact.surname'),
+					type: 'text',
+					required: true,
+				},
+				{
+					id: 'phone',
+					label: t('join.contact.phone'),
+					placeholder: '+998',
+					type: 'tel',
+					inputmode: 'numeric',
+					required: true,
+				},
+				{
+					id: 'city',
+					label: t('join.contact.city'),
+					placeholder: t('join.contact.city'),
+					type: 'text',
+					required: true,
+				},
+				{
+					id: 'district',
+					label: t('join.contact.district'),
+					placeholder: t('join.contact.district'),
+					type: 'text',
+				},
+			],
+		},
+		policy: {
+			id: 'privacy_policy',
+			label: t('join.policy'),
+		},
+		submit: {
+			title: t('join.submit'),
+		},
+	}
+
+	const faq: IFaq = {
+		title: t('faq.title'),
+		img: '/images/faq.jpg',
+		accordion: [
+			{
+				summary: t('faq.q1.title'),
+				description: t('faq.q1.desc'),
+			},
+			{
+				summary: t('faq.q2.title'),
+				description: t('faq.q2.desc'),
+			},
+			{
+				summary: t('faq.q3.title'),
+				description: t('faq.q3.desc'),
+			},
+			{
+				summary: t('faq.q4.title'),
+				description: t('faq.q4.desc'),
+			},
+			{
+				summary: t('faq.q5.title'),
+				description: t('faq.q5.desc'),
+			},
+			{
+				summary: t('faq.q6.title'),
+				description: t('faq.q6.desc'),
+			},
+			{
+				summary: t('faq.q7.title'),
+				description: t('faq.q7.desc'),
+			},
+		],
+		footer: {
+			text: t('faq.footer'),
+		},
+	}
+
+	const contact: IContact = {
+		title: t('contact.title'),
+		img: '/images/contact-us.jpg',
+		description: t('contact.desc'),
+		contacts: [
+			{
+				href: 'mailto:uzalert@mail.ru',
+				icon: 'local:mail',
+				text: 'uzalert@mail.ru',
+			},
+			{
+				href: 'tel:+998 88 198 06 10',
+				icon: 'local:phone',
+				text: '+998 88 198 06 10',
+			},
+		],
+		socials: [
+			{
+				href: '#',
+				id: 'facebook',
+				icon: 'logos:facebook',
+			},
+			{
+				href: '#',
+				id: 'instagram',
+				icon: 'skill-icons:instagram',
+			},
+			{
+				href: '#',
+				id: 'telegram',
+				icon: 'logos:telegram',
+			},
+			{
+				href: '#',
+				id: 'threads',
+				icon: 'bi:threads',
+			},
+			{
+				href: '#',
+				id: 'ok',
+				icon: 'local:ok',
+			},
+		],
+	}
+
+	const partners = {
+		title: t('partners.title'),
+		items: [
+			{
+				id: 'ova',
+				href: '#',
+				img: '/images/partners/ova.svg',
+			},
+			{
+				id: 'yandex_go',
+				href: '#',
+				img: '/images/partners/yandex-go.svg',
+			},
+			{
+				id: 'veon_adtech',
+				href: '#',
+				img: '/images/partners/veon-adtech.svg',
+			},
+		],
+		actionBtn: {
+			href: '#',
+			text: t('partners.btn'),
+		},
+	}
+
+	const contactsRequest: IContactsRequest = {
+		title: t('contactsRequest.title'),
 		inputs: [
 			{
-				id: 'name',
-				label: 'Имя',
-				placeholder: 'Ваше имя',
-				type: 'text',
+				id: 'applicant_full_name',
+				label: t('contactsRequest.applicantName'),
 				required: true,
+				type: 'text',
 			},
 			{
-				id: 'last_name',
-				label: 'Фамилия',
-				placeholder: 'Ваша фамилия',
-				type: 'text',
+				id: 'applicant_phone',
+				label: t('contactsRequest.applicantPhone'),
 				required: true,
-			},
-			{
-				id: 'phone',
-				label: 'Номер телефона',
 				placeholder: '+998',
 				type: 'tel',
-				inputmode: 'numeric',
-				required: true,
 			},
 			{
-				id: 'city',
-				label: 'Город',
-				placeholder: 'Выберите город',
-				type: 'text',
+				id: 'missing_full_name',
+				label: t('contactsRequest.missingName'),
 				required: true,
+				type: 'text',
 			},
 			{
-				id: 'district',
-				label: 'Район',
-				placeholder: 'Выберите район',
+				id: 'missing_gender',
+				label: t('contactsRequest.missingGender'),
+				type: 'radio',
+				name: 'gender',
+				required: true,
+				radios: [
+					{
+						id: 'male',
+						label: t('contactsRequest.genderMale'),
+						checked: true,
+					},
+					{
+						id: 'female',
+						label: t('contactsRequest.genderFemale'),
+					},
+				],
+			},
+			{
+				id: 'missing_region',
+				label: t('contactsRequest.missingRegion'),
+				type: 'dropdown',
+				name: 'region',
+				value: '',
+				placeholder: t('contactsRequest.missingRegionPlaceholder'),
+				options: regions,
+			},
+			{
+				id: 'missing_dob',
+				label: t('contactsRequest.missingDob'),
+				placeholder: t('contactsRequest.dobPlaceholder'),
+				type: 'date',
+				max: new Date().toISOString().slice(0, 10),
+			},
+			{
+				id: 'additional_area_of_search',
+				label: t('contactsRequest.additionalSearchArea'),
 				type: 'text',
+			},
+			{
+				id: 'missing_phone',
+				label: t('contactsRequest.missingPhone'),
+				type: 'tel',
+			},
+			{
+				id: 'missing_address',
+				label: t('contactsRequest.missingAddress'),
+				type: 'text',
+			},
+			{
+				id: 'missing_date',
+				label: t('contactsRequest.missingDate'),
+				placeholder: t('contactsRequest.datePlaceholder'),
+				type: 'date',
+				max: new Date().toISOString().slice(0, 10),
+			},
+			{
+				id: 'missing_time',
+				label: t('contactsRequest.missingTime'),
+				placeholder: t('contactsRequest.timePlaceholder'),
+				type: 'time',
+			},
+			{
+				id: 'police_report',
+				label: t('contactsRequest.policeReport'),
+				type: 'text',
+			},
+			{
+				id: 'search_area_type',
+				label: t('contactsRequest.searchAreaType'),
+				type: 'radio',
+				name: 'search_area_type',
+				radios: [
+					{
+						id: 'city',
+						label: t('contactsRequest.areaCity'),
+						checked: true,
+					},
+					{
+						id: 'region',
+						label: t('contactsRequest.areaRegion'),
+					},
+				],
+			},
+			{
+				id: 'circumstances_of_missing',
+				label: t('contactsRequest.missingCircumstances'),
+				type: 'textarea',
+				rows: 5,
+			},
+			{
+				id: 'missing_health',
+				label: t('contactsRequest.missingHealth'),
+				type: 'text',
+			},
+			{
+				id: 'missing_clothes',
+				label: t('contactsRequest.missingClothes'),
+				type: 'text',
+			},
+			{
+				id: 'missing_special_features',
+				label: t('contactsRequest.missingFeatures'),
+				type: 'text',
+			},
+			{
+				id: 'missing_carryon_item',
+				label: t('contactsRequest.missingCarryon'),
+				type: 'text',
+			},
+			{
+				id: 'additional_info',
+				label: t('contactsRequest.additionalInfo'),
+				type: 'text',
+			},
+			{
+				id: 'family_contacts',
+				label: t('contactsRequest.familyContacts'),
+				type: 'text',
+			},
+			{
+				id: 'upload_photo',
+				label: t('contactsRequest.uploadPhoto'),
+				type: 'file',
 			},
 		],
-	},
-	policy: {
-		id: 'privacy_policy',
-		label: 'Согласен с условиями и политикой обработки персональных данных',
-	},
-	submit: {
-		title: 'Присоединиться',
-	},
-}
+		submitBtn: {
+			text: t('contactsRequest.sendButton'),
+		},
+	}
 
-export const faq: IFaq = {
-	title: 'Часто задаваемые вопросы',
-	img: '/images/faq.jpg',
-	accordion: [
-		{
-			summary: 'Отряд собирает деньги?',
-			description:
-				'Отряд UzAlert не собирает деньги, не имеет расчётных счетов, виртуальных кошельков и осуществляет свою деятельность безвозмездно. Наша задача- поиск людей и профилактика их пропаж.',
-		},
-		{
-			summary:
-				'Почему отряд не делиться информацией о том как, где и при каких условиях нашёлся пропавший человек?',
-			description:
-				'Отряд UzAlert не собирает деньги, не имеет расчётных счетов, виртуальных кошельков и осуществляет свою деятельность безвозмездно. Наша задача- поиск людей и профилактика их пропаж.',
-		},
-		{
-			summary: 'Работает ли отряд по всему Узбекистану?',
-			description:
-				'Отряд UzAlert не собирает деньги, не имеет расчётных счетов, виртуальных кошельков и осуществляет свою деятельность безвозмездно. Наша задача- поиск людей и профилактика их пропаж.',
-		},
-		{
-			summary: 'В каких случаях, отряд отказывает в поиске?',
-			description:
-				'Отряд UzAlert не собирает деньги, не имеет расчётных счетов, виртуальных кошельков и осуществляет свою деятельность безвозмездно. Наша задача- поиск людей и профилактика их пропаж.',
-		},
-		{
-			summary: 'Какая помощь необходима от волонтёров чаще всего?',
-			description:
-				'Отряд UzAlert не собирает деньги, не имеет расчётных счетов, виртуальных кошельков и осуществляет свою деятельность безвозмездно. Наша задача- поиск людей и профилактика их пропаж.',
-		},
-		{
-			summary: 'Могу ли я посодействовать поискам сидя дома?',
-			description:
-				'Отряд UzAlert не собирает деньги, не имеет расчётных счетов, виртуальных кошельков и осуществляет свою деятельность безвозмездно. Наша задача- поиск людей и профилактика их пропаж.',
-		},
-		{
-			summary: 'Как действовать, если я увидел(а) человека, похожего по описанию на пропавшего?',
-			description:
-				'Отряд UzAlert не собирает деньги, не имеет расчётных счетов, виртуальных кошельков и осуществляет свою деятельность безвозмездно. Наша задача- поиск людей и профилактика их пропаж.',
-		},
-	],
-	footer: {
-		text: 'Если вы не нашли нужный вам ответ, <a href="#">напишите нам</a> и мы обязательно вам ответим',
-	},
-}
-
-export const contact: IContact = {
-	title: 'Контакты',
-	img: '/images/contact-us.jpg',
-	description:
-		'Если у вас пропал близкий, или вы владеете информацией о пропавшем человеке, есть вопросы, или хотите принять участие в нашей деятельности <a href="#"><b>прямо сейчас</b></a> позвоните на телефоны горячей линии',
-
-	contacts: [
-		{
-			href: 'mailto:uzalert@mail.ru',
-			icon: 'local:mail',
-			text: 'uzalert@mail.ru',
-		},
-		{
-			href: 'tel:+998 88 198 06 10',
-			icon: 'local:phone',
-			text: '+998 88 198 06 10',
-		},
-	],
-
-	socials: [
-		{
-			href: '#',
-			id: 'facebook',
-			icon: 'logos:facebook',
-		},
-		{
-			href: '#',
-			id: 'instagram',
-			icon: 'skill-icons:instagram',
-		},
-		{
-			href: '#',
-			id: 'telegram',
-			icon: 'logos:telegram',
-		},
-		{
-			href: '#',
-			id: 'threads',
-			icon: 'bi:threads',
-		},
-		{
-			href: '#',
-			id: 'ok',
-			icon: 'local:ok',
-		},
-	],
-}
-
-export const partners = {
-	title: 'Наши партнеры',
-	items: [
-		{
-			id: 'ova',
-			href: '#',
-			img: '/images/partners/ova.svg',
-		},
-		{
-			id: 'yandex_go',
-			href: '#',
-			img: '/images/partners/yandex-go.svg',
-		},
-		{
-			id: 'veon_adtech',
-			href: '#',
-			img: '/images/partners/veon-adtech.svg',
-		},
-	],
-	actionBtn: {
-		href: '#',
-		text: 'Стать партнером',
+	return {
+		intro,
+		whoWeAre,
+		searchSteps,
+		join,
+		faq,
+		contact,
+		partners,
+		contactsRequest,
 	}
 }

@@ -1,0 +1,164 @@
+{
+    "basics": {
+        "lang": {
+            "ru": "Русский",
+            "uz": "O'zbek",
+            "en": "English"
+        },
+        "menu": {
+            "home": "Bosh sahifa",
+            "about": "Biz haqimizda",
+            "questions": "Savollar",
+            "contacts": "Aloqa"
+        },
+        "date": {
+            "day": "Kun",
+            "month": "Oy",
+            "year": "Yil"
+        },
+        "regions": {
+            "tashkentCity": "Toshkent shahri",
+            "tashkentRegion": "Toshkent viloyati",
+            "andijan": "Andijon viloyati",
+            "fergana": "Farg‘ona viloyati",
+            "namangan": "Namangan viloyati",
+            "syrdarya": "Sirdaryo viloyati",
+            "jizzakh": "Jizzax viloyati",
+            "samarkand": "Samarqand viloyati",
+            "navoi": "Navoiy viloyati",
+            "bukhara": "Buxoro viloyati",
+            "kashkadarya": "Qashqadaryo viloyati",
+            "surkhandarya": "Surxondaryo viloyati",
+            "khorezm": "Xorazm viloyati",
+            "karakalpakstan": "Qoraqalpog‘iston Respublikasi"
+        },
+        "months": {
+            "january": "Yanvar",
+            "february": "Fevral",
+            "march": "Mart",
+            "april": "Aprel",
+            "may": "May",
+            "june": "Iyun",
+            "july": "Iyul",
+            "august": "Avgust",
+            "september": "Sentabr",
+            "november": "Noyabr",
+            "october": "Dekabr",
+            "december": "Dekabr"
+        }
+    },
+    "intro": {
+        "title": "Odamlarga odamlar kerak",
+        "btnVol": "Volontyor bo'lish",
+        "btnSearch": "Qidiruv so'rovi"
+    },
+    "about": {
+        "title": "Biz kimmmiz",
+        "text": "UzAlert - bu yo'qolgan odamlarni qidirishda yordam beradigan volontyorlar guruhi, shuningdek O'zbekistonda yo'qolgan odamlarni qidirish bilan bog'liq masalalar bo'yicha murojaat qilish mumkin bo'lgan yagona bog'lovchi va yo'naltiruvchi ixtiyoriy guruh"
+    },
+    "search": {
+        "title": "Qidiruv bosqichlari",
+        "steps": {
+            "step1": "Aniq yo'naltirilgan portret yaratish uchun yo'qolgan shaxsning qarindoshlarini batafsil so'roq qilish",
+            "step2": "Tafsilotlar, odatlar, marshrutlarni o'rganish, tanishlar ro'yxatini tuzish. Yo'naltirishlarni rasmiylashtirish va chop etish",
+            "step3": "Hududlarni aylanib chiqish va yo'naltirishlarni yopishtirish uchun faollarni jalb qilish",
+            "step4": "Tibbiyot muassasalari (kasalxonalar, morglar), boshpanalar va diniy tashkilotlarni (monastirlar) muntazam qo'ng'iroq qilish. Ichki ishlar organlari bilan doimiy aloqa o'rnatish",
+            "step5": "Internetda ma'lumot tarqatish (Telegram, Facebook, Odnoklassniki, Instagram)",
+            "step6": "Yaqin odami yo'qolgan shaxslarga batafsil ko'rsatmalar, shuningdek muhtojlarga yordam ko'rsatish bo'yicha tavsiyalar berish"
+        }
+    },
+    "join": {
+        "title": "Bizga qo'shiling",
+        "helpTitle": "Qanday yordam bera olasiz",
+        "helps": {
+            "walk": "Piyoda qidiruv",
+            "car": "Avtoda qidiruv",
+            "calls": "Kasalxonalarga qo'ng'iroq",
+            "trans": "Rus-o'zbek tarjimon",
+            "flyers": "Flaerlarni bosib chiqarish yoki yopishtirish"
+        },
+        "contact": {
+            "title": "Aloqa ma'lumotlaringiz",
+            "name": "Ism",
+            "surname": "Familiya",
+            "phone": "Telefon raqami",
+            "city": "Shahar",
+            "district": "Tuman"
+        },
+        "policy": "Shaxsiy ma'lumotlarni qayta ishlash shartlari va siyosatiga roziman",
+        "submit": "Qo'shilish"
+    },
+    "faq": {
+        "title": "Ko'p beriladigan savollar",
+        "q1": {
+            "title": "Otryad mablag' yig'adimi?",
+            "desc": "UzAlert otryadi mablag' yig'maydi, hisob raqamlariga, virtual hamyonlarga ega emas va o'z faoliyatini beg'araz amalga oshiradi. Bizning vazifamiz — odamlarni qidirish va ularning yo'qolishining oldini olish."
+        },
+        "q2": {
+            "title": "Nega otryad yo'qolgan odam qanday sharoitda topilgani haqida ma'lumot bermaydi?",
+            "desc": "UzAlert otryadi mablag' yig'maydi, hisob raqamlariga, virtual hamyonlarga ega emas va o'z faoliyatini beg'araz amalga oshiradi. Bizning vazifamiz — odamlarni qidirish va ularning yo'qolishining oldini olish."
+        },
+        "q3": {
+            "title": "Otryad butun O'zbekiston bo'ylab ishlaydimi?",
+            "desc": "UzAlert otryadi mablag' yig'maydi, hisob raqamlariga, virtual hamyonlarga ega emas va o'z faoliyatini beg'araz amalga oshiradi. Bizning vazifamiz — odamlarni qidirish va ularning yo'qolishining oldini olish."
+        },
+        "q4": {
+            "title": "Qaysi hollarda otryad qidiruvni rad etadi?",
+            "desc": "UzAlert otryadi mablag' yig'maydi, hisob raqamlariga, virtual hamyonlarga ega emas va o'z faoliyatini beg'araz amalga oshiradi. Bizning vazifamiz — odamlarni qidirish va ularning yo'qolishining oldini olish."
+        },
+        "q5": {
+            "title": "Ko'ngillilardan qaysi yordam ko'pincha talab qilinadi?",
+            "desc": "UzAlert otryadi mablag' yig'maydi, hisob raqamlariga, virtual hamyonlarga ega emas va o'z faoliyatini beg'araz amalga oshiradi. Bizning vazifamiz — odamlarni qidirish va ularning yo'qolishining oldini olish."
+        },
+        "q6": {
+            "title": "Uyda o'tirib ham qidiruvga ko'maklashishim mumkinmi?",
+            "desc": "UzAlert otryadi mablag' yig'maydi, hisob raqamlariga, virtual hamyonlarga ega emas va o'z faoliyatini beg'araz amalga oshiradi. Bizning vazifamiz — odamlarni qidirish va ularning yo'qolishining oldini olish."
+        },
+        "q7": {
+            "title": "Yo'qolgan odamning tavsifiga o'xshash odamni ko'rsam, qanday harakat qilishim kerak?",
+            "desc": "UzAlert otryadi mablag' yig'maydi, hisob raqamlariga, virtual hamyonlarga ega emas va o'z faoliyatini beg'araz amalga oshiradi. Bizning vazifamiz — odamlarni qidirish va ularning yo'qolishining oldini olish."
+        },
+        "footer": "Agar siz kerakli javobni topa olmagan bo'lsangiz, <a href='#'>bizga yozing</a> va biz albatta javob beramiz"
+    },
+    "contact": {
+        "title": "Kontaktlar",
+        "desc": "Agar yaqiningiz yo'qolgan bo'lsa yoki yo'qolgan odam haqida ma'lumotga ega bo'lsangiz, savollaringiz bo'lsa yoki faoliyatimizda ishtirok etishni istasangiz, <a href='#'><b>hoziroq</b></a> ishonch telefon raqamlariga qo'ng'iroq qiling"
+    },
+    "partners": {
+        "title": "Hamkorlarimiz",
+        "btn": "Hamkor bo'lish"
+    },
+    "contactsRequest": {
+        "title": "Odamni izlash uchun ariza qoldiring:",
+        "applicantName": "Arizachi: F.I.Sh, qarindoshlik darajasi (majburiy):",
+        "applicantPhone": "Arizachi aloqa raqami (majburiy):",
+        "missingName": "Yo'qolgan shaxs F.I.Sh (majburiy):",
+        "missingGender": "Yo'qolgan shaxs jinsi:",
+        "genderMale": "Erkak",
+        "genderFemale": "Ayol",
+        "missingRegion": "Yo'qolgan joy viloyati:",
+        "missingRegionPlaceholder": "Viloyatni tanlang",
+        "missingDob": "Tug'ilgan sana:",
+        "dobPlaceholder": "Kun, oy, yil",
+        "additionalSearchArea": "Qo'shimcha qidiruv hududlari:",
+        "missingPhone": "Yo'qolgan shaxsning telefon raqami:",
+        "missingAddress": "Yo'qolgan joy manzili/tuman:",
+        "missingDate": "Yo'qolgan sana (30 kundan oshmasin):",
+        "datePlaceholder": "Kun, oy, yil",
+        "missingTime": "Yo'qolgan vaqt:",
+        "timePlaceholder": "--:--",
+        "policeReport": "Militsiya bayonnomasi:",
+        "searchAreaType": "Qidiruv hududi turi:",
+        "areaCity": "Shahar",
+        "areaRegion": "Viloyat",
+        "missingCircumstances": "Yo'qolgan vaziyat:",
+        "missingHealth": "Yo'qolgan shaxs sog'ligi: (majburiy):",
+        "missingClothes": "Yo'qolgan shaxs kiyimi:",
+        "missingFeatures": "Maxsus belgilari (majburiy):",
+        "missingCarryon": "Yo'qolgan shaxs bilan bo'lgan narsalar:",
+        "additionalInfo": "Qo'shimcha ma'lumotlar:",
+        "familyContacts": "Oila a'zolari aloqalari (raqam, telegram):",
+        "uploadPhoto": "Foto yuklash (majburiy):",
+        "sendButton": "Yuborish"
+    }
+}

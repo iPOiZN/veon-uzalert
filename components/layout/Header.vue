@@ -6,14 +6,18 @@
 					<Icon v-if="asideStore.isOpen" name="mdi:close" />
 					<Icon v-else name="mdi:menu" />
 				</button>
-				<NuxtImg src="/images/logo/adtech_black_left.png" width="100" />
-				<NuxtImg src="/images/logo/uzalert.png" width="50" />
+				<NuxtLinkLocale class="header__logo-link" to="/" @click="asideStore.isOpen = false">
+					<NuxtImg src="/images/logo/adtechBlackLeft.png" alt="Veon" width="100" />
+					<NuxtImg src="/images/logo/uzalert.png" width="50" alt="UzAlert" />
+				</NuxtLinkLocale>
 			</div>
 
 			<nav class="nav">
 				<ul class="nav__menu" :class="asideStore.isOpen ? 'nav__menu--open' : ''">
 					<li v-for="(item, i) in menuItems" :key="i" class="nav__menu-item">
-						<NuxtLink :to="item.path" class="nav__menu-link">{{ item.name }}</NuxtLink>
+						<NuxtLinkLocale :to="item.path" class="nav__menu-link" @click="asideStore.isOpen = false">{{
+							item.name
+						}}</NuxtLinkLocale>
 					</li>
 				</ul>
 				<Teleport to="body">
@@ -23,9 +27,14 @@
 				</Teleport>
 			</nav>
 			<div class="header__action">
-				<div>
-					<button>Ру</button>
-					<button>Uz</button>
+				<div class="header__lang">
+					<button
+						v-for="(lang, i) in availableLocales"
+						:key="i"
+						class="header__lang-btn"
+						@click="changeLang(lang)">
+						<Icon :name="`circle-flags:${lang}`" />
+					</button>
 				</div>
 			</div>
 		</div>
@@ -33,13 +42,21 @@
 </template>
 
 <script setup lang="ts">
-	import { menuItems } from '~/constants/menu'
+	import { useMenuContent } from '~/constants/menu'
+
+	const { menuItems } = useMenuContent()
 
 	const asideStore = useAsideStore()
+	const { availableLocales, setLocale } = useI18n()
 
 	const isScrolled = ref(false)
 
 	let lastScrollTop = 0
+
+	const changeLang = async (lang: string) => {
+		await setLocale(lang)
+		window.location.reload()
+	}
 
 	const handleScroll = () => {
 		const st = window.scrollY || document.documentElement.scrollTop
@@ -71,10 +88,14 @@
 		top: 0;
 		z-index: 2;
 		background-color: var(--white);
-		border-bottom: 1px solid var(--border);
+		border-bottom: 1px solid transparent;
 		transition: 0.3s transform;
+		height: 60px;
+		display: flex;
+		align-items: center;
 		&.scrolled {
 			transform: translateY(-100%);
+			border-color: var(--border);
 		}
 		&__container {
 			display: flex;
@@ -84,11 +105,31 @@
 		&__logo {
 			display: flex;
 			align-items: center;
+			&-link {
+				display: flex;
+				align-items: center;
+			}
 		}
 		&__action {
 			display: flex;
 			align-items: center;
 			gap: 12px;
+		}
+		&__lang {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			&-btn {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border: 1px solid var(--border);
+				padding: 5px 10px;
+				border-radius: 10px;
+				&:hover {
+					background-color: var(--orange);
+				}
+			}
 		}
 	}
 

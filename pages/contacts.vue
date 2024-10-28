@@ -1,7 +1,8 @@
 <template>
-	<div>contacts</div>
+	<main class="main">
+		<SectionContactsRequest />
+	</main>
 </template>
 
 <script setup lang="ts"></script>
 
-<style scoped></style>

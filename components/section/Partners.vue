@@ -11,11 +11,10 @@
 				:modules="[Autoplay, FreeMode]"
 				:speed="5000"
 				:loop="true"
-				:initial-slide="1"
+				:initial-slide="0"
 				:slides-per-view="partners.items.length > 3 ? 4 : 3"
-				:space-between="24"
+				:space-between="32"
 				:free-mode="false"
-				
 				class="partners__carousel">
 				<!-- <div class="partners__carousel-content"> -->
 				<SwiperSlide
@@ -37,7 +36,9 @@
 <script setup lang="ts">
 	import { Autoplay, FreeMode } from 'swiper/modules'
 	import { Swiper, SwiperSlide } from 'swiper/vue'
-	import { partners } from '~/constants/content'
+	import { useContent } from '~/constants/content'
+
+	const { partners } = useContent()
 </script>
 
 <style scoped lang="scss">
@@ -54,6 +55,7 @@
 		}
 		&__carousel {
 			// max-width: max-content;
+			max-width: 800px;
 			width: 100%;
 			position: relative;
 			&::before {

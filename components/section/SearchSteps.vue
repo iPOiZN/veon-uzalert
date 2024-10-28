@@ -13,12 +13,15 @@
 </template>
 
 <script setup lang="ts">
-	import { searchSteps } from '~/constants/content'
+	import { useContent } from '~/constants/content'
+
+	const { searchSteps } = useContent()
 </script>
 
 <style scoped lang="scss">
 	.steps {
 		&__container {
+			display: grid;
 			place-items: center;
 		}
 		&__title {

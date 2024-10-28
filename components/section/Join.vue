@@ -38,7 +38,9 @@
 </template>
 
 <script setup lang="ts">
-	import { join } from '~/constants/content'
+	import { useContent } from '~/constants/content'
+
+	const { join } = useContent()
 
 	const handleSubmit = () => {
 		console.log('hello')
@@ -47,12 +49,10 @@
 
 <style scoped lang="scss">
 	.join {
-		&__container {
-			place-items: center;
-		}
 		&__title {
 			color: var(--orange);
 			margin-bottom: 32px;
+			text-align: center;
 		}
 		&__form {
 			width: 100%;

@@ -17,7 +17,9 @@
 </template>
 
 <script setup lang="ts">
-	import { whoWeAre } from '~/constants/content'
+	import { useContent } from '~/constants/content'
+
+	const { whoWeAre } = useContent()
 
 	onMounted(() => {
 		useGsap.from('.whowe__article-img', {

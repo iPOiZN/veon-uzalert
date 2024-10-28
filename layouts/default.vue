@@ -3,6 +3,7 @@
 		<NuxtLoadingIndicator color="var(--black)" :throttle="10" />
 		<LayoutHeader />
 		<slot />
+		<LayoutFooter />
 	</div>
 </template>
 

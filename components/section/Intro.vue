@@ -16,7 +16,9 @@
 </template>
 
 <script setup lang="ts">
-	import { intro } from '~/constants/content'
+	import { useContent } from '~/constants/content'
+
+	const { intro } = useContent()
 
 	onMounted(() => {
 		useGsap.to('.intro__bg', {
