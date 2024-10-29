@@ -283,7 +283,6 @@ export const useContent = () => {
 				id: 'applicant_phone',
 				label: t('contactsRequest.applicantPhone'),
 				required: true,
-				placeholder: '+998',
 				type: 'tel',
 			},
 			{
@@ -386,6 +385,7 @@ export const useContent = () => {
 				id: 'missing_health',
 				label: t('contactsRequest.missingHealth'),
 				type: 'text',
+				required: true,
 			},
 			{
 				id: 'missing_clothes',
@@ -396,6 +396,7 @@ export const useContent = () => {
 				id: 'missing_special_features',
 				label: t('contactsRequest.missingFeatures'),
 				type: 'text',
+				required: true,
 			},
 			{
 				id: 'missing_carryon_item',
@@ -416,6 +417,7 @@ export const useContent = () => {
 				id: 'upload_photo',
 				label: t('contactsRequest.uploadPhoto'),
 				type: 'file',
+				required: true,
 			},
 		],
 		submitBtn: {

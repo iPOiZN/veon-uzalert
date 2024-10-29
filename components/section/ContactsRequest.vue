@@ -30,6 +30,7 @@
 						<template v-else-if="['date', 'time'].includes(input.type)">
 							<input
 								:id="input.id"
+								ref="inputDate"
 								v-model="formData[input.id]"
 								class="request__input"
 								:placeholder="input.placeholder"
@@ -38,6 +39,7 @@
 								:min="input.min"
 								:max="input.max"
 								onchange="this.placeholder = ''"
+								ondblclick="this.showPicker()"
 								onfocus="this.showPicker()" />
 							<!-- <div class="request__input-dates">
 								<input
@@ -171,7 +173,7 @@
 			&[type='date'],
 			&[type='time'] {
 				color: transparent;
-
+				height: 40px;
 				appearance: none;
 				-webkit-appearance: none;
 				-moz-appearance: none;
@@ -225,7 +227,9 @@
 				gap: 16px;
 			}
 			&-radios {
+				min-height: 40px;
 				display: flex;
+				align-items: center;
 				gap: 24px;
 			}
 			&-radio {
