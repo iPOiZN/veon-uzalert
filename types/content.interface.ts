@@ -1,7 +1,9 @@
 export interface IIntro {
 	title: string
-	buttonOne: string
-	buttonTwo: string
+	buttons: {
+		title: string
+		href: string
+	}[]
 }
 
 export interface IWhoWeAre {

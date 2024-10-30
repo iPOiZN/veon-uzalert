@@ -7,8 +7,13 @@
 					<UIHeading level="1" class="intro__title">{{ intro.title }}</UIHeading>
 				</div>
 				<div class="intro__buttons">
-					<button>{{ intro.buttonOne }}</button>
-					<button>{{ intro.buttonTwo }}</button>
+					<NuxtLinkLocale
+						v-for="(button, i) in intro.buttons"
+						:key="i"
+						:to="button.href"
+						class="intro__link">
+						<button>{{ button.title }}</button>
+					</NuxtLinkLocale>
 				</div>
 			</div>
 		</div>
@@ -114,17 +119,7 @@
 				justify-content: center;
 			}
 		}
-		button {
-			padding: 12px;
-			border: 1px solid var(--white);
-			border-radius: 20px;
-			color: var(--white);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			transition:
-				0.3s background-color,
-				0.3s border-color;
+		&__link {
 			opacity: 0;
 			animation: opacityStart 1s 0.4s 1 forwards;
 			@keyframes opacityStart {
@@ -140,6 +135,19 @@
 					animation-delay: 0.7s + $i * 0.2s;
 				}
 			}
+		}
+		button {
+			padding: 12px;
+			border: 1px solid var(--white);
+			border-radius: 20px;
+			color: var(--white);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition:
+				0.3s background-color,
+				0.3s border-color;
+
 			&:hover {
 				background-color: var(--orange);
 				border-color: var(--orange);

@@ -46,8 +46,16 @@ export const useContent = () => {
 
 	const intro: IIntro = {
 		title: t('intro.title'),
-		buttonOne: t('intro.btnVol'),
-		buttonTwo: t('intro.btnSearch'),
+		buttons: [
+			{
+				title: t('intro.btnVol'),
+				href: '/volunteer',
+			},
+			{
+				title: t('intro.btnSearch'),
+				href: '/search',
+			},
+		],
 	}
 
 	const whoWeAre: IWhoWeAre = {

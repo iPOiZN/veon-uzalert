@@ -1,8 +1,7 @@
 <template>
 	<main class="main">
-		Contacts
+		<SectionContactsRequest />
 	</main>
 </template>
 
 <script setup lang="ts"></script>
-
