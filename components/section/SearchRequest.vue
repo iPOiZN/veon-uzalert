@@ -1,5 +1,5 @@
 <template>
-	<section class="request">
+	<section id="contacts-request" class="request">
 		<div class="request__container container">
 			<UIHeading level="3" class="request__title">{{ contactsRequest.title }}</UIHeading>
 			<form class="request__form" @submit.prevent="handleSubmit">

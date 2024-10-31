@@ -1,5 +1,5 @@
 <template>
-	<section class="faq">
+	<section id="faq" class="faq">
 		<div class="faq__container container">
 			<UIHeading level="3" class="faq__title">{{ faq.title }}</UIHeading>
 			<div class="faq__content">

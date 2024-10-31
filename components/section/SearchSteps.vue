@@ -1,5 +1,5 @@
 <template>
-	<section class="steps">
+	<section id="search-steps" class="steps">
 		<div class="steps__container container">
 			<UIHeading level="3" class="steps__title">{{ searchSteps.title }}</UIHeading>
 			<div class="steps__content">

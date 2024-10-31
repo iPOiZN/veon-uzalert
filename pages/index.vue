@@ -19,6 +19,9 @@
 	// }
 	.main {
 		display: grid;
-		gap: 64px;
+		// gap: 64px;
+		section:not(.intro) {
+			padding-top: 64px;
+		}
 	}
 </style>

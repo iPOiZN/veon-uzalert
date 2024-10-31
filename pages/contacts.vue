@@ -1,8 +1,0 @@
-<template>
-	<main class="main">
-		Contacts
-	</main>
-</template>
-
-<script setup lang="ts"></script>
-

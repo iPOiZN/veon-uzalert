@@ -49,7 +49,7 @@ export const useContent = () => {
 		buttons: [
 			{
 				title: t('intro.btnVol'),
-				href: '/volunteer',
+				href: '/#join',
 			},
 			{
 				title: t('intro.btnSearch'),
@@ -226,27 +226,27 @@ export const useContent = () => {
 		],
 		socials: [
 			{
-				href: '#',
+				href: 'https://www.facebook.com/share/g/pBu1nJB36tgMv48t/?mibextid=A7sQZp',
 				id: 'facebook',
 				icon: 'logos:facebook',
 			},
 			{
-				href: '#',
+				href: 'https://www.instagram.com/invites/contact/?igsh=zkzfxsj2dsj3&utm_content=krdsugd',
 				id: 'instagram',
 				icon: 'skill-icons:instagram',
 			},
 			{
-				href: '#',
+				href: 'https://t.me/UzAlert',
 				id: 'telegram',
 				icon: 'logos:telegram',
 			},
 			{
-				href: '#',
+				href: 'https://www.threads.net/@uzalert?xmt=AQGzO-aVqZqLhgQG16TQljK8LVhNIoU5qZOb0czNYdLIkPA',
 				id: 'threads',
 				icon: 'bi:threads',
 			},
 			{
-				href: '#',
+				href: 'https://ok.ru/group/58359270735896',
 				id: 'ok',
 				icon: 'local:ok',
 			},
@@ -273,7 +273,7 @@ export const useContent = () => {
 			},
 		],
 		actionBtn: {
-			href: '#',
+			href: 'tel:+998 88 198 06 10',
 			text: t('partners.btn'),
 		},
 	}

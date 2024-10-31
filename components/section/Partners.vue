@@ -1,5 +1,5 @@
 <template>
-	<section class="partners">
+	<section id="partners" class="partners">
 		<div class="partners__container container">
 			<UIHeading level="3" class="partners__title">{{ partners.title }}</UIHeading>
 			<Swiper

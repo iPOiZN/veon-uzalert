@@ -1,5 +1,5 @@
 <template>
-	<section class="join">
+	<section id="join" class="join">
 		<div class="join__container container">
 			<UIHeading level="3" class="join__title">{{ join.title }}</UIHeading>
 			<form class="join__form" @submit.prevent="handleSubmit">

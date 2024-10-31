@@ -1,5 +1,5 @@
 <template>
-	<section class="intro">
+	<section id="intro" class="intro">
 		<NuxtImg src="/images/intro-bg.jpg" format="webp" class="intro__bg" />
 		<div class="intro__container container">
 			<div class="intro__content">

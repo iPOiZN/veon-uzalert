@@ -15,9 +15,13 @@
 			<nav class="nav">
 				<ul class="nav__menu" :class="asideStore.isOpen ? 'nav__menu--open' : ''">
 					<li v-for="(item, i) in menuItems" :key="i" class="nav__menu-item">
-						<NuxtLinkLocale :to="item.path" class="nav__menu-link" @click="asideStore.isOpen = false">{{
-							item.name
-						}}</NuxtLinkLocale>
+						<NuxtLink
+							:to="item.path"
+							class="nav__menu-link"
+							:class="{ active: item.path.includes(activeSection) }"
+							@click="asideStore.isOpen = false">
+							{{ item.name }}
+						</NuxtLink>
 					</li>
 				</ul>
 				<Teleport to="body">
@@ -68,8 +72,32 @@
 		lastScrollTop = st <= 0 ? 0 : st
 	}
 
+	const activeSection = ref('intro')
+
 	onMounted(() => {
 		window.addEventListener('scroll', handleScroll)
+
+		const sections = document.querySelectorAll('section')
+
+		sections.forEach((section) => {
+			useScrollTrigger.create({
+				trigger: section,
+				start: 'center center',
+				end: 'bottom+=64 center',
+				scrub: true,
+
+				onEnter: (self) => {
+					if (self.trigger) {
+						activeSection.value = self.trigger.id
+					}
+				},
+				onEnterBack: (self) => {
+					if (self.trigger) {
+						activeSection.value = self.trigger.id
+					}
+				},
+			})
+		})
 	})
 
 	onUnmounted(() => {
@@ -78,10 +106,10 @@
 </script>
 
 <style scoped lang="scss">
-	:deep(.router-link-active) {
-		color: var(--orange);
-		transition: 0.3s color;
-	}
+	// :deep(.router-link-active) {
+	// 	color: var(--orange);
+	// 	transition: 0.3s color;
+	// }
 	.header {
 		// height: 74px;
 		position: sticky;
@@ -166,6 +194,12 @@
 					padding: 8px;
 					border-radius: 10px;
 					font-weight: 600;
+				}
+			}
+			&-link {
+				transition: 0.3s color;
+				&.active {
+					color: var(--orange);
 				}
 			}
 

@@ -1,5 +1,5 @@
 <template>
-	<section class="whowe">
+	<section id="whowe" class="whowe">
 		<div class="whowe__container container">
 			<article class="whowe__article">
 				<div class="whowe__article-content">
