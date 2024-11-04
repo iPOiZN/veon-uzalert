@@ -21,6 +21,13 @@ body {
 	padding: 0 16px;
 }
 
+.link {
+	color: var(--blue);
+	&:visited {
+		color: var(--purple);
+	}
+}
+
 .fade-enter-active,
 .fade-leave-active {
 	transition: opacity 0.3s;

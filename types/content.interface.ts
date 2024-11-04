@@ -117,10 +117,26 @@ export interface IContactsRequest {
 	}
 }
 
+export interface IPartners {
+	title: string
+	items: {
+		id: string
+		href: string
+		img: string
+	}[]
+	actionBtn: {
+		href: string
+		text: string
+	}
+}
+
 export interface IContent {
 	intro: IIntro
 	whoWeAre: IWhoWeAre
 	searchSteps: ISearchSteps
 	join: IJoin
 	faq: IFaq
+	contact: IContact
+	contactsRequest: IContactsRequest
+	partners: IPartners
 }

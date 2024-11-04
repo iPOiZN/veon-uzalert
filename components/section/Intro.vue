@@ -4,11 +4,11 @@
 		<div class="intro__container container">
 			<div class="intro__content">
 				<div class="intro__title-wrapper">
-					<UIHeading level="1" class="intro__title">{{ intro.title }}</UIHeading>
+					<UIHeading level="1" class="intro__title">{{ INTRO.title }}</UIHeading>
 				</div>
 				<div class="intro__buttons">
 					<NuxtLinkLocale
-						v-for="(button, i) in intro.buttons"
+						v-for="(button, i) in INTRO.buttons"
 						:key="i"
 						:to="button.href"
 						class="intro__link">
@@ -23,7 +23,7 @@
 <script setup lang="ts">
 	import { useContent } from '~/constants/content'
 
-	const { intro } = useContent()
+	const { INTRO } = useContent()
 
 	onMounted(() => {
 		useGsap.to('.intro__bg', {

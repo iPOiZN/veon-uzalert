@@ -4,6 +4,7 @@ import type {
 	IFaq,
 	IIntro,
 	IJoin,
+	IPartners,
 	ISearchSteps,
 	IWhoWeAre,
 } from '~/types/content.interface'
@@ -12,7 +13,7 @@ import type {
 export const useContent = () => {
 	const { t } = useI18n()
 
-	const regions = [
+	const REGIONS = [
 		t('basics.regions.tashkentCity'),
 		t('basics.regions.tashkentRegion'),
 		t('basics.regions.andijan'),
@@ -29,7 +30,7 @@ export const useContent = () => {
 		t('basics.regions.karakalpakstan'),
 	]
 
-	// const months = [
+	// const MONTHS = [
 	// 	t('basics.months.january'),
 	// 	t('basics.months.february'),
 	// 	t('basics.months.march'),
@@ -44,7 +45,7 @@ export const useContent = () => {
 	// 	t('basics.months.december'),
 	// ]
 
-	const intro: IIntro = {
+	const INTRO: IIntro = {
 		title: t('intro.title'),
 		buttons: [
 			{
@@ -58,13 +59,13 @@ export const useContent = () => {
 		],
 	}
 
-	const whoWeAre: IWhoWeAre = {
+	const WHO_WE_ARE: IWhoWeAre = {
 		title: t('about.title'),
 		text: t('about.text'),
 		img: '/images/whowe.jpg',
 	}
 
-	const searchSteps: ISearchSteps = {
+	const SEARCH_STEPS: ISearchSteps = {
 		title: t('search.title'),
 		articles: [
 			{
@@ -94,7 +95,7 @@ export const useContent = () => {
 		],
 	}
 
-	const join: IJoin = {
+	const JOIN: IJoin = {
 		title: t('join.title'),
 		help: {
 			title: t('join.helpTitle'),
@@ -170,7 +171,7 @@ export const useContent = () => {
 		},
 	}
 
-	const faq: IFaq = {
+	const FAQ: IFaq = {
 		title: t('faq.title'),
 		img: '/images/faq.jpg',
 		accordion: [
@@ -208,7 +209,7 @@ export const useContent = () => {
 		},
 	}
 
-	const contact: IContact = {
+	const CONTACT: IContact = {
 		title: t('contact.title'),
 		img: '/images/contact-us.jpg',
 		description: t('contact.desc'),
@@ -253,7 +254,7 @@ export const useContent = () => {
 		],
 	}
 
-	const partners = {
+	const PARTNERS: IPartners = {
 		title: t('partners.title'),
 		items: [
 			{
@@ -278,7 +279,7 @@ export const useContent = () => {
 		},
 	}
 
-	const contactsRequest: IContactsRequest = {
+	const CONTACT_REQUEST: IContactsRequest = {
 		title: t('contactsRequest.title'),
 		inputs: [
 			{
@@ -324,7 +325,7 @@ export const useContent = () => {
 				name: 'region',
 				value: '',
 				placeholder: t('contactsRequest.missingRegionPlaceholder'),
-				options: regions,
+				options: REGIONS,
 			},
 			{
 				id: 'missing_dob',
@@ -434,13 +435,13 @@ export const useContent = () => {
 	}
 
 	return {
-		intro,
-		whoWeAre,
-		searchSteps,
-		join,
-		faq,
-		contact,
-		partners,
-		contactsRequest,
+		INTRO,
+		WHO_WE_ARE,
+		SEARCH_STEPS,
+		JOIN,
+		FAQ,
+		CONTACT,
+		PARTNERS,
+		CONTACT_REQUEST,
 	}
 }

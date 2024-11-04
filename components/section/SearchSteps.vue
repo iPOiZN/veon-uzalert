@@ -1,9 +1,9 @@
 <template>
 	<section id="search-steps" class="steps">
 		<div class="steps__container container">
-			<UIHeading level="3" class="steps__title">{{ searchSteps.title }}</UIHeading>
+			<UIHeading level="3" class="steps__title">{{ SEARCH_STEPS.title }}</UIHeading>
 			<div class="steps__content">
-				<article v-for="(step, i) in searchSteps.articles" :key="i" class="steps__article">
+				<article v-for="(step, i) in SEARCH_STEPS.articles" :key="i" class="steps__article">
 					<Icon :name="step.icon" size="45px" />
 					<p class="steps__article-description">{{ step.description }}</p>
 				</article>
@@ -15,7 +15,7 @@
 <script setup lang="ts">
 	import { useContent } from '~/constants/content'
 
-	const { searchSteps } = useContent()
+	const { SEARCH_STEPS } = useContent()
 </script>
 
 <style scoped lang="scss">

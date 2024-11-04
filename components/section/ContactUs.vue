@@ -4,18 +4,18 @@
 			<div class="contact__content">
 				<div class="contact__block">
 					<NuxtImg
-						:src="contact.img"
+						:src="CONTACT.img"
 						format="webp"
 						class="contact__block-img"
 						height="400px"
 						loading="lazy" />
 				</div>
 				<div class="contact__block">
-					<UIHeading level="3" class="contact__title">{{ contact.title }}</UIHeading>
-					<span v-dompurify-html="contact.description" class="contact__description"> </span>
+					<UIHeading level="3" class="contact__title">{{ CONTACT.title }}</UIHeading>
+					<span v-dompurify-html="CONTACT.description" class="contact__description"> </span>
 					<div class="contact__block-contacts">
 						<a
-							v-for="(item, i) in contact.contacts"
+							v-for="(item, i) in CONTACT.contacts"
 							:key="i"
 							:href="item.href"
 							class="contact__block-contacts-link">
@@ -25,7 +25,7 @@
 					</div>
 					<div class="contact__block-socials">
 						<a
-							v-for="(item, i) in contact.socials"
+							v-for="(item, i) in CONTACT.socials"
 							:key="i"
 							:href="item.href"
 							class="contact__block-socials-link">
@@ -41,7 +41,7 @@
 <script setup lang="ts">
 	import { useContent } from '~/constants/content'
 
-	const { contact } = useContent()
+	const { CONTACT } = useContent()
 </script>
 
 <style scoped lang="scss">

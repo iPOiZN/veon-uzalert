@@ -1,10 +1,10 @@
 <template>
 	<section id="contacts-request" class="request">
 		<div class="request__container container">
-			<UIHeading level="3" class="request__title">{{ contactsRequest.title }}</UIHeading>
+			<UIHeading level="3" class="request__title">{{ CONTACT_REQUEST.title }}</UIHeading>
 			<form class="request__form" @submit.prevent="handleSubmit">
 				<div class="request__form-inputs">
-					<div v-for="(input, i) in contactsRequest.inputs" :key="i" class="request__input-wrapper">
+					<div v-for="(input, i) in CONTACT_REQUEST.inputs" :key="i" class="request__input-wrapper">
 						<label :for="input.id">
 							{{ input.label }}
 							<span v-if="input.required" class="request__input-required">*</span>
@@ -101,7 +101,7 @@
 					</div>
 				</div>
 				<div class="request__form-footer">
-					<button type="submit" class="request__button">{{ contactsRequest.submitBtn.text }}</button>
+					<button type="submit" class="request__button">{{ CONTACT_REQUEST.submitBtn.text }}</button>
 				</div>
 			</form>
 		</div>
@@ -111,7 +111,7 @@
 <script setup lang="ts">
 	import { useContent } from '~/constants/content'
 
-	const { contactsRequest } = useContent()
+	const { CONTACT_REQUEST } = useContent()
 	const formData = reactive({} as Record<string, string>)
 
 	const handleSubmit = () => {
@@ -119,7 +119,7 @@
 	}
 
 	onMounted(() => {
-		contactsRequest.inputs.forEach((input) => {
+		CONTACT_REQUEST.inputs.forEach((input) => {
 			formData[input.id] = ''
 		})
 	})

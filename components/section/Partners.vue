@@ -1,7 +1,7 @@
 <template>
 	<section id="partners" class="partners">
 		<div class="partners__container container">
-			<UIHeading level="3" class="partners__title">{{ partners.title }}</UIHeading>
+			<UIHeading level="3" class="partners__title">{{ PARTNERS.title }}</UIHeading>
 			<Swiper
 				:autoplay="{
 					delay: 0.5,
@@ -12,13 +12,13 @@
 				:speed="5000"
 				:loop="true"
 				:initial-slide="0"
-				:slides-per-view="partners.items.length > 3 ? 4 : 3"
+				:slides-per-view="PARTNERS.items.length > 3 ? 4 : 3"
 				:space-between="32"
 				:free-mode="false"
 				class="partners__carousel">
 				<!-- <div class="partners__carousel-content"> -->
 				<SwiperSlide
-					v-for="(partner, i) in [...partners.items, ...partners.items]"
+					v-for="(partner, i) in [...PARTNERS.items, ...PARTNERS.items]"
 					:key="i"
 					class="partners__carousel-item">
 					<NuxtImg :src="partner.img" class="partners__carousel-img" loading="lazy" />
@@ -26,8 +26,8 @@
 
 				<!-- </div> -->
 			</Swiper>
-			<a :href="partners.actionBtn.href">
-				<button class="partners__action-btn">{{ partners.actionBtn.text }}</button>
+			<a :href="PARTNERS.actionBtn.href">
+				<button class="partners__action-btn">{{ PARTNERS.actionBtn.text }}</button>
 			</a>
 		</div>
 	</section>
@@ -38,7 +38,7 @@
 	import { Swiper, SwiperSlide } from 'swiper/vue'
 	import { useContent } from '~/constants/content'
 
-	const { partners } = useContent()
+	const { PARTNERS } = useContent()
 </script>
 
 <style scoped lang="scss">

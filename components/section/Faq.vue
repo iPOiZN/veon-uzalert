@@ -1,14 +1,14 @@
 <template>
 	<section id="faq" class="faq">
 		<div class="faq__container container">
-			<UIHeading level="3" class="faq__title">{{ faq.title }}</UIHeading>
+			<UIHeading level="3" class="faq__title">{{ FAQ.title }}</UIHeading>
 			<div class="faq__content">
 				<div class="faq__block">
-					<NuxtImg :src="faq.img" format="webp" class="faq__block-img" height="500px" loading="lazy" />
+					<NuxtImg :src="FAQ.img" format="webp" class="faq__block-img" height="500px" loading="lazy" />
 				</div>
 				<div class="faq__block">
 					<div class="faq__accordion">
-						<details v-for="(item, i) in faq.accordion" :key="i" class="faq__accordion-details">
+						<details v-for="(item, i) in FAQ.accordion" :key="i" class="faq__accordion-details">
 							<summary class="faq__accordion-summary">
 								{{ item.summary }}
 								<Icon :name="item.icon ?? 'local:route'" size="18px" />
@@ -21,7 +21,7 @@
 				</div>
 			</div>
 			<div class="faq__footer">
-				<span v-dompurify-html="faq.footer?.text"> </span>
+				<span v-dompurify-html="FAQ.footer?.text"> </span>
 			</div>
 		</div>
 	</section>
@@ -30,7 +30,7 @@
 <script setup lang="ts">
 	import { useContent } from '~/constants/content'
 
-	const { faq } = useContent()
+	const { FAQ } = useContent()
 </script>
 
 <style scoped lang="scss">
@@ -106,11 +106,6 @@
 				padding: 16px;
 				color: var(--primary-text);
 				font-size: 14px;
-			}
-		}
-		&__footer {
-			:deep(a) {
-				color: var(--blue);
 			}
 		}
 	}

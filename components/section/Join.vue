@@ -1,21 +1,21 @@
 <template>
 	<section id="join" class="join">
 		<div class="join__container container">
-			<UIHeading level="3" class="join__title">{{ join.title }}</UIHeading>
+			<UIHeading level="3" class="join__title">{{ JOIN.title }}</UIHeading>
 			<form class="join__form" @submit.prevent="handleSubmit">
 				<div class="join__block">
-					<div class="join__block-title">{{ join.help.title }}</div>
+					<div class="join__block-title">{{ JOIN.help.title }}</div>
 					<ul class="join__block-checkboxes">
-						<li v-for="(checkbox, i) in join.help.checkboxes" :key="i" class="join__block-checkbox-item">
+						<li v-for="(checkbox, i) in JOIN.help.checkboxes" :key="i" class="join__block-checkbox-item">
 							<input :id="checkbox.id" type="checkbox" />
 							<label :for="checkbox.id">{{ checkbox.label }}</label>
 						</li>
 					</ul>
 				</div>
 				<div class="join__block">
-					<div class="join__block-title">{{ join.contacts.title }}</div>
+					<div class="join__block-title">{{ JOIN.contacts.title }}</div>
 					<div class="join__block-inputs">
-						<div v-for="(input, i) in join.contacts.inputs" :key="i" class="join__block-input-item">
+						<div v-for="(input, i) in JOIN.contacts.inputs" :key="i" class="join__block-input-item">
 							<label :for="input.id">{{ input.label }}</label>
 							<input
 								:id="input.id"
@@ -27,10 +27,10 @@
 				</div>
 				<div class="join__footer">
 					<div class="join__policy">
-						<input :id="join.policy.id" required type="checkbox" />
-						<label :for="join.policy.id">{{ join.policy.label }}</label>
+						<input :id="JOIN.policy.id" required type="checkbox" />
+						<label v-dompurify-html="JOIN.policy.label" :for="JOIN.policy.id"></label>
 					</div>
-					<button type="submit" class="join__submit-btn">{{ join.submit.title }}</button>
+					<button type="submit" class="join__submit-btn">{{ JOIN.submit.title }}</button>
 				</div>
 			</form>
 		</div>
@@ -40,7 +40,7 @@
 <script setup lang="ts">
 	import { useContent } from '~/constants/content'
 
-	const { join } = useContent()
+	const { JOIN } = useContent()
 
 	const handleSubmit = () => {
 		console.log('hello')
@@ -117,6 +117,7 @@
 			display: flex;
 			align-items: center;
 			gap: 8px;
+			line-height: 115%;
 		}
 		&__submit-btn {
 			border: 1px solid var(--black);

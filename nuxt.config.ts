@@ -111,6 +111,11 @@ export default defineNuxtConfig({
 		// 	cert: 'localhost-cert.pem',
 		// },
 	},
+	routeRules: {
+		'/**': {
+			isr: 60,
+		},
+	},
 	nitro: {
 		compressPublicAssets: true,
 		prerender: {
@@ -208,7 +213,7 @@ export default defineNuxtConfig({
 				code: 'uz',
 				file: 'uz.json',
 				language: 'uz-UZ',
-				name: 'Узбекский',
+				name: "O'zbek",
 			},
 		],
 		langDir: 'locales',

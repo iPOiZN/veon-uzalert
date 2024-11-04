@@ -166,7 +166,7 @@
 			display: flex;
 			align-items: center;
 			gap: 16px;
-			@media (max-width: 575.98px) {
+			@media (max-width: 767.98px) {
 				position: fixed;
 				display: flex;
 				flex-direction: column;
@@ -208,7 +208,7 @@
 			}
 			&-btn {
 				display: none;
-				@media (max-width: 575.98px) {
+				@media (max-width: 767.98px) {
 					display: block;
 				}
 			}
@@ -225,7 +225,7 @@
 		height: 100%;
 		background-color: rgba(0, 0, 0, 0.4);
 		display: none;
-		@media (max-width: 575.98px) {
+		@media (max-width: 767.98px) {
 			display: block;
 		}
 	}

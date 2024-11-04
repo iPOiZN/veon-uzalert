@@ -3,13 +3,13 @@
 		<div class="whowe__container container">
 			<article class="whowe__article">
 				<div class="whowe__article-content">
-					<UIHeading level="3" class="whowe__article-title">{{ whoWeAre.title }}</UIHeading>
+					<UIHeading level="3" class="whowe__article-title">{{ WHO_WE_ARE.title }}</UIHeading>
 					<p class="whowe__article-text">
-						{{ whoWeAre.text }}
+						{{ WHO_WE_ARE.text }}
 					</p>
 				</div>
 				<div class="whowe__article-img-wrapper">
-					<NuxtImg :src="whoWeAre.img" format="webp" class="whowe__article-img" height="350px" />
+					<NuxtImg :src="WHO_WE_ARE.img" format="webp" class="whowe__article-img" height="350px" />
 				</div>
 			</article>
 		</div>
@@ -19,7 +19,7 @@
 <script setup lang="ts">
 	import { useContent } from '~/constants/content'
 
-	const { whoWeAre } = useContent()
+	const { WHO_WE_ARE } = useContent()
 
 	onMounted(() => {
 		useGsap.from('.whowe__article-img', {
