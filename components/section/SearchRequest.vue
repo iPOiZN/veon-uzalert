@@ -65,14 +65,14 @@
 							<div class="request__input-radios">
 								<div v-for="(radio, idx) in input.radios" :key="idx" class="request__input-radio">
 									<input
-										:id="radio.id"
+										:id="radio.name"
 										v-model="formData[input.id]"
 										type="radio"
 										:name="input.name"
 										:value="radio.id"
 										:required="input.required"
 										:checked="radio.checked" />
-									<label :for="radio.id">{{ radio.label }}</label>
+									<label :for="radio.name">{{ radio.label }}</label>
 								</div>
 							</div>
 						</template>
@@ -84,8 +84,8 @@
 								:required="input.required"
 								:name="input.name">
 								<option value="" disabled>{{ input.placeholder }}</option>
-								<option v-for="(option, idx) in input.options" :key="idx">
-									{{ option }}
+								<option v-for="(option, idx) in input.options" :key="idx" :value="option.id">
+									{{ option.label }}
 								</option>
 							</select>
 						</template>
@@ -110,12 +110,14 @@
 
 <script setup lang="ts">
 	import { useContent } from '~/constants/content'
+	import type { ISearchRequestInputs } from '~/types/content.interface'
 
 	const { CONTACT_REQUEST } = useContent()
-	const formData = reactive({} as Record<string, string>)
+	const { mutate: searchRequestMutation } = useSearchRequestMutation()
+	const formData = reactive({} as ISearchRequestInputs)
 
 	const handleSubmit = () => {
-		console.log(formData)
+		searchRequestMutation(formData)
 	}
 
 	onMounted(() => {

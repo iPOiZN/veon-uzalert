@@ -176,6 +176,7 @@ export default defineNuxtConfig({
 		'@nuxtjs/sitemap',
 		'nuxt-schema-org',
 		'nuxt-og-image',
+		'@nuxtjs/apollo',
 		'@hypernym/nuxt-gsap',
 	],
 	gsap: {
@@ -221,6 +222,29 @@ export default defineNuxtConfig({
 		strategy: 'prefix',
 		compilation: {
 			strictMessage: false,
+		},
+	},
+	apollo: {
+		authType: 'Bearer',
+		authHeader: 'Authorization',
+		tokenStorage: 'cookie',
+		defaultOptions: {
+			query: {
+				fetchPolicy: 'no-cache',
+			},
+			watchQuery: {
+				fetchPolicy: 'no-cache',
+			},
+		},
+		clients: {
+			default: {
+				httpLinkOptions: {
+					credentials: 'include',
+				},
+				tokenName: 'token',
+				httpEndpoint: import.meta.env.API_BASE_URL,
+				// connectToDevTools: true,
+			},
 		},
 	},
 	// swiper: {

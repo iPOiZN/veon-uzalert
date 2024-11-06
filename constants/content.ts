@@ -13,21 +13,65 @@ import type {
 export const useContent = () => {
 	const { t } = useI18n()
 
-	const REGIONS = [
-		t('basics.regions.tashkentCity'),
-		t('basics.regions.tashkentRegion'),
-		t('basics.regions.andijan'),
-		t('basics.regions.fergana'),
-		t('basics.regions.namangan'),
-		t('basics.regions.syrdarya'),
-		t('basics.regions.jizzakh'),
-		t('basics.regions.samarkand'),
-		t('basics.regions.navoi'),
-		t('basics.regions.bukhara'),
-		t('basics.regions.kashkadarya'),
-		t('basics.regions.surkhandarya'),
-		t('basics.regions.khorezm'),
-		t('basics.regions.karakalpakstan'),
+	type TRegions = IContactsRequest['inputs'][0]['options']
+
+	const REGIONS: TRegions = [
+		{
+			id: 1,
+			label: t('basics.regions.tashkentCity'),
+		},
+		{
+			id: 10,
+			label: t('basics.regions.tashkentRegion'),
+		},
+		{
+			id: 20,
+			label: t('basics.regions.syrdarya'),
+		},
+		{
+			id: 25,
+			label: t('basics.regions.jizzakh'),
+		},
+		{
+			id: 30,
+			label: t('basics.regions.samarkand'),
+		},
+		{
+			id: 40,
+			label: t('basics.regions.fergana'),
+		},
+		{
+			id: 50,
+			label: t('basics.regions.namangan'),
+		},
+		{
+			id: 60,
+			label: t('basics.regions.andijan'),
+		},
+		{
+			id: 70,
+			label: t('basics.regions.kashkadarya'),
+		},
+		{
+			id: 75,
+			label: t('basics.regions.surkhandarya'),
+		},
+		{
+			id: 80,
+			label: t('basics.regions.bukhara'),
+		},
+		{
+			id: 85,
+			label: t('basics.regions.navoi'),
+		},
+		{
+			id: 90,
+			label: t('basics.regions.khorezm'),
+		},
+		{
+			id: 95,
+			label: t('basics.regions.karakalpakstan'),
+		},
 	]
 
 	// const MONTHS = [
@@ -308,12 +352,14 @@ export const useContent = () => {
 				required: true,
 				radios: [
 					{
-						id: 'male',
+						id: 0,
+						name: 'male',
 						label: t('contactsRequest.genderMale'),
 						checked: true,
 					},
 					{
-						id: 'female',
+						id: 1,
+						name: 'female',
 						label: t('contactsRequest.genderFemale'),
 					},
 				],
@@ -374,12 +420,14 @@ export const useContent = () => {
 				name: 'search_area_type',
 				radios: [
 					{
-						id: 'city',
+						id: 0,
+						name: 'city',
 						label: t('contactsRequest.areaCity'),
 						checked: true,
 					},
 					{
-						id: 'region',
+						id: 1,
+						name: 'region',
 						label: t('contactsRequest.areaRegion'),
 					},
 				],

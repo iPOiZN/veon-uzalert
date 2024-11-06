@@ -1,3 +1,31 @@
+interface ISearchRequestInput {
+	id: [
+		'applicant_full_name',
+		'applicant_phone',
+		'missing_full_name',
+		'missing_gender',
+		'missing_region',
+		'missing_dob',
+		'additional_area_of_search',
+		'missing_phone',
+		'missing_address',
+		'missing_date',
+		'missing_time',
+		'police_report',
+		'search_area_type',
+		'circumstances_of_missing',
+		'missing_health',
+		'missing_clothes',
+		'missing_special_features',
+		'missing_carryon_item',
+		'additional_info',
+		'family_contacts',
+		'upload_photo',
+	][number]
+}
+
+export type ISearchRequestInputs = Record<ISearchRequestInput['id'], string>
+
 export interface IIntro {
 	title: string
 	buttons: {
@@ -81,7 +109,7 @@ export interface IContact {
 export interface IContactsRequest {
 	title: string
 	inputs: {
-		id: string
+		id: ISearchRequestInput['id']
 		label: string
 		type: string
 		required?: boolean
@@ -96,13 +124,16 @@ export interface IContactsRequest {
 		minValue?: string
 		maxValue?: string
 		radios?: {
-			id: string
+			id: number
 			label: string
 			type?: string
 			name?: string
 			checked?: boolean
 		}[]
-		options?: string[]
+		options?: {
+			id: number
+			label: string
+		}[]
 		// date?: {
 		// 	placeholder: {
 		// 		day: string
