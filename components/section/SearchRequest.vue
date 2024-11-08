@@ -1,10 +1,14 @@
 <template>
 	<section id="contacts-request" class="request">
 		<div class="request__container container">
-			<UIHeading level="3" class="request__title">{{ CONTACT_REQUEST.title }}</UIHeading>
+			<UIHeading level="3" class="request__title">{{ SEARCH_REQUEST.title }}</UIHeading>
 			<form class="request__form" @submit.prevent="handleSubmit">
 				<div class="request__form-inputs">
-					<div v-for="(input, i) in CONTACT_REQUEST.inputs" :key="i" class="request__input-wrapper">
+					<div
+						v-for="(input, i) in SEARCH_REQUEST.inputs"
+						:key="i"
+						class="request__input-wrapper"
+						:class="{ error: v$Form[input.id]?.$error }">
 						<label :for="input.id">
 							{{ input.label }}
 							<span v-if="input.required" class="request__input-required">*</span>
@@ -16,7 +20,7 @@
 								class="request__input"
 								:required="input.required"
 								:rows="input.rows"
-								:placeholder="input.placeholder"></textarea>
+								:placeholder="input.placeholder" />
 						</template>
 						<template v-else-if="input.type === 'file'">
 							<input
@@ -41,25 +45,6 @@
 								onchange="this.placeholder = ''"
 								ondblclick="this.showPicker()"
 								onfocus="this.showPicker()" />
-							<!-- <div class="request__input-dates">
-								<input
-									type="number"
-									inputmode="numeric"
-									min="1"
-									max="31"
-									:placeholder="input.date?.placeholder.day"
-									class="request__input" />
-								<select id="month" class="request__input request__input-dropdown">
-									<option v-for="(month, idx) in input.date?.months" :key="idx">{{ month }}</option>
-								</select>
-								<input
-									type="number"
-									inputmode="numeric"
-									min="1900"
-									max="2100"
-									:placeholder="input.date?.placeholder.year"
-									class="request__input" />
-							</div> -->
 						</template>
 						<template v-else-if="input.type === 'radio'">
 							<div class="request__input-radios">
@@ -89,6 +74,21 @@
 								</option>
 							</select>
 						</template>
+						<template v-else-if="input.type === 'tel'">
+							<span class="request__input-tel">
+								<span class="request__input-prefix">+{{ countryCode }}</span>
+								<input
+									:id="input.id"
+									v-model="formData[input.id]"
+									class="request__input"
+									:placeholder="input.placeholder"
+									:required="input.required"
+									:type="input.type"
+									minLength="9"
+									maxLength="9"
+									oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+							</span>
+						</template>
 						<template v-else>
 							<input
 								:id="input.id"
@@ -98,10 +98,15 @@
 								:required="input.required"
 								:type="input.type" />
 						</template>
+						<div v-if="v$Form[input.id]?.$error" class="request__input-error">
+							{{ input.error }}
+						</div>
 					</div>
 				</div>
 				<div class="request__form-footer">
-					<button type="submit" class="request__button">{{ CONTACT_REQUEST.submitBtn.text }}</button>
+					<button type="submit" class="request__button" @click="v$Form.$touch">
+						{{ SEARCH_REQUEST.submitBtn.text }}
+					</button>
 				</div>
 			</form>
 		</div>
@@ -109,19 +114,46 @@
 </template>
 
 <script setup lang="ts">
-	import { useContent } from '~/constants/content'
+	import { useVuelidate } from '@vuelidate/core'
+	import { maxLength, minLength, required } from '@vuelidate/validators'
+	import { countryCode, searchRequestContent } from '~/constants/content'
 	import type { ISearchRequestInputs } from '~/types/content.interface'
 
-	const { CONTACT_REQUEST } = useContent()
+	// const [] = defineField('tel', { validateOnModelUpdate: true })
+
+	const { SEARCH_REQUEST } = await searchRequestContent()
 	const { mutate: searchRequestMutation } = useSearchRequestMutation()
 	const formData = reactive({} as ISearchRequestInputs)
 
+	const formValidationRules: Partial<Record<keyof ISearchRequestInputs, object>> = {
+		applicant_full_name: { required },
+		applicant_phone: { required, minLength: minLength(9), maxLength: maxLength(9) },
+		missing_full_name: { required },
+		missing_gender: { required },
+		missing_date: { required },
+		search_area_type: { required },
+		missing_health: { required },
+		missing_special_features: { required },
+	}
+
+	const v$Form = useVuelidate(formValidationRules, formData)
+
 	const handleSubmit = () => {
-		searchRequestMutation(formData)
+		// if (!validateForm()) return
+		if (v$Form.value.$invalid) return
+		searchRequestMutation({
+			...formData,
+			applicant_phone: Number(countryCode + +formData.applicant_phone),
+			missing_gender: +formData.missing_gender,
+			missing_region: +formData.missing_region,
+			missing_phone: Number(countryCode + +formData.missing_phone),
+			search_area_type: +formData.search_area_type,
+		} as ISearchRequestInputs)
+		// console.log(formData)
 	}
 
 	onMounted(() => {
-		CONTACT_REQUEST.inputs.forEach((input) => {
+		SEARCH_REQUEST.inputs.forEach((input) => {
 			formData[input.id] = ''
 		})
 	})
@@ -158,6 +190,11 @@
 			gap: 4px;
 			margin-bottom: 32px;
 			position: relative;
+			&.error {
+				.request__input {
+					border-color: var(--danger);
+				}
+			}
 		}
 		&__input {
 			background-color: var(--white);
@@ -172,6 +209,27 @@
 			// &[type='date'] {
 			// 	height: 40px;
 			// }
+			&::placeholder {
+				color: var(--gray);
+				// font-style: italic;
+			}
+			&-error {
+				font-size: 12px;
+				color: var(--danger);
+				// position: absolute;
+				// bottom: -20px;
+			}
+			&-tel {
+				position: relative;
+				.request__input-prefix {
+					position: absolute;
+					left: 10px;
+					top: 11.5px;
+				}
+			}
+			&[type='tel'] {
+				padding-left: 50px;
+			}
 			&[type='date'],
 			&[type='time'] {
 				color: transparent;
@@ -182,18 +240,6 @@
 				&::-webkit-date-and-time-value {
 					text-align-last: left;
 				}
-				// &::-webkit-calendar-picker-indicator {
-				// 	background: transparent;
-				// 	bottom: 0;
-				// 	color: transparent;
-				// 	cursor: pointer;
-				// 	height: 40px;
-				// 	left: 0;
-				// 	position: absolute;
-				// 	right: 0;
-				// 	bottom: 0;
-				// 	width: auto;
-				// }
 				&:focus {
 					color: inherit;
 					&::before {
@@ -208,19 +254,14 @@
 				}
 				&:before {
 					content: attr(placeholder) !important;
-					color: #aaa;
+					color: var(--gray);
+					// font-style: italic;
 					// margin-right: 0.5em;
 					position: absolute;
 					left: 10px;
-					top: 50%;
-					transform: translateY((calc(25%)));
+					top: 42px;
 				}
 			}
-			// &-focus {
-			// 	&::placeholder {
-			// 		display: none;
-			// 	}
-			// }
 			&-required {
 				color: var(--danger);
 			}
@@ -246,7 +287,7 @@
 				background-repeat: no-repeat;
 				background-position: right 0.7rem top 50%;
 				background-size: 0.65rem auto;
-				border-radius: 5px;
+				border-radius: 0;
 			}
 		}
 		&__button {

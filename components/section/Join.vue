@@ -38,9 +38,9 @@
 </template>
 
 <script setup lang="ts">
-	import { useContent } from '~/constants/content'
+	import { homeContent } from '~/constants/content'
 
-	const { JOIN } = useContent()
+	const { JOIN } = homeContent()
 
 	const handleSubmit = () => {
 		console.log('hello')

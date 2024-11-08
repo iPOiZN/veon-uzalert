@@ -1,0 +1,6 @@
+query Area_types {
+	area_types {
+		id
+		name
+	}
+}

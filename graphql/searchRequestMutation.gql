@@ -1,75 +1,72 @@
 mutation Missing_people(
-	$applicant_name: String!
+	$applicant_full_name: String!
 	$applicant_phone: Int!
-	$missing_person_name: String!
-	$missing_person_gender: Int!
-	$missing_person_phone: Int!
-	$birthdate: String
+	$missing_full_name: String!
+	$missing_gender: Int!
+	$missing_phone: Int
+	$missing_dob: String
 	$search_area_type: Int!
-	$disappearance_circumstances: String
-	$health_state: String!
-	$loss_area: Int
-	$missing_persons_clothes: String
-	$special_signs: String!
-	$missing_person_have: String
-	$loss_address: String
-	$special_items: String!
-	$additional_information: String
-	$loss_date: String!
-	$loss_time: String
-	$relatives_contacts: Int
-	$image: String
-	$police_application: String
-	$additional_loss_area: Int
+	$circumstances_of_missing: String
+	$missing_health: String!
+	$missing_region: Int
+	$missing_clothes: String
+	$missing_special_features: String!
+	$missing_carry_item: String
+	$missing_address: String
+	$additional_info: String
+	$missing_date: String!
+	$missing_time: String
+	$family_contacts: String
+	$upload_photo: String
+	$police_report: String
+	$additional_area_of_search: String
 ) {
 	missing_people {
 		create(
-			applicant_name: $applicant_name
+			applicant_full_name: $applicant_full_name
 			applicant_phone: $applicant_phone
-			missing_person_name: $missing_person_name
-			missing_person_gender: $missing_person_gender
-			missing_person_phone: $missing_person_phone
-			birthdate: $birthdate
+			missing_full_name: $missing_full_name
+			missing_gender: $missing_gender
+			missing_date: $missing_date
 			search_area_type: $search_area_type
-			disappearance_circumstances: $disappearance_circumstances
-			health_state: $health_state
-			loss_area: $loss_area
-			missing_persons_clothes: $missing_persons_clothes
-			special_signs: $special_signs
-			missing_person_have: $missing_person_have
-			loss_address: $loss_address
-			special_items: $special_items
-			additional_information: $additional_information
-			loss_date: $loss_date
-			loss_time: $loss_time
-			relatives_contacts: $relatives_contacts
-			image: $image
-			police_application: $police_application
-			additional_loss_area: $additional_loss_area
+			missing_health: $missing_health
+			missing_special_features: $missing_special_features
+			missing_dob: $missing_dob
+			missing_region: $missing_region
+			additional_area_of_search: $additional_area_of_search
+			missing_phone: $missing_phone
+			missing_address: $missing_address
+			missing_time: $missing_time
+			police_report: $police_report
+			circumstances_of_missing: $circumstances_of_missing
+			missing_clothes: $missing_clothes
+			missing_carry_item: $missing_carry_item
+			additional_info: $additional_info
+			family_contacts: $family_contacts
+			upload_photo: $upload_photo
 		) {
 			... on MissingPeople {
-				applicant_name
+				applicant_full_name
 				applicant_phone
-				missing_person_name
-				missing_person_gender
-				missing_person_phone
-				birthdate
+				missing_full_name
+				missing_gender
+				missing_dob
+				missing_region
+				additional_area_of_search
+				missing_phone
+				missing_address
+				missing_date
+				missing_time
+				police_report
 				search_area_type
-				disappearance_circumstances
-				health_state
-				loss_area
-				missing_persons_clothes
-				special_signs
-				missing_person_have
-				loss_address
-				special_items
-				additional_information
-				loss_date
-				loss_time
-				relatives_contacts
-				additional_loss_area
-				image
-				police_application
+				circumstances_of_missing
+				missing_health
+				missing_clothes
+				missing_special_features
+				missing_carry_item
+				additional_info
+				family_contacts
+				upload_photo
 			}
 			... on ValidationErrorsList {
 				errors {

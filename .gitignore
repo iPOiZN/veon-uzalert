@@ -4,6 +4,10 @@
 .nuxt
 .nitro
 .cache
+.poizn
+.git1
+.git2
+.git3
 dist
 
 # Node dependencies
@@ -17,6 +21,7 @@ logs
 .DS_Store
 .fleet
 .idea
+.stylelintcache
 
 # Local env files
 .env

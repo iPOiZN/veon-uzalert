@@ -17,14 +17,14 @@ interface ISearchRequestInput {
 		'missing_health',
 		'missing_clothes',
 		'missing_special_features',
-		'missing_carryon_item',
+		'missing_carry_item',
 		'additional_info',
 		'family_contacts',
 		'upload_photo',
 	][number]
 }
 
-export type ISearchRequestInputs = Record<ISearchRequestInput['id'], string>
+export type ISearchRequestInputs = Record<ISearchRequestInput['id'], number | string>
 
 export interface IIntro {
 	title: string
@@ -106,7 +106,7 @@ export interface IContact {
 	}[]
 }
 
-export interface IContactsRequest {
+export interface ISearchRequest {
 	title: string
 	inputs: {
 		id: ISearchRequestInput['id']
@@ -123,15 +123,18 @@ export interface IContactsRequest {
 		max?: string
 		minValue?: string
 		maxValue?: string
+		title?: string
+		error?: string
 		radios?: {
-			id: number
+			id: number | string
 			label: string
 			type?: string
 			name?: string
 			checked?: boolean
 		}[]
 		options?: {
-			id: number
+			id: number | string
+			name?: string
 			label: string
 		}[]
 		// date?: {
@@ -168,6 +171,6 @@ export interface IContent {
 	join: IJoin
 	faq: IFaq
 	contact: IContact
-	contactsRequest: IContactsRequest
+	contactsRequest: ISearchRequest
 	partners: IPartners
 }

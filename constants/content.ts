@@ -1,78 +1,19 @@
 import type {
 	IContact,
-	IContactsRequest,
 	IFaq,
 	IIntro,
 	IJoin,
 	IPartners,
+	ISearchRequest,
 	ISearchSteps,
 	IWhoWeAre,
 } from '~/types/content.interface'
 
 // Create a composable to handle all the content
-export const useContent = () => {
+
+export const countryCode = 998
+export const homeContent = () => {
 	const { t } = useI18n()
-
-	type TRegions = IContactsRequest['inputs'][0]['options']
-
-	const REGIONS: TRegions = [
-		{
-			id: 1,
-			label: t('basics.regions.tashkentCity'),
-		},
-		{
-			id: 10,
-			label: t('basics.regions.tashkentRegion'),
-		},
-		{
-			id: 20,
-			label: t('basics.regions.syrdarya'),
-		},
-		{
-			id: 25,
-			label: t('basics.regions.jizzakh'),
-		},
-		{
-			id: 30,
-			label: t('basics.regions.samarkand'),
-		},
-		{
-			id: 40,
-			label: t('basics.regions.fergana'),
-		},
-		{
-			id: 50,
-			label: t('basics.regions.namangan'),
-		},
-		{
-			id: 60,
-			label: t('basics.regions.andijan'),
-		},
-		{
-			id: 70,
-			label: t('basics.regions.kashkadarya'),
-		},
-		{
-			id: 75,
-			label: t('basics.regions.surkhandarya'),
-		},
-		{
-			id: 80,
-			label: t('basics.regions.bukhara'),
-		},
-		{
-			id: 85,
-			label: t('basics.regions.navoi'),
-		},
-		{
-			id: 90,
-			label: t('basics.regions.khorezm'),
-		},
-		{
-			id: 95,
-			label: t('basics.regions.karakalpakstan'),
-		},
-	]
 
 	// const MONTHS = [
 	// 	t('basics.months.january'),
@@ -323,26 +264,53 @@ export const useContent = () => {
 		},
 	}
 
-	const CONTACT_REQUEST: IContactsRequest = {
+	return {
+		INTRO,
+		WHO_WE_ARE,
+		SEARCH_STEPS,
+		JOIN,
+		FAQ,
+		CONTACT,
+		PARTNERS,
+	}
+}
+
+export const searchRequestContent = async () => {
+	const { t } = useI18n()
+
+	const { mutate: getGenderTypes, result: genderTypes } = useGetGenders()
+	await getGenderTypes()
+	const { mutate: getRegionTypes, result: regionTypes } = useGetRegions()
+	await getRegionTypes()
+	const { mutate: getAreaTypes, result: areaTypes } = useGetAreas()
+	await getAreaTypes()
+
+	const SEARCH_REQUEST: ISearchRequest = {
 		title: t('contactsRequest.title'),
 		inputs: [
 			{
 				id: 'applicant_full_name',
 				label: t('contactsRequest.applicantName'),
+				// placeholder: t('contactsRequest.applicantNamePlaceholder'),
 				required: true,
 				type: 'text',
+				error: t('contactsRequest.applicantNameError'),
 			},
 			{
 				id: 'applicant_phone',
 				label: t('contactsRequest.applicantPhone'),
+				placeholder: t('contactsRequest.applicantPhonePlaceholder'),
 				required: true,
 				type: 'tel',
+				error: t('contactsRequest.applicantPhoneError'),
 			},
 			{
 				id: 'missing_full_name',
 				label: t('contactsRequest.missingName'),
+				// placeholder: t('contactsRequest.missingNamePlaceholder'),
 				required: true,
 				type: 'text',
+				error: t('contactsRequest.missingNameError'),
 			},
 			{
 				id: 'missing_gender',
@@ -350,19 +318,13 @@ export const useContent = () => {
 				type: 'radio',
 				name: 'gender',
 				required: true,
-				radios: [
-					{
-						id: 0,
-						name: 'male',
-						label: t('contactsRequest.genderMale'),
-						checked: true,
-					},
-					{
-						id: 1,
-						name: 'female',
-						label: t('contactsRequest.genderFemale'),
-					},
-				],
+				error: t('contactsRequest.missingGenderError'),
+				radios:
+					(genderTypes.value as ISearchRequest['inputs'][0]['radios'])?.map((gender) => ({
+						id: String(gender.id),
+						name: gender.name,
+						label: t(`contactsRequest.gender${gender.name}`),
+					})) || [],
 			},
 			{
 				id: 'missing_region',
@@ -371,7 +333,12 @@ export const useContent = () => {
 				name: 'region',
 				value: '',
 				placeholder: t('contactsRequest.missingRegionPlaceholder'),
-				options: REGIONS,
+				options:
+					(regionTypes.value as ISearchRequest['inputs'][0]['options'])?.map((region) => ({
+						id: String(region.id),
+						name: region.name,
+						label: t(`basics.regions.${region.id}`),
+					})) || [],
 			},
 			{
 				id: 'missing_dob',
@@ -383,16 +350,19 @@ export const useContent = () => {
 			{
 				id: 'additional_area_of_search',
 				label: t('contactsRequest.additionalSearchArea'),
+				// placeholder: t('contactsRequest.additionalSearchAreaPlaceholder'),
 				type: 'text',
 			},
 			{
 				id: 'missing_phone',
 				label: t('contactsRequest.missingPhone'),
+				placeholder: t('contactsRequest.missingPhonePlaceholder'),
 				type: 'tel',
 			},
 			{
 				id: 'missing_address',
 				label: t('contactsRequest.missingAddress'),
+				// placeholder: t('contactsRequest.missingAddressPlaceholder'),
 				type: 'text',
 			},
 			{
@@ -400,6 +370,8 @@ export const useContent = () => {
 				label: t('contactsRequest.missingDate'),
 				placeholder: t('contactsRequest.datePlaceholder'),
 				type: 'date',
+				required: true,
+				error: t('contactsRequest.missingDateError'),
 				max: new Date().toISOString().slice(0, 10),
 			},
 			{
@@ -411,6 +383,7 @@ export const useContent = () => {
 			{
 				id: 'police_report',
 				label: t('contactsRequest.policeReport'),
+				// placeholder: t('contactsRequest.policeReportPlaceholder'),
 				type: 'text',
 			},
 			{
@@ -418,63 +391,66 @@ export const useContent = () => {
 				label: t('contactsRequest.searchAreaType'),
 				type: 'radio',
 				name: 'search_area_type',
-				radios: [
-					{
-						id: 0,
-						name: 'city',
-						label: t('contactsRequest.areaCity'),
-						checked: true,
-					},
-					{
-						id: 1,
-						name: 'region',
-						label: t('contactsRequest.areaRegion'),
-					},
-				],
+				required: true,
+				error: t('contactsRequest.searchAreaTypeError'),
+				radios:
+					(areaTypes.value as ISearchRequest['inputs'][0]['radios'])?.map((area) => ({
+						id: String(area.id),
+						name: area.name,
+						label: t(`contactsRequest.area${area.name}`),
+					})) || [],
 			},
 			{
 				id: 'circumstances_of_missing',
 				label: t('contactsRequest.missingCircumstances'),
+				// placeholder: t('contactsRequest.missingCircumstancesPlaceholder'),
 				type: 'textarea',
 				rows: 5,
 			},
 			{
 				id: 'missing_health',
 				label: t('contactsRequest.missingHealth'),
+				// placeholder: t('contactsRequest.missingHealthPlaceholder'),
 				type: 'text',
 				required: true,
+				error: t('contactsRequest.missingHealthError'),
 			},
 			{
 				id: 'missing_clothes',
 				label: t('contactsRequest.missingClothes'),
+				// placeholder: t('contactsRequest.missingClothesPlaceholder'),
 				type: 'text',
 			},
 			{
 				id: 'missing_special_features',
 				label: t('contactsRequest.missingFeatures'),
+				// placeholder: t('contactsRequest.missingFeaturesPlaceholder'),
 				type: 'text',
 				required: true,
+				error: t('contactsRequest.missingFeaturesError'),
 			},
 			{
-				id: 'missing_carryon_item',
+				id: 'missing_carry_item',
 				label: t('contactsRequest.missingCarryon'),
+				// placeholder: t('contactsRequest.missingCarryonPlaceholder'),
 				type: 'text',
 			},
 			{
 				id: 'additional_info',
 				label: t('contactsRequest.additionalInfo'),
+				// placeholder: t('contactsRequest.additionalInfoPlaceholder'),
 				type: 'text',
 			},
 			{
 				id: 'family_contacts',
 				label: t('contactsRequest.familyContacts'),
+				// placeholder: t('contactsRequest.familyContactsPlaceholder'),
 				type: 'text',
 			},
 			{
 				id: 'upload_photo',
 				label: t('contactsRequest.uploadPhoto'),
 				type: 'file',
-				required: true,
 			},
 		],
 		submitBtn: {
@@ -483,13 +459,6 @@ export const useContent = () => {
 	}
 
 	return {
-		INTRO,
-		WHO_WE_ARE,
-		SEARCH_STEPS,
-		JOIN,
-		FAQ,
-		CONTACT,
-		PARTNERS,
-		CONTACT_REQUEST,
+		SEARCH_REQUEST,
 	}
 }

@@ -36,9 +36,9 @@
 <script setup lang="ts">
 	import { Autoplay, FreeMode } from 'swiper/modules'
 	import { Swiper, SwiperSlide } from 'swiper/vue'
-	import { useContent } from '~/constants/content'
+	import { homeContent } from '~/constants/content'
 
-	const { PARTNERS } = useContent()
+	const { PARTNERS } = homeContent()
 </script>
 
 <style scoped lang="scss">

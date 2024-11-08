@@ -13,9 +13,9 @@
 </template>
 
 <script setup lang="ts">
-	import { useContent } from '~/constants/content'
+	import { homeContent } from '~/constants/content'
 
-	const { SEARCH_STEPS } = useContent()
+	const { SEARCH_STEPS } = homeContent()
 </script>
 
 <style scoped lang="scss">

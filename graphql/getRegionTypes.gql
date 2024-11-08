@@ -1,0 +1,6 @@
+query Region_types {
+	region_types {
+		id
+		name
+	}
+}

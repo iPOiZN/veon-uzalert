@@ -1,0 +1,6 @@
+query Gender_types {
+	gender_types {
+		id
+		name
+	}
+}

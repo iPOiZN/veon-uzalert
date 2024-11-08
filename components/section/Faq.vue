@@ -28,9 +28,9 @@
 </template>
 
 <script setup lang="ts">
-	import { useContent } from '~/constants/content'
+	import { homeContent } from '~/constants/content'
 
-	const { FAQ } = useContent()
+	const { FAQ } = homeContent()
 </script>
 
 <style scoped lang="scss">
