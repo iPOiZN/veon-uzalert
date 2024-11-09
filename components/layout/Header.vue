@@ -116,14 +116,14 @@
 		top: 0;
 		z-index: 2;
 		background-color: var(--white);
-		border-bottom: 1px solid transparent;
+		border-bottom: 1px solid var(--border);
 		transition: 0.3s transform;
 		height: 60px;
 		display: flex;
 		align-items: center;
 		&.scrolled {
 			transform: translateY(-100%);
-			border-color: var(--border);
+			// border-color: var(--border);
 		}
 		&__container {
 			display: flex;
