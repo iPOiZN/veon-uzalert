@@ -23,7 +23,7 @@
 <script setup lang="ts">
 	import { homeContent } from '~/constants/content'
 
-	const { INTRO } = homeContent()
+	const { INTRO } = await homeContent()
 
 	onMounted(() => {
 		useGsap.to('.intro__bg', {

@@ -9,7 +9,7 @@
 					</p>
 				</div>
 				<div class="whowe__article-img-wrapper">
-					<NuxtImg :src="WHO_WE_ARE.img" format="webp" class="whowe__article-img" height="350px" />
+					<NuxtImg :src="WHO_WE_ARE.img" format="webp" class="whowe__article-img" height="500" />
 				</div>
 			</article>
 		</div>
@@ -19,7 +19,7 @@
 <script setup lang="ts">
 	import { homeContent } from '~/constants/content'
 
-	const { WHO_WE_ARE } = homeContent()
+	const { WHO_WE_ARE } = await homeContent()
 
 	onMounted(() => {
 		useGsap.from('.whowe__article-img', {
@@ -44,7 +44,7 @@
 			@media (max-width: 991.98px) {
 				display: flex;
 				flex-direction: column;
-				text-align: center;
+				// text-align: center;
 			}
 			&-title {
 				color: var(--orange);
@@ -56,8 +56,11 @@
 			&-img {
 				width: 100%;
 				height: 100%;
+				min-height: 300px;
 				object-fit: cover;
 				&-wrapper {
+				width: 100%;
+
 					overflow: hidden;
 				}
 			}

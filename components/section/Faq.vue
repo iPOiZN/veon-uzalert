@@ -30,7 +30,7 @@
 <script setup lang="ts">
 	import { homeContent } from '~/constants/content'
 
-	const { FAQ } = homeContent()
+	const { FAQ } = await homeContent()
 </script>
 
 <style scoped lang="scss">

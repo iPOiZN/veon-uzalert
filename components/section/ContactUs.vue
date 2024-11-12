@@ -41,7 +41,7 @@
 <script setup lang="ts">
 	import { homeContent } from '~/constants/content'
 
-	const { CONTACT } = homeContent()
+	const { CONTACT } = await homeContent()
 </script>
 
 <style scoped lang="scss">
@@ -54,7 +54,7 @@
 			@media (max-width: 767.98px) {
 				display: flex;
 				flex-direction: column;
-				text-align: center;
+				// text-align: center;
 			}
 		}
 		&__title {
@@ -67,18 +67,20 @@
 			}
 		}
 		&__block {
+			width: 100%;
 			&-img {
 				width: 100%;
 				height: 100%;
+				// min-height: 350px;
 				object-fit: cover;
 			}
 			&-contacts {
 				display: grid;
 				gap: 12px;
 				margin-top: 24px;
-				@media (max-width: 767.98px) {
-					justify-content: center;
-				}
+				// @media (max-width: 767.98px) {
+				// 	// justify-content: center;
+				// }
 				&-link {
 					display: flex;
 					align-items: center;
@@ -97,9 +99,9 @@
 				display: flex;
 				align-items: center;
 				gap: 12px;
-				@media (max-width: 767.98px) {
-					justify-content: center;
-				}
+				// @media (max-width: 767.98px) {
+				// 	// justify-content: center;
+				// }
 				&-link {
 					display: flex;
 					align-items: center;

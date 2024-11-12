@@ -38,7 +38,7 @@
 	import { Swiper, SwiperSlide } from 'swiper/vue'
 	import { homeContent } from '~/constants/content'
 
-	const { PARTNERS } = homeContent()
+	const { PARTNERS } = await homeContent()
 </script>
 
 <style scoped lang="scss">

@@ -92,6 +92,13 @@ button {
 	padding: 0;
 }
 
+textarea:focus-visible,
+select:focus-visible,
+button:focus-visible,
+input:focus-visible{
+	outline: 1px solid var(--gray);
+}
+
 button {
 	cursor: pointer;
 }

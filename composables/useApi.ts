@@ -1,8 +1,44 @@
-import getAreaTypesQuery from '~/graphql/getAreaTypes.gql';
-import getGenderTypesQuery from '~/graphql/getGenderTypes.gql';
-import getRegionTypesQuery from '~/graphql/getRegionTypes.gql';
-import searchRequestMutation from '~/graphql/searchRequestMutation.gql';
+import getAreaTypesQuery from '~/graphql/getAreaTypes.gql'
+import getGenderTypesQuery from '~/graphql/getGenderTypes.gql'
+import getRegionTypesQuery from '~/graphql/getRegionTypes.gql'
+import getVolunteerHelpTypesQuery from '~/graphql/getVolunteerHelpTypes.gql'
+import searchRequestMutation from '~/graphql/searchRequestMutation.gql'
+import volunteerMutation from '~/graphql/volunteerMutation.gql'
 
+export const useGetVolunteerHelpTypes = () => {
+	const { mutate, loading, onError, onDone } = useMutation(getVolunteerHelpTypesQuery)
+
+	const result = ref()
+
+	onError((error) => {
+		console.error(error)
+	})
+
+	onDone((res) => {
+		const response = res.data.help_types
+		if (response) {
+			result.value = response
+		} else {
+			result.value = []
+		}
+	})
+
+	return { mutate, loading, result }
+}
+
+export const useVolunteerMutation = () => {
+	const { mutate, loading, onDone, onError } = useMutation(volunteerMutation)
+
+	onError((error) => {
+		console.log(error)
+	})
+
+	onDone((result) => {
+		console.log(result)
+	})
+
+	return { mutate, loading }
+}
 
 export const useSearchRequestMutation = () => {
 	const { mutate, loading, onDone, onError } = useMutation(searchRequestMutation)
@@ -27,6 +63,8 @@ export const useGetGenders = () => {
 		const response = res.data.gender_types
 		if (response) {
 			result.value = response
+		} else {
+			result.value = []
 		}
 	})
 
@@ -41,11 +79,12 @@ export const useGetRegions = () => {
 
 	const result = ref()
 
-
 	onDone((res) => {
 		const response = res.data.region_types
 		if (response) {
 			result.value = response
+		} else {
+			result.value = []
 		}
 	})
 
@@ -64,6 +103,8 @@ export const useGetAreas = () => {
 		const response = res.data.area_types
 		if (response) {
 			result.value = response
+		} else {
+			result.value = []
 		}
 	})
 

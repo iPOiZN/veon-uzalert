@@ -12,8 +12,11 @@ import type {
 // Create a composable to handle all the content
 
 export const countryCode = 998
-export const homeContent = () => {
+export const homeContent = async () => {
 	const { t } = useI18n()
+
+	const { mutate: getVolunteerHelpTypes, result: volunteerTypes } = useGetVolunteerHelpTypes()
+	await getVolunteerHelpTypes()
 
 	// const MONTHS = [
 	// 	t('basics.months.january'),
@@ -84,28 +87,39 @@ export const homeContent = () => {
 		title: t('join.title'),
 		help: {
 			title: t('join.helpTitle'),
-			checkboxes: [
-				{
-					id: 'walking_search',
-					label: t('join.helps.walk'),
-				},
-				{
-					id: 'car_search',
-					label: t('join.helps.car'),
-				},
-				{
-					id: 'calling_hospitals',
-					label: t('join.helps.calls'),
-				},
-				{
-					id: 'language_translator',
-					label: t('join.helps.trans'),
-				},
-				{
-					id: 'posting_flyers',
-					label: t('join.helps.flyers'),
-				},
-			],
+			checkboxes: (volunteerTypes.value as IJoin['help']['checkboxes'])?.map((help) => ({
+				id: String(help.id),
+				name: help.name,
+				label: t(`join.helps.${help.name}`),
+			})),
+			errorMsg: '*Выберите чем вы готовы помогать'
+			// checkboxes: [
+			// 	{
+			// 		id: 0,
+			// 		name: 'walking_search',
+			// 		label: t('join.helps.walk'),
+			// 	},
+			// 	{
+			// 		id: 1,
+			// 		name: 'car_search',
+			// 		label: t('join.helps.car'),
+			// 	},
+			// 	{
+			// 		id: 2,
+			// 		name: 'calling_hospitals',
+			// 		label: t('join.helps.calls'),
+			// 	},
+			// 	{
+			// 		id: 3,
+			// 		name: 'language_translator',
+			// 		label: t('join.helps.trans'),
+			// 	},
+			// 	{
+			// 		id: 4,
+			// 		name: 'posting_flyers',
+			// 		label: t('join.helps.flyers'),
+			// 	},
+			// ],
 		},
 		contacts: {
 			title: t('join.contact.title'),
@@ -116,28 +130,27 @@ export const homeContent = () => {
 					placeholder: t('join.contact.name'),
 					type: 'text',
 					required: true,
+					errorMsg: '*Введите имя',
 				},
 				{
-					id: 'last_name',
+					id: 'surname',
 					label: t('join.contact.surname'),
 					placeholder: t('join.contact.surname'),
 					type: 'text',
-					required: true,
 				},
 				{
 					id: 'phone',
 					label: t('join.contact.phone'),
-					placeholder: '+998',
+					placeholder: '91 234 56 78',
 					type: 'tel',
-					inputmode: 'numeric',
 					required: true,
+					errorMsg: '*Введите номер телефона'
 				},
 				{
 					id: 'city',
 					label: t('join.contact.city'),
 					placeholder: t('join.contact.city'),
 					type: 'text',
-					required: true,
 				},
 				{
 					id: 'district',
@@ -294,7 +307,7 @@ export const searchRequestContent = async () => {
 				// placeholder: t('contactsRequest.applicantNamePlaceholder'),
 				required: true,
 				type: 'text',
-				error: t('contactsRequest.applicantNameError'),
+				errorMsg: t('contactsRequest.applicantNameError'),
 			},
 			{
 				id: 'applicant_phone',
@@ -302,7 +315,7 @@ export const searchRequestContent = async () => {
 				placeholder: t('contactsRequest.applicantPhonePlaceholder'),
 				required: true,
 				type: 'tel',
-				error: t('contactsRequest.applicantPhoneError'),
+				errorMsg: t('contactsRequest.applicantPhoneError'),
 			},
 			{
 				id: 'missing_full_name',
@@ -310,7 +323,7 @@ export const searchRequestContent = async () => {
 				// placeholder: t('contactsRequest.missingNamePlaceholder'),
 				required: true,
 				type: 'text',
-				error: t('contactsRequest.missingNameError'),
+				errorMsg: t('contactsRequest.missingNameError'),
 			},
 			{
 				id: 'missing_gender',
@@ -318,13 +331,12 @@ export const searchRequestContent = async () => {
 				type: 'radio',
 				name: 'gender',
 				required: true,
-				error: t('contactsRequest.missingGenderError'),
-				radios:
-					(genderTypes.value as ISearchRequest['inputs'][0]['radios'])?.map((gender) => ({
-						id: String(gender.id),
-						name: gender.name,
-						label: t(`contactsRequest.gender${gender.name}`),
-					})) || [],
+				errorMsg: t('contactsRequest.missingGenderError'),
+				radios: (genderTypes.value as ISearchRequest['inputs'][0]['radios'])?.map((gender) => ({
+					id: String(gender.id),
+					name: gender.name,
+					label: t(`contactsRequest.gender${gender.name}`),
+				})),
 			},
 			{
 				id: 'missing_region',
@@ -333,12 +345,11 @@ export const searchRequestContent = async () => {
 				name: 'region',
 				value: '',
 				placeholder: t('contactsRequest.missingRegionPlaceholder'),
-				options:
-					(regionTypes.value as ISearchRequest['inputs'][0]['options'])?.map((region) => ({
-						id: String(region.id),
-						name: region.name,
-						label: t(`basics.regions.${region.id}`),
-					})) || [],
+				options: (regionTypes.value as ISearchRequest['inputs'][0]['options'])?.map((region) => ({
+					id: String(region.id),
+					name: region.name,
+					label: t(`basics.regions.${region.id}`),
+				})),
 			},
 			{
 				id: 'missing_dob',
@@ -371,7 +382,7 @@ export const searchRequestContent = async () => {
 				placeholder: t('contactsRequest.datePlaceholder'),
 				type: 'date',
 				required: true,
-				error: t('contactsRequest.missingDateError'),
+				errorMsg: t('contactsRequest.missingDateError'),
 				max: new Date().toISOString().slice(0, 10),
 			},
 			{
@@ -392,13 +403,12 @@ export const searchRequestContent = async () => {
 				type: 'radio',
 				name: 'search_area_type',
 				required: true,
-				error: t('contactsRequest.searchAreaTypeError'),
-				radios:
-					(areaTypes.value as ISearchRequest['inputs'][0]['radios'])?.map((area) => ({
-						id: String(area.id),
-						name: area.name,
-						label: t(`contactsRequest.area${area.name}`),
-					})) || [],
+				errorMsg: t('contactsRequest.searchAreaTypeError'),
+				radios: (areaTypes.value as ISearchRequest['inputs'][0]['radios'])?.map((area) => ({
+					id: String(area.id),
+					name: area.name,
+					label: t(`contactsRequest.area${area.name}`),
+				})),
 			},
 			{
 				id: 'circumstances_of_missing',
@@ -413,7 +423,7 @@ export const searchRequestContent = async () => {
 				// placeholder: t('contactsRequest.missingHealthPlaceholder'),
 				type: 'text',
 				required: true,
-				error: t('contactsRequest.missingHealthError'),
+				errorMsg: t('contactsRequest.missingHealthError'),
 			},
 			{
 				id: 'missing_clothes',
@@ -427,7 +437,7 @@ export const searchRequestContent = async () => {
 				// placeholder: t('contactsRequest.missingFeaturesPlaceholder'),
 				type: 'text',
 				required: true,
-				error: t('contactsRequest.missingFeaturesError'),
+				errorMsg: t('contactsRequest.missingFeaturesError'),
 			},
 			{
 				id: 'missing_carry_item',

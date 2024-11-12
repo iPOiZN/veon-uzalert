@@ -15,7 +15,7 @@
 <script setup lang="ts">
 	import { homeContent } from '~/constants/content'
 
-	const { SEARCH_STEPS } = homeContent()
+	const { SEARCH_STEPS } = await homeContent()
 </script>
 
 <style scoped lang="scss">
@@ -44,6 +44,16 @@
 			color: var(--orange);
 			@media (max-width: 767.98px) {
 				min-height: auto;
+				// border: 1px solid #000;
+				background-color: #ffffff50;
+				// backdrop-filter: blur(10px);
+				// padding: 12px 0;
+				// @for $i from 1 through 7 {
+				// 	&:nth-child(#{$i}) {
+				// 		transform: translateY($i * -60px);
+				// 		z-index: #{$i};
+				// 	}
+				// }
 			}
 			&-description {
 				color: var(--black);

@@ -9,9 +9,8 @@
 						:key="i"
 						class="request__input-wrapper"
 						:class="{ error: v$Form[input.id]?.$error }">
-						<label :for="input.id">
+						<label :for="input.id" :class="{ required: input.required }">
 							{{ input.label }}
-							<span v-if="input.required" class="request__input-required">*</span>
 						</label>
 						<template v-if="input.type === 'textarea'">
 							<textarea
@@ -76,7 +75,7 @@
 						</template>
 						<template v-else-if="input.type === 'tel'">
 							<span class="request__input-tel">
-								<span class="request__input-prefix">+{{ countryCode }}</span>
+								<label :for="input.id" class="request__input-prefix">+{{ countryCode }}</label>
 								<input
 									:id="input.id"
 									v-model="formData[input.id]"
@@ -99,7 +98,7 @@
 								:type="input.type" />
 						</template>
 						<div v-if="v$Form[input.id]?.$error" class="request__input-error">
-							{{ input.error }}
+							{{ input.errorMsg }}
 						</div>
 					</div>
 				</div>
@@ -261,9 +260,6 @@
 					left: 10px;
 					top: 42px;
 				}
-			}
-			&-required {
-				color: var(--danger);
 			}
 			&-dates {
 				display: flex;

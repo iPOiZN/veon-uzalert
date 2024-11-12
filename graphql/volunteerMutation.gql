@@ -1,0 +1,35 @@
+mutation Volunteer(
+	$name: String!
+	$surname: String!
+	$phone: Int!
+	$city: Int!
+	$district: Int!
+	$help_types: [Int]
+	$captcha_token: String!
+) {
+	volunteer {
+		create(
+			name: $name
+			surname: $surname
+			phone: $phone
+			city: $city
+			district: $district
+			help_types: $help_types
+			captcha_token: $captcha_token
+		) {
+			... on Volunteer {
+				name
+				surname
+				phone
+				city
+				district
+			}
+			... on ValidationErrorsList {
+				errors {
+					field
+					messages
+				}
+			}
+		}
+	}
+}

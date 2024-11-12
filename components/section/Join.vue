@@ -4,33 +4,73 @@
 			<UIHeading level="3" class="join__title">{{ JOIN.title }}</UIHeading>
 			<form class="join__form" @submit.prevent="handleSubmit">
 				<div class="join__block">
-					<div class="join__block-title">{{ JOIN.help.title }}</div>
-					<ul class="join__block-checkboxes">
+					<div class="join__block-title required">{{ JOIN.help.title }}</div>
+					<ul class="join__block-checkboxes" :class="{ error: v$Form['help_types']?.$error }">
 						<li v-for="(checkbox, i) in JOIN.help.checkboxes" :key="i" class="join__block-checkbox-item">
-							<input :id="checkbox.id" type="checkbox" />
-							<label :for="checkbox.id">{{ checkbox.label }}</label>
+							<input
+								:id="checkbox.name"
+								v-model="formData['help_types']"
+								:value="+checkbox.id"
+								type="checkbox" />
+							<label :for="checkbox.name">{{ checkbox.label }}</label>
 						</li>
 					</ul>
+					<div v-if="v$Form['help_types']?.$error" class="join__block-input-error">
+						{{ JOIN.help.errorMsg }}
+					</div>
 				</div>
 				<div class="join__block">
 					<div class="join__block-title">{{ JOIN.contacts.title }}</div>
 					<div class="join__block-inputs">
-						<div v-for="(input, i) in JOIN.contacts.inputs" :key="i" class="join__block-input-item">
-							<label :for="input.id">{{ input.label }}</label>
-							<input
-								:id="input.id"
-								:type="input.type"
-								:placeholder="input.placeholder"
-								:required="input.required" />
+						<div
+							v-for="(input, i) in JOIN.contacts.inputs"
+							:key="i"
+							class="join__block-input-item"
+							:class="{ error: v$Form[input.id]?.$error }">
+							<label
+								:for="input.id"
+								class="join__block-input-label"
+								:class="{ required: input.required }">
+								{{ input.label }}
+							</label>
+							<span class="join__block-input-wrapper">
+								<template v-if="input.type === 'tel'">
+									<label :for="input.id" class="join__block-input-prefix">+{{ countryCode }}</label>
+									<input
+										:id="input.id"
+										v-model="formData[input.id]"
+										class="join__block-input"
+										:type="input.type"
+										:placeholder="input.placeholder"
+										:required="input.required"
+										minLength="9"
+										maxLength="9"
+										oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+								</template>
+								<template v-else>
+									<input
+										:id="input.id"
+										v-model="formData[input.id]"
+										class="join__block-input"
+										:type="input.type"
+										:placeholder="input.placeholder"
+										:required="input.required" />
+								</template>
+								<div v-if="v$Form[input.id]?.$error" class="join__block-input-error">
+									{{ input.errorMsg }}
+								</div>
+							</span>
 						</div>
 					</div>
 				</div>
 				<div class="join__footer">
 					<div class="join__policy">
-						<input :id="JOIN.policy.id" required type="checkbox" />
+						<input :id="JOIN.policy.id" v-model="isAgreementAccepted" required type="checkbox" />
 						<label v-dompurify-html="JOIN.policy.label" :for="JOIN.policy.id"></label>
 					</div>
-					<button type="submit" class="join__submit-btn">{{ JOIN.submit.title }}</button>
+					<button type="submit" class="join__submit-btn" @click="v$Form.$touch">
+						{{ JOIN.submit.title }}
+					</button>
 				</div>
 			</form>
 		</div>
@@ -38,13 +78,46 @@
 </template>
 
 <script setup lang="ts">
-	import { homeContent } from '~/constants/content'
+	import { useVuelidate } from '@vuelidate/core'
+	import { maxLength, minLength, required } from '@vuelidate/validators'
+	import { useReCaptcha } from 'vue-recaptcha-v3'
+	import { countryCode, homeContent } from '~/constants/content'
+	import type { IVolunteerInputs } from '~/types/content.interface'
 
-	const { JOIN } = homeContent()
-
-	const handleSubmit = () => {
-		console.log('hello')
+	const recaptchaInstance = useReCaptcha()
+	const recaptcha = async () => {
+		await recaptchaInstance?.recaptchaLoaded()
+		const token = await recaptchaInstance?.executeRecaptcha('')
+		return token
 	}
+
+	const { JOIN } = await homeContent()
+	const { mutate: sendVolunteerForm } = useVolunteerMutation()
+	const formData = reactive({} as IVolunteerInputs)
+	const isAgreementAccepted = ref(false)
+
+	const formValidationRules: Partial<Record<keyof IVolunteerInputs, object>> = {
+		name: { required },
+		phone: { required, minLength: minLength(9), maxLength: maxLength(9) },
+		help_types: { required },
+	}
+
+	const v$Form = useVuelidate(formValidationRules, formData)
+
+	const handleSubmit = async () => {
+		if (v$Form.value.$invalid) return
+		sendVolunteerForm({
+			...formData,
+			captcha_token: await recaptcha(),
+		})
+	}
+
+	onMounted(() => {
+		JOIN.contacts.inputs.forEach((input) => {
+			formData[input.id] = ''
+			formData['help_types'] = []
+		})
+	})
 </script>
 
 <style scoped lang="scss">
@@ -65,10 +138,13 @@
 			}
 		}
 		&__block {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
 			&-title {
 				font-size: 25px;
 				color: var(--primary-text);
-				margin-bottom: 16px;
+				// margin-bottom: 16px;
 			}
 			&-checkboxes {
 				display: grid;
@@ -83,26 +159,47 @@
 				display: grid;
 				gap: 12px;
 			}
-			&-input-item {
-				display: flex;
-				justify-content: space-between;
-				gap: 12px;
-				@media (max-width: 767.98px) {
-					flex-direction: column;
-					gap: unset;
+			&-input {
+				background-color: var(--white);
+				border: 1px solid var(--border);
+				padding: 10px;
+				width: 100%;
+				&[type='tel'] {
+					padding-left: 50px;
 				}
-				label {
+				&-item {
+					display: flex;
+					justify-content: space-between;
+					gap: 12px;
+					&.error {
+						.join__block-input {
+							border-color: var(--danger);
+						}
+					}
+					@media (max-width: 991.98px) {
+						flex-direction: column;
+						gap: 4px;
+					}
+				}
+				&-label {
 					white-space: nowrap;
 				}
-				input {
-					background-color: var(--white);
-					border: 1px solid var(--border);
+				&-wrapper {
+					position: relative;
 					max-width: 300px;
 					width: 100%;
-					padding: 10px;
-					@media (max-width: 767.98px) {
+					@media (max-width: 991.98px) {
 						max-width: 100%;
 					}
+				}
+				&-prefix {
+					position: absolute;
+					left: 10px;
+					top: 8.5px;
+				}
+				&-error {
+					font-size: 12px;
+					color: var(--danger);
 				}
 			}
 		}
@@ -118,6 +215,11 @@
 			align-items: center;
 			gap: 8px;
 			line-height: 115%;
+			&.error {
+				input {
+					outline: 1px solid var(--danger);
+				}
+			}
 		}
 		&__submit-btn {
 			border: 1px solid var(--black);

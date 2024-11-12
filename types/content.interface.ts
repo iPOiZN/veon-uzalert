@@ -26,6 +26,12 @@ interface ISearchRequestInput {
 
 export type ISearchRequestInputs = Record<ISearchRequestInput['id'], number | string>
 
+interface IVolunteerInput {
+	id: ['name', 'surname', 'phone', 'city', 'district', 'help_types', 'captcha_token'][number]
+}
+
+export type IVolunteerInputs = Record<IVolunteerInput['id'], number | string | number[]>
+
 export interface IIntro {
 	title: string
 	buttons: {
@@ -53,19 +59,22 @@ export interface IJoin {
 	help: {
 		title: string
 		checkboxes: {
-			id: string
+			id: string | number
+			name: string
 			label: string
 		}[]
+		errorMsg?: string
 	}
 	contacts: {
 		title: string
 		inputs: {
-			id: string
+			id: IVolunteerInput['id']
 			label: string
 			type: string
 			required?: boolean
 			placeholder?: string
 			inputmode?: string
+			errorMsg?: string
 		}[]
 	}
 	policy: {
@@ -124,7 +133,7 @@ export interface ISearchRequest {
 		minValue?: string
 		maxValue?: string
 		title?: string
-		error?: string
+		errorMsg?: string
 		radios?: {
 			id: number | string
 			label: string

@@ -1,0 +1,6 @@
+query Help_types {
+	help_types {
+		id
+		name
+	}
+}

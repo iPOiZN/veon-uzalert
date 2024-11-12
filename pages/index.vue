@@ -1,12 +1,12 @@
 <template>
 	<main class="main">
 		<SectionIntro />
-		<SectionWhoWe />
-		<SectionSearchSteps />
-		<SectionJoin />
-		<SectionFaq />
-		<SectionContactUs />
-		<SectionPartners />
+		<LazySectionWhoWe />
+		<LazySectionSearchSteps />
+		<LazySectionJoin />
+		<LazySectionFaq />
+		<LazySectionContactUs />
+		<LazySectionPartners />
 	</main>
 </template>
 
