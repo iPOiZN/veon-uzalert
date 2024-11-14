@@ -16,6 +16,7 @@ export const homeContent = async () => {
 	const { t } = useI18n()
 
 	const { mutate: getVolunteerHelpTypes, result: volunteerTypes } = useGetVolunteerHelpTypes()
+
 	await getVolunteerHelpTypes()
 
 	// const MONTHS = [
@@ -92,7 +93,7 @@ export const homeContent = async () => {
 				name: help.name,
 				label: t(`join.helps.${help.name}`),
 			})),
-			errorMsg: '*Выберите чем вы готовы помогать'
+			errorMsg: '*Выберите чем вы готовы помогать',
 			// checkboxes: [
 			// 	{
 			// 		id: 0,
@@ -144,7 +145,7 @@ export const homeContent = async () => {
 					placeholder: '91 234 56 78',
 					type: 'tel',
 					required: true,
-					errorMsg: '*Введите номер телефона'
+					errorMsg: '*Введите номер телефона',
 				},
 				{
 					id: 'city',
@@ -163,6 +164,8 @@ export const homeContent = async () => {
 		policy: {
 			id: 'privacy_policy',
 			label: t('join.policy'),
+			errorMsg:
+				'*Для продолжения вы должны согласиться с условиями и политикой обработки персональных данных',
 		},
 		submit: {
 			title: t('join.submit'),

@@ -21,16 +21,26 @@ interface ISearchRequestInput {
 		'additional_info',
 		'family_contacts',
 		'upload_photo',
+		'captcha_token',
 	][number]
 }
 
 export type ISearchRequestInputs = Record<ISearchRequestInput['id'], number | string>
 
 interface IVolunteerInput {
-	id: ['name', 'surname', 'phone', 'city', 'district', 'help_types', 'captcha_token'][number]
+	id: [
+		'name',
+		'surname',
+		'phone',
+		'city',
+		'district',
+		'help_types',
+		'agreement',
+		'captcha_token',
+	][number]
 }
 
-export type IVolunteerInputs = Record<IVolunteerInput['id'], number | string | number[]>
+export type IVolunteerInputs = Record<IVolunteerInput['id'], number | string | number[] | boolean>
 
 export interface IIntro {
 	title: string
@@ -80,6 +90,7 @@ export interface IJoin {
 	policy: {
 		id: string
 		label: string
+		errorMsg?: string
 	}
 	submit: {
 		title: string

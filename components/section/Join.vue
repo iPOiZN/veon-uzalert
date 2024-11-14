@@ -64,9 +64,14 @@
 					</div>
 				</div>
 				<div class="join__footer">
-					<div class="join__policy">
-						<input :id="JOIN.policy.id" v-model="isAgreementAccepted" required type="checkbox" />
-						<label v-dompurify-html="JOIN.policy.label" :for="JOIN.policy.id"></label>
+					<div class="join__policy" :class="{ error: v$Form['agreement']?.$error }">
+						<span class="join__policy-checkbox">
+							<input :id="JOIN.policy.id" v-model="formData['agreement']" required type="checkbox" />
+							<label v-dompurify-html="JOIN.policy.label" :for="JOIN.policy.id"></label>
+						</span>
+						<div v-if="v$Form['agreement']?.$error" class="join__block-input-error">
+							{{ JOIN.policy.errorMsg }}
+						</div>
 					</div>
 					<button type="submit" class="join__submit-btn" @click="v$Form.$touch">
 						{{ JOIN.submit.title }}
@@ -94,11 +99,11 @@
 	const { JOIN } = await homeContent()
 	const { mutate: sendVolunteerForm } = useVolunteerMutation()
 	const formData = reactive({} as IVolunteerInputs)
-	const isAgreementAccepted = ref(false)
 
 	const formValidationRules: Partial<Record<keyof IVolunteerInputs, object>> = {
 		name: { required },
 		phone: { required, minLength: minLength(9), maxLength: maxLength(9) },
+		agreement: { required, checked: (value: boolean) => value === true },
 		help_types: { required },
 	}
 
@@ -116,6 +121,7 @@
 		JOIN.contacts.inputs.forEach((input) => {
 			formData[input.id] = ''
 			formData['help_types'] = []
+			formData['agreement'] = false
 		})
 	})
 </script>
@@ -211,14 +217,21 @@
 			gap: 24px;
 		}
 		&__policy {
-			display: flex;
-			align-items: center;
-			gap: 8px;
+			// display: flex;
+			// align-items: center;
+			// gap: 8px;
+			display: grid;
+			gap: 4px;
 			line-height: 115%;
 			&.error {
 				input {
 					outline: 1px solid var(--danger);
 				}
+			}
+			&-checkbox{
+				display: flex;
+				align-items: center;
+				gap: 8px;
 			}
 		}
 		&__submit-btn {

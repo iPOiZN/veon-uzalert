@@ -1,9 +1,10 @@
 mutation Volunteer(
 	$name: String!
-	$surname: String!
+	$surname: String
 	$phone: Int!
-	$city: Int!
-	$district: Int!
+	$agreement: Boolean!
+	$city: String
+	$district: String
 	$help_types: [Int]
 	$captcha_token: String!
 ) {
@@ -12,6 +13,7 @@ mutation Volunteer(
 			name: $name
 			surname: $surname
 			phone: $phone
+			agreement: $agreement
 			city: $city
 			district: $district
 			help_types: $help_types
