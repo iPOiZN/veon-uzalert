@@ -17,9 +17,9 @@
 </template>
 
 <script setup lang="ts">
-	import { homeContent } from '~/constants/content'
+	import { useWhoWeAreContent } from '~/constants/content'
 
-	const { WHO_WE_ARE } = await homeContent()
+	const { WHO_WE_ARE } = await useWhoWeAreContent()
 
 	onMounted(() => {
 		useGsap.from('.whowe__article-img', {
@@ -59,7 +59,7 @@
 				min-height: 300px;
 				object-fit: cover;
 				&-wrapper {
-				width: 100%;
+					width: 100%;
 
 					overflow: hidden;
 				}

@@ -12,27 +12,9 @@ import type {
 // Create a composable to handle all the content
 
 export const countryCode = 998
-export const homeContent = async () => {
+
+export const useIntroContent = async () => {
 	const { t } = useI18n()
-
-	const { mutate: getVolunteerHelpTypes, result: volunteerTypes } = useGetVolunteerHelpTypes()
-
-	await getVolunteerHelpTypes()
-
-	// const MONTHS = [
-	// 	t('basics.months.january'),
-	// 	t('basics.months.february'),
-	// 	t('basics.months.march'),
-	// 	t('basics.months.april'),
-	// 	t('basics.months.may'),
-	// 	t('basics.months.june'),
-	// 	t('basics.months.july'),
-	// 	t('basics.months.august'),
-	// 	t('basics.months.september'),
-	// 	t('basics.months.october'),
-	// 	t('basics.months.november'),
-	// 	t('basics.months.december'),
-	// ]
 
 	const INTRO: IIntro = {
 		title: t('intro.title'),
@@ -48,11 +30,23 @@ export const homeContent = async () => {
 		],
 	}
 
+	return { INTRO }
+}
+
+export const useWhoWeAreContent = async () => {
+	const { t } = useI18n()
+
 	const WHO_WE_ARE: IWhoWeAre = {
 		title: t('about.title'),
 		text: t('about.text'),
 		img: '/images/whowe.jpg',
 	}
+
+	return { WHO_WE_ARE }
+}
+
+export const useSearchStepsContent = async () => {
+	const { t } = useI18n()
 
 	const SEARCH_STEPS: ISearchSteps = {
 		title: t('search.title'),
@@ -83,6 +77,16 @@ export const homeContent = async () => {
 			},
 		],
 	}
+
+	return { SEARCH_STEPS }
+}
+
+export const useJoinContent = async () => {
+	const { t } = useI18n()
+
+	const { mutate: getVolunteerHelpTypes, result: volunteerTypes } = useGetVolunteerHelpTypes()
+
+	await getVolunteerHelpTypes()
 
 	const JOIN: IJoin = {
 		title: t('join.title'),
@@ -172,6 +176,12 @@ export const homeContent = async () => {
 		},
 	}
 
+	return { JOIN }
+}
+
+export const useFaqContent = async () => {
+	const { t } = useI18n()
+
 	const FAQ: IFaq = {
 		title: t('faq.title'),
 		img: '/images/faq.jpg',
@@ -209,6 +219,12 @@ export const homeContent = async () => {
 			text: t('faq.footer'),
 		},
 	}
+
+	return { FAQ }
+}
+
+export const useContactContent = async () => {
+	const { t } = useI18n()
 
 	const CONTACT: IContact = {
 		title: t('contact.title'),
@@ -255,6 +271,26 @@ export const homeContent = async () => {
 		],
 	}
 
+	return { CONTACT }
+}
+export const usePartnersContent = async () => {
+	const { t } = useI18n()
+
+	// const MONTHS = [
+	// 	t('basics.months.january'),
+	// 	t('basics.months.february'),
+	// 	t('basics.months.march'),
+	// 	t('basics.months.april'),
+	// 	t('basics.months.may'),
+	// 	t('basics.months.june'),
+	// 	t('basics.months.july'),
+	// 	t('basics.months.august'),
+	// 	t('basics.months.september'),
+	// 	t('basics.months.october'),
+	// 	t('basics.months.november'),
+	// 	t('basics.months.december'),
+	// ]
+
 	const PARTNERS: IPartners = {
 		title: t('partners.title'),
 		items: [
@@ -280,18 +316,10 @@ export const homeContent = async () => {
 		},
 	}
 
-	return {
-		INTRO,
-		WHO_WE_ARE,
-		SEARCH_STEPS,
-		JOIN,
-		FAQ,
-		CONTACT,
-		PARTNERS,
-	}
+	return { PARTNERS }
 }
 
-export const searchRequestContent = async () => {
+export const useSearchRequestContent = async () => {
 	const { t } = useI18n()
 
 	const { mutate: getGenderTypes, result: genderTypes } = useGetGenders()
@@ -348,6 +376,7 @@ export const searchRequestContent = async () => {
 				name: 'region',
 				value: '',
 				placeholder: t('contactsRequest.missingRegionPlaceholder'),
+				required: true,
 				options: (regionTypes.value as ISearchRequest['inputs'][0]['options'])?.map((region) => ({
 					id: String(region.id),
 					name: region.name,

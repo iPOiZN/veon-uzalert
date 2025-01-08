@@ -6,7 +6,11 @@
 				<div class="join__block">
 					<div class="join__block-title required">{{ JOIN.help.title }}</div>
 					<ul class="join__block-checkboxes" :class="{ error: v$Form['help_types']?.$error }">
-						<li v-for="(checkbox, i) in JOIN.help.checkboxes" :key="i" class="join__block-checkbox-item">
+						<li
+							v-for="(checkbox, i) in JOIN.help.checkboxes"
+							:key="i"
+							class="join__block-checkbox-item"
+							:class="{ error: v$Form['help_types']?.$error }">
 							<input
 								:id="checkbox.name"
 								v-model="formData['help_types']"
@@ -86,7 +90,7 @@
 	import { useVuelidate } from '@vuelidate/core'
 	import { maxLength, minLength, required } from '@vuelidate/validators'
 	import { useReCaptcha } from 'vue-recaptcha-v3'
-	import { countryCode, homeContent } from '~/constants/content'
+	import { countryCode, useJoinContent } from '~/constants/content'
 	import type { IVolunteerInputs } from '~/types/content.interface'
 
 	const recaptchaInstance = useReCaptcha()
@@ -96,7 +100,7 @@
 		return token
 	}
 
-	const { JOIN } = await homeContent()
+	const { JOIN } = await useJoinContent()
 	const { mutate: sendVolunteerForm } = useVolunteerMutation()
 	const formData = reactive({} as IVolunteerInputs)
 
@@ -113,6 +117,7 @@
 		if (v$Form.value.$invalid) return
 		sendVolunteerForm({
 			...formData,
+			phone: +countryCode + +formData.phone,
 			captcha_token: await recaptcha(),
 		})
 	}
@@ -160,6 +165,11 @@
 				display: flex;
 				align-items: center;
 				gap: 12px;
+				&.error{
+					input{
+						outline: 1px solid var(--danger);
+					}
+				}
 			}
 			&-inputs {
 				display: grid;
@@ -228,7 +238,7 @@
 					outline: 1px solid var(--danger);
 				}
 			}
-			&-checkbox{
+			&-checkbox {
 				display: flex;
 				align-items: center;
 				gap: 8px;

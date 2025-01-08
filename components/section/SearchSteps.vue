@@ -13,9 +13,9 @@
 </template>
 
 <script setup lang="ts">
-	import { homeContent } from '~/constants/content'
+	import { useSearchStepsContent } from '~/constants/content'
 
-	const { SEARCH_STEPS } = await homeContent()
+	const { SEARCH_STEPS } = await useSearchStepsContent()
 </script>
 
 <style scoped lang="scss">

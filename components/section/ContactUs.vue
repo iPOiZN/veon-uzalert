@@ -39,9 +39,9 @@
 </template>
 
 <script setup lang="ts">
-	import { homeContent } from '~/constants/content'
+	import { useContactContent } from '~/constants/content'
 
-	const { CONTACT } = await homeContent()
+	const {CONTACT} = await useContactContent()
 </script>
 
 <style scoped lang="scss">

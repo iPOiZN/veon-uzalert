@@ -83,8 +83,8 @@
 									:placeholder="input.placeholder"
 									:required="input.required"
 									:type="input.type"
-									minLength="9"
-									maxLength="9"
+									minlength="9"
+									maxlength="9"
 									oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
 							</span>
 						</template>
@@ -115,12 +115,12 @@
 <script setup lang="ts">
 	import { useVuelidate } from '@vuelidate/core'
 	import { maxLength, minLength, required } from '@vuelidate/validators'
-	import { countryCode, searchRequestContent } from '~/constants/content'
+	import { countryCode, useSearchRequestContent } from '~/constants/content'
 	import type { ISearchRequestInputs } from '~/types/content.interface'
 
 	// const [] = defineField('tel', { validateOnModelUpdate: true })
 
-	const { SEARCH_REQUEST } = await searchRequestContent()
+	const { SEARCH_REQUEST } = await useSearchRequestContent()
 	const { mutate: searchRequestMutation } = useSearchRequestMutation()
 	const formData = reactive({} as ISearchRequestInputs)
 
@@ -223,7 +223,7 @@
 				.request__input-prefix {
 					position: absolute;
 					left: 10px;
-					top: 11.5px;
+					top: 11px;
 				}
 			}
 			&[type='tel'] {

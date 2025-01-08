@@ -21,9 +21,9 @@
 </template>
 
 <script setup lang="ts">
-	import { homeContent } from '~/constants/content'
+	import { useIntroContent } from '~/constants/content'
 
-	const { INTRO } = await homeContent()
+	const { INTRO } = await useIntroContent()
 
 	onMounted(() => {
 		useGsap.to('.intro__bg', {
@@ -44,6 +44,7 @@
 		position: relative;
 		height: clamp(600px, 100vw, max(800px, calc(100svh - 60px)));
 		overflow: clip;
+		background-color: var(--black);
 		&__bg {
 			position: absolute;
 			top: 0;
@@ -51,7 +52,7 @@
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
-			z-index: -1;
+			// z-index: 1;
 			object-position: right;
 			// filter: blur(8px) saturate(0);
 			// transform: scale(1.5);
@@ -76,6 +77,8 @@
 			justify-content: flex-start;
 			height: 100%;
 			padding-top: 50px;
+			position: relative;
+			z-index: 1;
 			@media (max-width: 767.98px) {
 				align-items: flex-start;
 				justify-content: center;
@@ -84,7 +87,7 @@
 		&__content {
 			color: var(--white);
 			@media (max-width: 991.98px) {
-				color: var(--black);
+				// color: var(--black);
 				text-align: center;
 			}
 		}
@@ -153,9 +156,9 @@
 				border-color: var(--orange);
 			}
 			@media (max-width: 991.98px) {
-				color: var(--black);
-				background-color: var(--orange);
-				border-color: var(--orange);
+				// color: var(--black);
+				// background-color: var(--orange);
+				// border-color: var(--orange);
 			}
 		}
 	}
