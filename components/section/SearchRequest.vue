@@ -207,7 +207,7 @@
 			background-color: var(--white);
 			border: 1px solid var(--border);
 			padding: 10px;
-			padding-top: 12px;
+			// padding-top: 12px;
 			resize: none;
 			width: 100%;
 			line-height: 120%;
@@ -231,8 +231,10 @@
 				.request__input-prefix {
 					position: absolute;
 					left: 10px;
-					top: 11.6px;
+					top: 50%;
+					transform: translateY(-50%);
 				}
+				
 			}
 			&[type='tel'] {
 				padding-left: 50px;

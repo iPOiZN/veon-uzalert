@@ -37,19 +37,21 @@
 								:class="{ required: input.required }">
 								{{ input.label }}
 							</label>
-							<span class="join__block-input-wrapper">
+							<div class="join__block-input-wrapper">
 								<template v-if="input.type === 'tel'">
-									<label :for="input.id" class="join__block-input-prefix">+{{ countryCode }}</label>
-									<input
-										:id="input.id"
-										v-model="formData[input.id]"
-										class="join__block-input"
-										:type="input.type"
-										:placeholder="input.placeholder"
-										:required="input.required"
-										minLength="9"
-										maxLength="9"
-										oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+									<span class="join__block-input-tel">
+										<label :for="input.id" class="join__block-input-prefix">+{{ countryCode }}</label>
+										<input
+											:id="input.id"
+											v-model="formData[input.id]"
+											class="join__block-input"
+											:type="input.type"
+											:placeholder="input.placeholder"
+											:required="input.required"
+											minLength="9"
+											maxLength="9"
+											oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+									</span>
 								</template>
 								<template v-else>
 									<input
@@ -63,7 +65,7 @@
 								<div v-if="v$Form[input.id]?.$error" class="join__block-input-error">
 									{{ input.errorMsg }}
 								</div>
-							</span>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -165,8 +167,8 @@
 				display: flex;
 				align-items: center;
 				gap: 12px;
-				&.error{
-					input{
+				&.error {
+					input {
 						outline: 1px solid var(--danger);
 					}
 				}
@@ -179,6 +181,8 @@
 				background-color: var(--white);
 				border: 1px solid var(--border);
 				padding: 10px;
+				line-height: 120%;
+				min-height: 45px;
 				width: 100%;
 				&[type='tel'] {
 					padding-left: 50px;
@@ -208,10 +212,15 @@
 						max-width: 100%;
 					}
 				}
+				&-tel {
+					position: relative;
+				}
 				&-prefix {
 					position: absolute;
 					left: 10px;
-					top: 8.6px;
+					top: 50%;
+					transform: translateY(-50%);
+					margin-top: 0.5px;
 				}
 				&-error {
 					font-size: 12px;
