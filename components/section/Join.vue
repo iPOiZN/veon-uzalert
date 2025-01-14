@@ -211,7 +211,7 @@
 				&-prefix {
 					position: absolute;
 					left: 10px;
-					top: 8.5px;
+					top: 8.6px;
 				}
 				&-error {
 					font-size: 12px;

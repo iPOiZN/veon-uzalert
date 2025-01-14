@@ -5,6 +5,10 @@
             "uz": "O'zbek",
             "en": "English"
         },
+        "pages": {
+            "home": "Главная",
+            "search": "Оставить заявку"
+        },
         "menu": {
             "home": "Главная",
             "about": "О нас",

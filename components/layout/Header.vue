@@ -7,8 +7,7 @@
 					<Icon v-else name="mdi:menu" />
 				</button>
 				<NuxtLinkLocale class="header__logo-link" to="/" @click="asideStore.isOpen = false">
-					<NuxtImg src="/images/logo/adtechBlackLeft.png" alt="Veon" width="100" />
-					<NuxtImg src="/images/logo/uzalert.png" width="50" alt="UzAlert" />
+					<NuxtImg src="/images/logo/uzalert-anim.gif" width="50" alt="UzAlert" />
 				</NuxtLinkLocale>
 			</div>
 
@@ -114,7 +113,7 @@
 		// height: 74px;
 		position: sticky;
 		top: 0;
-		z-index: 2;
+		z-index: 12;
 		background-color: var(--white);
 		border-bottom: 1px solid var(--border);
 		transition: 0.3s transform;
@@ -133,6 +132,7 @@
 		&__logo {
 			display: flex;
 			align-items: center;
+			gap: 10px;
 			&-link {
 				display: flex;
 				align-items: center;
@@ -172,7 +172,7 @@
 				flex-direction: column;
 				align-items: flex-start;
 				background-color: var(--white);
-				top: 59px;
+				top: 60px;
 				left: 0;
 				height: 100%;
 				min-width: 250px;
@@ -219,12 +219,13 @@
 		position: fixed;
 		top: 0;
 		left: 0;
-		z-index: 1;
+		z-index: 10;
 		// z-index: 99;
 		width: 100vw;
 		height: 100%;
 		background-color: rgba(0, 0, 0, 0.4);
 		display: none;
+		backdrop-filter: blur(10px);
 		@media (max-width: 767.98px) {
 			display: block;
 		}

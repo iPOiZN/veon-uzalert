@@ -493,6 +493,7 @@ export const useSearchRequestContent = async () => {
 				id: 'upload_photo',
 				label: t('contactsRequest.uploadPhoto'),
 				type: 'file',
+				disabled: true,
 			},
 		],
 		submitBtn: {

@@ -5,6 +5,10 @@
             "uz": "O'zbek",
             "en": "English"
         },
+        "pages": {
+            "home": "Bosh sahifa",
+            "search": "Qidiruv so'rovi"
+        },
         "menu": {
             "home": "Bosh sahifa",
             "about": "Biz haqimizda",

@@ -145,6 +145,7 @@ export interface ISearchRequest {
 		maxValue?: string
 		title?: string
 		errorMsg?: string
+		disabled?: boolean
 		radios?: {
 			id: number | string
 			label: string

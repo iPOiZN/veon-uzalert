@@ -11,15 +11,15 @@ export default defineNuxtConfig({
 		// pageTransition: { name: 'page', mode: 'out-in' },
 		pageTransition: { name: 'page', mode: 'out-in' },
 		head: {
-			// title: 'Beeline Fintech',
+			// title: 'UzAlert',
 			meta: [
 				{
 					name: 'description',
-					content: 'VEON UzAlert - People need people',
+					content: 'UzAlert - Поиск пропавших людей в Узбекистане',
 				},
 				{
 					property: 'og:site:name',
-					content: 'VEON UzAlert - People need people',
+					content: 'UzAlert - Поиск пропавших людей в Узбекистане',
 				},
 				{ name: 'theme-color', content: '#fff' },
 				{
@@ -30,13 +30,13 @@ export default defineNuxtConfig({
 				{ charset: 'utf-8' },
 				{ name: 'Accept-Language', content: 'ru' },
 				{ name: 'format-detection', content: 'telephone=no' },
-				{ name: 'apple-mobile-web-app-title', content: 'Beeline Fintech' },
+				{ name: 'apple-mobile-web-app-title', content: 'UzAlert' },
 				{ name: 'apple-mobile-web-app-capable', content: 'yes' },
 				{ name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
-				{ name: 'apple-mobile-web-app-title', content: 'Beeline Fintech' },
+				{ name: 'apple-mobile-web-app-title', content: 'UzAlert' },
 				{ name: 'apple-mobile-web-app-status-bar-style', content: 'white' },
 				{ name: 'mobile-web-app-capable', content: 'yes' },
-				{ name: 'application-name', content: 'Beeline Fintech' },
+				{ name: 'application-name', content: 'UzAlert' },
 				{ name: 'msapplication-TileColor', content: '#ffc40d' },
 				{
 					name: 'msapplication-TileImage',
@@ -74,7 +74,7 @@ export default defineNuxtConfig({
 				},
 				{
 					rel: 'manifest',
-					href: '/favicon/site.webmanifest',
+					href: '/favicon/manifest.json',
 				},
 				{
 					rel: 'mask-icon',
@@ -97,8 +97,8 @@ export default defineNuxtConfig({
 	},
 	site: {
 		url: 'https://fintech.vdev.website',
-		name: 'VEON UzAlert',
-		description: 'Людям нужны люди',
+		name: 'UzAlert',
+		description: 'Поиск пропавших людей в Узбекистане',
 		// defaultLocale: 'en',
 		// trailingSlash: true,
 	},
@@ -186,7 +186,7 @@ export default defineNuxtConfig({
 		},
 	},
 	icon: {
-		// provider: 'server',
+		provider: 'server',
 		clientBundle: {
 			scan: {
 				globInclude: ['components/**/*.vue', 'pages/**/*.vue', 'layouts/**/*.vue'],
@@ -230,10 +230,10 @@ export default defineNuxtConfig({
 		tokenStorage: 'cookie',
 		defaultOptions: {
 			query: {
-				fetchPolicy: 'no-cache',
+				fetchPolicy: 'network-only',
 			},
 			watchQuery: {
-				fetchPolicy: 'no-cache',
+				fetchPolicy: 'cache-and-network',
 			},
 		},
 		clients: {

@@ -8,7 +8,7 @@
 						v-for="(input, i) in SEARCH_REQUEST.inputs"
 						:key="i"
 						class="request__input-wrapper"
-						:class="{ error: v$Form[input.id]?.$error }">
+						:class="{ error: v$Form[input.id]?.$error, disabled: input.disabled }">
 						<label :for="input.id" :class="{ required: input.required }">
 							{{ input.label }}
 						</label>
@@ -115,9 +115,16 @@
 <script setup lang="ts">
 	import { useVuelidate } from '@vuelidate/core'
 	import { maxLength, minLength, required } from '@vuelidate/validators'
+	import { useReCaptcha } from 'vue-recaptcha-v3'
 	import { countryCode, useSearchRequestContent } from '~/constants/content'
 	import type { ISearchRequestInputs } from '~/types/content.interface'
 
+	const recaptchaInstance = useReCaptcha()
+	const recaptcha = async () => {
+		await recaptchaInstance?.recaptchaLoaded()
+		const token = await recaptchaInstance?.executeRecaptcha('')
+		return token
+	}
 	// const [] = defineField('tel', { validateOnModelUpdate: true })
 
 	const { SEARCH_REQUEST } = await useSearchRequestContent()
@@ -137,7 +144,7 @@
 
 	const v$Form = useVuelidate(formValidationRules, formData)
 
-	const handleSubmit = () => {
+	const handleSubmit = async () => {
 		// if (!validateForm()) return
 		if (v$Form.value.$invalid) return
 		searchRequestMutation({
@@ -147,6 +154,7 @@
 			missing_region: +formData.missing_region,
 			missing_phone: Number(countryCode + +formData.missing_phone),
 			search_area_type: +formData.search_area_type,
+			captcha_token: await recaptcha(),
 		} as ISearchRequestInputs)
 		// console.log(formData)
 	}
@@ -223,7 +231,7 @@
 				.request__input-prefix {
 					position: absolute;
 					left: 10px;
-					top: 11px;
+					top: 11.6px;
 				}
 			}
 			&[type='tel'] {

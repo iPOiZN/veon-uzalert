@@ -11,8 +11,9 @@
 </template>
 
 <script setup lang="ts">
+	const { t } = useI18n()
 	useSeoMeta({
-		title: 'Home',
+		title: t('basics.pages.home'),
 	})
 </script>
 
