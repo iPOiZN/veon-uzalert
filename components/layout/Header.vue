@@ -3,8 +3,8 @@
 		<div class="header__container container">
 			<div class="header__logo">
 				<button class="nav__menu-btn" @click="asideStore.isOpen = !asideStore.isOpen">
-					<Icon v-if="asideStore.isOpen" name="mdi:close" />
-					<Icon v-else name="mdi:menu" />
+					<Icon v-if="asideStore.isOpen" name="mdi:close" size="24" />
+					<Icon v-else name="mdi:menu" size="24" />
 				</button>
 				<NuxtLinkLocale class="header__logo-link" to="/" @click="asideStore.isOpen = false">
 					<NuxtImg src="/images/logo/uzalert-anim.gif" width="50" alt="UzAlert" />
@@ -45,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-	import { useMenuContent } from '~/constants/menu'
+import { useMenuContent } from '~/constants/menu'
 
 	const { menuItems } = useMenuContent()
 
@@ -56,7 +56,7 @@
 
 	let lastScrollTop = 0
 
-	const changeLang = async (lang: string) => {
+	const changeLang = async (lang: 'ru' | 'uz') => {
 		await setLocale(lang)
 		// window.location.reload()
 	}

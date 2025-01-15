@@ -247,6 +247,7 @@ export default defineNuxtConfig({
 			},
 		},
 	},
+
 	// swiper: {
 	// 	// Swiper options
 	// 	//----------------------

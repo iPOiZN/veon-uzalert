@@ -85,19 +85,6 @@
 				</div>
 			</form>
 		</div>
-		<!-- <Teleport to="body">
-			<dialog id="policyModal" class="join__policy-modal">
-				<div class="join__policy-modal-content">
-					<embed
-						src="/files/uzalert-privacy-policy-ru.pdf#toolbar=0&navpanes=0"
-						type="application/pdf" />
-				</div>
-				<div class="join__policy-modal-actions">
-					<button type="button" class="join__policy-modal-btn">Принимаю</button>
-					<button type="button" class="join__policy-modal-btn" @click="privacyPolicyModal.close()">Закрыть</button>
-				</div>
-			</dialog>
-		</Teleport> -->
 		<BlocksPolicyModal @accept="handleAcceptAgreement" @close="privacyPolicyModal.close()" />
 	</section>
 </template>
@@ -109,6 +96,7 @@
 	import { countryCode, useJoinContent } from '~/constants/content'
 	import type { IVolunteerInputs } from '~/types/content.interface'
 
+	const { locale } = useI18n()
 	const recaptchaInstance = useReCaptcha()
 	const recaptcha = async () => {
 		await recaptchaInstance?.recaptchaLoaded()
@@ -141,10 +129,21 @@
 	}
 
 	function handlePrivacyPolicyModal() {
-		privacyPolicyModal.value = document.querySelector('#policyModal') as HTMLDialogElement
-		document.querySelector('.join__policy-checkbox .link')?.addEventListener('click', () => {
-			privacyPolicyModal.value?.showModal()
-		})
+		if (window.matchMedia('(min-width: 1198.98px)').matches) {
+			privacyPolicyModal.value = document.querySelector('#policyModal') as HTMLDialogElement
+			document.querySelector('.join__policy-checkbox .link')?.addEventListener('click', () => {
+				privacyPolicyModal.value?.showModal()
+			})
+		} else {
+			document.querySelector('.join__policy-checkbox .link')?.addEventListener('click', () => {
+				navigateTo(`/files/uzalert-privacy-policy-${locale.value}.pdf#toolbar=0&navpanes=0`, {
+					open:{
+						target: '_blank',
+					},
+					external: true,
+				})
+			})
+		}
 	}
 
 	function handleAcceptAgreement() {
@@ -283,22 +282,10 @@
 				display: flex;
 				align-items: center;
 				gap: 8px;
-			}
-			&-modal {
-				max-height: 500px;
-				height: 100%;
-				max-width: 1000px;
-				width: 100%;
-				padding-bottom: 50px;
-
-				// position: relative;
-				&-content {
-					position: relative;
-					width: 100%;
-					height: 100%;
-					embed {
-						width: 100%;
-						height: 100%;
+				cursor: pointer;
+				label {
+					:deep(span) {
+						cursor: pointer;
 					}
 				}
 			}

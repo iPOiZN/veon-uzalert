@@ -97,7 +97,7 @@
             "city": "Shahar",
             "district": "Tuman"
         },
-        "policy": "<button type='button' class='link'>Shaxsiy ma'lumotlarni qayta ishlash shartlari va siyosatiga</button> roziman",
+        "policy": "<span class='link'>Shaxsiy ma'lumotlarni qayta ishlash shartlari va siyosatiga</span> roziman",
         "submit": "Qo'shilish"
     },
     "faq": {

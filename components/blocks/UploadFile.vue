@@ -6,6 +6,7 @@
 			:type="input.type"
 			:placeholder="input.placeholder"
 			:required="input.required"
+			accept="image/png, image/pdf, image/jpeg, image/jpg"
 			@input="handleFileUpload" />
 
 		<div v-if="uploadStatus.isUploading || selectedImgSrc" class="input-file__content">
@@ -15,11 +16,6 @@
 					:class="{ uploaded: uploadStatus.isUploaded }"
 					:src="selectedImgSrc"
 					:alt="input.placeholder" />
-				<!-- <div
-					:style="{
-						backdropFilter: `blur(${5 - (uploadStatus.percent / 100) * 5}px)`,
-					}"
-					class="input-file__content-cover"></div> -->
 				<span v-if="uploadStatus.isUploading" class="input-file__content-actions-percent">
 					{{ uploadStatus.percent }}%
 				</span>
@@ -30,9 +26,7 @@
 				</button>
 			</div>
 		</div>
-		<div
-			v-if="uploadStatus.isCanceled && !selectedImgSrc && !uploadStatus.isUploading"
-			class="input-file__content-error">
+		<div v-if="uploadStatus.isCanceled || uploadStatus.isFailed" class="input-file__content-error">
 			<span>{{ uploadStatus.statusText }}</span>
 		</div>
 	</div>
@@ -67,18 +61,30 @@
 
 	const handleFileUpload = async (e: Event) => {
 		uploadStatus.isUploaded = false
+		uploadStatus.isCanceled = false
+		uploadStatus.isFailed = false
+		uploadStatus.statusText = ''
+
 		const formData = new FormData()
 		const targetFile = (e.target as HTMLInputElement).files?.[0]
 		if (!targetFile) return
+		const maxFileSize = 1 * 1024 * 1024 // 1 MB
+		if (targetFile.size > maxFileSize) {
+			uploadStatus.isFailed = true
+			uploadStatus.statusText = 'File size is too large'
+			return
+		}
 		selectedImgSrc.value = URL.createObjectURL(targetFile)
 		formData.append('file', targetFile)
 		const xhr = new XMLHttpRequest()
 		currentUploadRequest.value = xhr
+
 		xhr.open('POST', 'https://api.uzalert.uz/v1/upload', true)
 		uploadStatus.isUploading = true
 		xhr.upload.addEventListener('progress', (e) => {
 			uploadStatus.percent = Math.floor((e.loaded / e.total) * 100)
 		})
+
 		xhr.onload = function () {
 			if (xhr.status === 200) {
 				uploadStatus.isUploaded = true
@@ -143,6 +149,7 @@
 				transition: 0.5s opacity;
 				&-wrapper {
 					position: relative;
+					overflow: hidden;
 				}
 				&.uploaded {
 					opacity: 1;
@@ -173,6 +180,7 @@
 			&-error {
 				align-self: flex-start;
 				padding: 10px;
+				color: var(--danger);
 			}
 		}
 	}

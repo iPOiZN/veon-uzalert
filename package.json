@@ -22,6 +22,8 @@
     "nuxt": "^3.12.4",
     "nuxt-og-image": "^3.0.6",
     "nuxt-schema-org": "^3.4.1",
+    "pdfobject": "^2.3.0",
+    "pdfobject-vue": "^0.0.4",
     "pinia": "^2.2.4",
     "smoothscroll-for-websites": "^1.5.1",
     "swiper": "^11.2.1",
