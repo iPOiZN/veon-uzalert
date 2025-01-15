@@ -130,7 +130,8 @@ export interface IContact {
 
 export interface ISearchRequest {
 	title: string
-	inputs: InputHTMLAttributes[] & TextareaHTMLAttributes[] &
+	inputs: InputHTMLAttributes[] &
+		TextareaHTMLAttributes[] &
 		{
 			id: ISearchRequestInput['id']
 			label: string

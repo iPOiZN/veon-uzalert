@@ -13,22 +13,38 @@
 			<div class="input-file__content-img-wrapper">
 				<img
 					class="input-file__content-img"
-					:class="{ uploaded: uploadStatus.isUploaded }"
+					:class="{ uploaded: uploadStatus.isUploaded && !uploadStatus.isUploading }"
 					:src="selectedImgSrc"
-					:alt="input.placeholder" />
-				<span v-if="uploadStatus.isUploading" class="input-file__content-actions-percent">
+					:alt="input.placeholder"
+					@click="uploadFileModal?.showModal()" />
+				<span v-if="uploadStatus.isUploading" class="input-file__content-actions-overlay">
 					{{ uploadStatus.percent }}%
 				</span>
 			</div>
 			<div class="input-file__content-actions">
-				<button class="input-file__content-actions-btn" type="button" @click="handleCancelUpload">
-					{{ uploadStatus.isUploading ? $t('basics.buttons.cancel') : $t('basics.buttons.delete') }}
+				<button class="input-file__content-actions-btn" type="button" :title="uploadStatus.isUploading ? $t('basics.buttons.cancel') : $t('basics.buttons.delete')" @click="handleCancelUpload">
+					<!-- {{ uploadStatus.isUploading ? $t('basics.buttons.cancel') : $t('basics.buttons.delete') }} -->
+					<Icon :name="uploadStatus.isUploading ? 'mdi:cancel' : 'mdi:delete'" size="24" />
 				</button>
 			</div>
 		</div>
 		<div v-if="uploadStatus.isCanceled || uploadStatus.isFailed" class="input-file__content-error">
 			<span>{{ uploadStatus.statusText }}</span>
 		</div>
+		<Teleport to="body">
+			<dialog
+				id="uploadFileModal"
+				ref="uploadFileModal"
+				class="upload-file-modal"
+				@click.self="uploadFileModal?.close()">
+				<div class="upload-file-modal__content">
+					<img :src="selectedImgSrc" :alt="input.placeholder" />
+					<button type="button" class="upload-file-modal__close" @click="uploadFileModal?.close()">
+						<Icon name="mdi:close" size="24" />
+					</button>
+				</div>
+			</dialog>
+		</Teleport>
 	</div>
 </template>
 
@@ -46,6 +62,7 @@
 	const { t } = useI18n()
 
 	const localValue = ref('')
+	const uploadFileModal = ref<HTMLDialogElement | null>(null)
 
 	const currentUploadRequest = ref<XMLHttpRequest | null>(null)
 	const selectedImgSrc = ref<string>()
@@ -60,7 +77,6 @@
 	})
 
 	const handleFileUpload = async (e: Event) => {
-		uploadStatus.isUploaded = false
 		uploadStatus.isCanceled = false
 		uploadStatus.isFailed = false
 		uploadStatus.statusText = ''
@@ -71,7 +87,7 @@
 		const maxFileSize = 1 * 1024 * 1024 // 1 MB
 		if (targetFile.size > maxFileSize) {
 			uploadStatus.isFailed = true
-			uploadStatus.statusText = 'File size is too large'
+			uploadStatus.statusText = 'File size is too large (max 1 MB)'
 			return
 		}
 		selectedImgSrc.value = URL.createObjectURL(targetFile)
@@ -113,12 +129,10 @@
 			currentUploadRequest.value = null
 			uploadStatus.isUploading = false
 			uploadStatus.isCanceled = true
-			selectedImgSrc.value = ''
-			localValue.value = ''
-		} else {
-			selectedImgSrc.value = ''
-			localValue.value = ''
 		}
+		selectedImgSrc.value = ''
+		localValue.value = ''
+		emit('update', '')
 	}
 </script>
 
@@ -129,10 +143,11 @@
 		align-items: center;
 		justify-content: center;
 		gap: 10px;
+		background-color: var(--white);
+		border: 1px solid var(--border);
+		padding: 10px;
 		input {
-			background-color: var(--white);
-			border: 1px solid var(--border);
-			padding: 10px;
+			// padding: 10px;
 			resize: none;
 			width: 100%;
 		}
@@ -140,16 +155,26 @@
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
+			gap: 12px;
 			width: 100%;
+			border: 1px solid var(--border);
+			padding: 10px;
+
+			@media (max-width: 575.98px) {
+				flex-direction: column;
+				justify-content: center;
+			}
 			&-img {
-				max-width: 200px;
+				max-width: 300px;
 				width: 100%;
 				object-fit: scale-down;
 				opacity: 0.5;
 				transition: 0.5s opacity;
+				cursor: pointer;
 				&-wrapper {
 					position: relative;
 					overflow: hidden;
+					background-color: var(--black);
 				}
 				&.uploaded {
 					opacity: 1;
@@ -162,19 +187,32 @@
 				flex-direction: column;
 				align-items: center;
 				gap: 10px;
-				&-percent {
+				&-overlay {
 					position: absolute;
 					top: 50%;
 					left: 50%;
 					transform: translate(-50%, -50%);
 					font-weight: 600;
 					z-index: 10;
+					color: var(--white)
 				}
 				&-btn {
 					font-weight: 600;
 					color: var(--danger);
-					border: 1px solid var(--danger);
-					padding: 8px 16px;
+					border: 2px solid var(--danger);
+					padding: 4px 8px;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					gap: 4px;
+					border-radius: 50%;
+					width: 40px;
+					height: 40px;
+					transition: 0.1s background-color, 0.1s color;
+					&:hover {
+						background-color: var(--danger);
+						color: var(--white);
+					}
 				}
 			}
 			&-error {
@@ -182,6 +220,28 @@
 				padding: 10px;
 				color: var(--danger);
 			}
+		}
+	}
+	.upload-file-modal {
+		border: none;
+		background: transparent;
+		&::backdrop {
+			backdrop-filter: blur(2px);
+		}
+		&__content {
+			position: relative;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+		}
+		&__close {
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			padding: 10px;
+			background-color: var(--white);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 	}
 </style>

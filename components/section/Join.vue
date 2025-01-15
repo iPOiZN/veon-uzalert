@@ -136,8 +136,8 @@
 			})
 		} else {
 			document.querySelector('.join__policy-checkbox .link')?.addEventListener('click', () => {
-				navigateTo(`/files/uzalert-privacy-policy-${locale.value}.pdf#toolbar=0&navpanes=0`, {
-					open:{
+				navigateTo(`/files/uzalert-privacy-policy-${locale.value}.pdf`, {
+					open: {
 						target: '_blank',
 					},
 					external: true,
@@ -155,13 +155,9 @@
 		handlePrivacyPolicyModal()
 	})
 
-	// onMounted(() => {
-	// 	JOIN.contacts.inputs.forEach((input) => {
-	// 		formData[input.id] = ''
-	// 		formData['help_types'] = []
-	// 		formData['agreement'] = false
-	// 	})
-	// })
+	onMounted(() => {
+		formData['help_types'] = []
+	})
 </script>
 
 <style scoped lang="scss">

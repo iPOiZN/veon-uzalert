@@ -32,6 +32,11 @@
   },
   "devDependencies": {
     "@hypernym/nuxt-gsap": "^2.4.3",
+    "@iconify-json/bi": "^1.2.2",
+    "@iconify-json/circle-flags": "^1.2.3",
+    "@iconify-json/logos": "^1.2.4",
+    "@iconify-json/mdi": "^1.2.2",
+    "@iconify-json/skill-icons": "^1.2.0",
     "@nuxt/eslint-config": "^0.6.0",
     "@nuxtjs/apollo": "^5.0.0-alpha.14",
     "@nuxtjs/i18n": "^9.1.1",

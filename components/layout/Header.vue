@@ -35,7 +35,7 @@
 						v-for="(lang, i) in availableLocales"
 						:key="i"
 						class="header__lang-btn"
-						@click="changeLang(lang)">
+						@click="changeLang(lang as 'ru' | 'uz')">
 						<Icon :name="`circle-flags:${lang}`" />
 					</button>
 				</div>
@@ -45,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-import { useMenuContent } from '~/constants/menu'
+	import { useMenuContent } from '~/constants/menu'
 
 	const { menuItems } = useMenuContent()
 
