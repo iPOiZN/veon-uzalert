@@ -9,7 +9,7 @@
 						:key="i"
 						class="request__input-wrapper"
 						:class="{ error: v$Form[input.id]?.$error, disabled: input.disabled }">
-						<label :for="input.id" :class="{ required: input.required }">
+						<label :for="input.id" class="request__input-label" :class="{ required: input.required }">
 							{{ input.label }}
 						</label>
 						<template v-if="input.type === 'textarea'">
@@ -22,15 +22,9 @@
 								:placeholder="input.placeholder" />
 						</template>
 						<template v-else-if="input.type === 'file'">
-							<input
-								:id="input.id"
-								v-model="formData[input.id]"
-								class="request__input"
-								:type="input.type"
-								:placeholder="input.placeholder"
-								:required="input.required" />
+							<BlocksUploadFile :input="input" @update="handleFileUpload" />
 						</template>
-						<template v-else-if="['date', 'time'].includes(input.type)">
+						<template v-else-if="input.type && ['date', 'time'].includes(input.type)">
 							<input
 								:id="input.id"
 								ref="inputDate"
@@ -120,6 +114,7 @@
 	import type { ISearchRequestInputs } from '~/types/content.interface'
 
 	const recaptchaInstance = useReCaptcha()
+
 	const recaptcha = async () => {
 		await recaptchaInstance?.recaptchaLoaded()
 		const token = await recaptchaInstance?.executeRecaptcha('')
@@ -140,6 +135,7 @@
 		search_area_type: { required },
 		missing_health: { required },
 		missing_special_features: { required },
+		upload_photo: { required },
 	}
 
 	const v$Form = useVuelidate(formValidationRules, formData)
@@ -159,11 +155,9 @@
 		// console.log(formData)
 	}
 
-	onMounted(() => {
-		SEARCH_REQUEST.inputs.forEach((input) => {
-			formData[input.id] = ''
-		})
-	})
+	const handleFileUpload = (fileSrc: string) => {
+		formData.upload_photo = fileSrc
+	}
 </script>
 
 <style scoped lang="scss">
@@ -220,6 +214,9 @@
 				color: var(--gray);
 				// font-style: italic;
 			}
+			&-label {
+				pointer-events: none;
+			}
 			&-error {
 				font-size: 12px;
 				color: var(--danger);
@@ -234,7 +231,6 @@
 					top: 50%;
 					transform: translateY(-50%);
 				}
-				
 			}
 			&[type='tel'] {
 				padding-left: 50px;

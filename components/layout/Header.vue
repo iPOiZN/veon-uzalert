@@ -58,7 +58,7 @@
 
 	const changeLang = async (lang: string) => {
 		await setLocale(lang)
-		window.location.reload()
+		// window.location.reload()
 	}
 
 	const handleScroll = () => {

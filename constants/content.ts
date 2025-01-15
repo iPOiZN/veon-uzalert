@@ -16,7 +16,7 @@ export const countryCode = 998
 export const useIntroContent = async () => {
 	const { t } = useI18n()
 
-	const INTRO: IIntro = {
+	const INTRO = computed<IIntro>(() => ({
 		title: t('intro.title'),
 		buttons: [
 			{
@@ -28,7 +28,7 @@ export const useIntroContent = async () => {
 				href: '/search',
 			},
 		],
-	}
+	}))
 
 	return { INTRO }
 }
@@ -36,11 +36,11 @@ export const useIntroContent = async () => {
 export const useWhoWeAreContent = async () => {
 	const { t } = useI18n()
 
-	const WHO_WE_ARE: IWhoWeAre = {
+	const WHO_WE_ARE = computed<IWhoWeAre>(() => ({
 		title: t('about.title'),
 		text: t('about.text'),
 		img: '/images/whowe.jpg',
-	}
+	}))
 
 	return { WHO_WE_ARE }
 }
@@ -48,7 +48,7 @@ export const useWhoWeAreContent = async () => {
 export const useSearchStepsContent = async () => {
 	const { t } = useI18n()
 
-	const SEARCH_STEPS: ISearchSteps = {
+	const SEARCH_STEPS = computed<ISearchSteps>(() => ({
 		title: t('search.title'),
 		articles: [
 			{
@@ -76,7 +76,7 @@ export const useSearchStepsContent = async () => {
 				description: t('search.steps.step6'),
 			},
 		],
-	}
+	}))
 
 	return { SEARCH_STEPS }
 }
@@ -88,7 +88,7 @@ export const useJoinContent = async () => {
 
 	await getVolunteerHelpTypes()
 
-	const JOIN: IJoin = {
+	const JOIN =  computed<IJoin>(() => ({
 		title: t('join.title'),
 		help: {
 			title: t('join.helpTitle'),
@@ -174,7 +174,7 @@ export const useJoinContent = async () => {
 		submit: {
 			title: t('join.submit'),
 		},
-	}
+	}))
 
 	return { JOIN }
 }
@@ -182,7 +182,7 @@ export const useJoinContent = async () => {
 export const useFaqContent = async () => {
 	const { t } = useI18n()
 
-	const FAQ: IFaq = {
+	const FAQ = computed<IFaq>(() => ({
 		title: t('faq.title'),
 		img: '/images/faq.jpg',
 		accordion: [
@@ -218,7 +218,7 @@ export const useFaqContent = async () => {
 		footer: {
 			text: t('faq.footer'),
 		},
-	}
+	}))
 
 	return { FAQ }
 }
@@ -226,7 +226,7 @@ export const useFaqContent = async () => {
 export const useContactContent = async () => {
 	const { t } = useI18n()
 
-	const CONTACT: IContact = {
+	const CONTACT = computed<IContact>(() => ({
 		title: t('contact.title'),
 		img: '/images/contact-us.jpg',
 		description: t('contact.desc'),
@@ -269,7 +269,7 @@ export const useContactContent = async () => {
 				icon: 'local:ok',
 			},
 		],
-	}
+	}))
 
 	return { CONTACT }
 }
@@ -291,7 +291,7 @@ export const usePartnersContent = async () => {
 	// 	t('basics.months.december'),
 	// ]
 
-	const PARTNERS: IPartners = {
+	const PARTNERS =  computed<IPartners>(() => ({
 		title: t('partners.title'),
 		items: [
 			{
@@ -314,7 +314,7 @@ export const usePartnersContent = async () => {
 			href: 'tel:+998 88 198 06 10',
 			text: t('partners.btn'),
 		},
-	}
+	}))
 
 	return { PARTNERS }
 }
@@ -329,7 +329,7 @@ export const useSearchRequestContent = async () => {
 	const { mutate: getAreaTypes, result: areaTypes } = useGetAreas()
 	await getAreaTypes()
 
-	const SEARCH_REQUEST: ISearchRequest = {
+	const SEARCH_REQUEST = computed<ISearchRequest>(() => ({
 		title: t('contactsRequest.title'),
 		inputs: [
 			{
@@ -493,13 +493,15 @@ export const useSearchRequestContent = async () => {
 				id: 'upload_photo',
 				label: t('contactsRequest.uploadPhoto'),
 				type: 'file',
-				disabled: true,
+				required: true,
+				errorMsg: t('contactsRequest.uploadPhotoError'),
+				// disabled: true,
 			},
 		],
 		submitBtn: {
 			text: t('contactsRequest.sendButton'),
 		},
-	}
+	}))
 
 	return {
 		SEARCH_REQUEST,

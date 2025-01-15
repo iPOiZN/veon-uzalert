@@ -1,3 +1,5 @@
+import type { InputHTMLAttributes, TextareaHTMLAttributes } from 'vue'
+
 interface ISearchRequestInput {
 	id: [
 		'applicant_full_name',
@@ -128,45 +130,47 @@ export interface IContact {
 
 export interface ISearchRequest {
 	title: string
-	inputs: {
-		id: ISearchRequestInput['id']
-		label: string
-		type: string
-		required?: boolean
-		placeholder?: string
-		inputmode?: string
-		rows?: number
-		name?: string
-		value?: string
-		months?: string[]
-		min?: string
-		max?: string
-		minValue?: string
-		maxValue?: string
-		title?: string
-		errorMsg?: string
-		disabled?: boolean
-		radios?: {
-			id: number | string
+	inputs: InputHTMLAttributes[] & TextareaHTMLAttributes[] &
+		{
+			id: ISearchRequestInput['id']
 			label: string
-			type?: string
-			name?: string
-			checked?: boolean
+			// type: InputTypeHTMLAttribute,
+			// type: string
+			// required?: boolean
+			// placeholder?: string
+			// inputmode?: string
+			// rows?: number
+			// name?: string
+			// value?: string
+			months?: string[]
+			// min?: string
+			// max?: string
+			// minValue?: string
+			// maxValue?: string
+			// title?: string
+			errorMsg?: string
+			// disabled?: boolean
+			radios?: {
+				id: number | string
+				label: string
+				type?: string
+				name?: string
+				checked?: boolean
+			}[]
+			options?: {
+				id: number | string
+				name?: string
+				label: string
+			}[]
+			// date?: {
+			// 	placeholder: {
+			// 		day: string
+			// 		month: string
+			// 		year: string
+			// 	}
+			// 	months: string[]
+			// }
 		}[]
-		options?: {
-			id: number | string
-			name?: string
-			label: string
-		}[]
-		// date?: {
-		// 	placeholder: {
-		// 		day: string
-		// 		month: string
-		// 		year: string
-		// 	}
-		// 	months: string[]
-		// }
-	}[]
 	submitBtn: {
 		text: string
 	}

@@ -2,7 +2,7 @@ export const useMenuContent = () => {
 	const { t } = useI18n()
 	const localePath = useLocalePath()
 
-	const menuItems = [
+	const menuItems = computed(() => [
 		{
 			name: t('basics.menu.home'),
 			path: localePath('/#intro'),
@@ -19,7 +19,7 @@ export const useMenuContent = () => {
 			name: t('basics.menu.contacts'),
 			path: localePath('/#contact'),
 		},
-	]
+	])
 
 	return { menuItems }
 }

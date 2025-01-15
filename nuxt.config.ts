@@ -217,7 +217,7 @@ export default defineNuxtConfig({
 				name: "O'zbek",
 			},
 		],
-		langDir: 'locales',
+		// langDir: 'locales',
 		defaultLocale: 'ru',
 		strategy: 'prefix',
 		compilation: {

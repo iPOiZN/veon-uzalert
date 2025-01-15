@@ -13,9 +13,7 @@
 								{{ item.summary }}
 								<Icon :name="item.icon ?? 'local:route'" size="18px" />
 							</summary>
-							<p class="faq__accordion-description">
-								{{ item.description }}
-							</p>
+							<p v-dompurify-html="item.description" class="faq__accordion-description"></p>
 						</details>
 					</div>
 				</div>
@@ -108,6 +106,5 @@
 				font-size: 14px;
 			}
 		}
-		
 	}
 </style>

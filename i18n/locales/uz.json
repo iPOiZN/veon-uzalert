@@ -49,6 +49,14 @@
             "november": "Noyabr",
             "october": "Dekabr",
             "december": "Dekabr"
+        },
+        "buttons": {
+            "send": "Юбориш",
+            "search": "Қидирув",
+            "cancel": "Бекор қилиш",
+            "delete": "Ўчириш",
+            "accept": "Қабул қилиш",
+            "close": "Қайтиш"
         }
     },
     "intro": {
@@ -89,38 +97,38 @@
             "city": "Shahar",
             "district": "Tuman"
         },
-        "policy": "<a class='link' href='#'>Shaxsiy ma'lumotlarni qayta ishlash shartlari va siyosatiga</a> roziman",
+        "policy": "<button type='button' class='link'>Shaxsiy ma'lumotlarni qayta ishlash shartlari va siyosatiga</button> roziman",
         "submit": "Qo'shilish"
     },
     "faq": {
         "title": "Ko'p beriladigan savollar",
         "q1": {
-            "title": "Otryad mablag' yig'adimi?",
-            "desc": "UzAlert otryadi mablag' yig'maydi, hisob raqamlariga, virtual hamyonlarga ega emas va o'z faoliyatini beg'araz amalga oshiradi. Bizning vazifamiz — odamlarni qidirish va ularning yo'qolishining oldini olish."
+            "title": "Otryad pul yig‘adimi?",
+            "desc": "UzAlert otryadi pul yig‘maydi, hisob raqamlarga, virtual hamyonlarga ega emas va o‘z faoliyatini beg‘araz ravishda amalga oshiradi. Vazifamiz - insonlarni qidirish va ularning yo‘qolishini oldini olish."
         },
         "q2": {
-            "title": "Nega otryad yo'qolgan odam qanday sharoitda topilgani haqida ma'lumot bermaydi?",
-            "desc": "UzAlert otryadi mablag' yig'maydi, hisob raqamlariga, virtual hamyonlarga ega emas va o'z faoliyatini beg'araz amalga oshiradi. Bizning vazifamiz — odamlarni qidirish va ularning yo'qolishining oldini olish."
+            "title": "Nima uchun otryad yo‘qolgan inson qanday, qayerda va qanday sharoitlarda topilgani haqidagi ma’lumotlar bilan bo‘lishmaydi?",
+            "desc": "Chunki ko‘pchilik holatlarda qidirish otryadining ma’muriyati ushbu ma’lumotlar bilan xabardor qilinmaydi. Bizning maqsadimiz daraksiz yo‘qolgan insonlar va ularning oila a’zolariga taalluqli shaxsiy ma’lumotlarni muhokama qilish va tarqatish emas, balki inson o‘z uyiga qaytib kelishiga yordam berishdan iboratdir. Insonlarni ogohlantirish uchun bizga ma’lumotlar ma’lum bo‘lgan va arizachi ular bilan bo‘lishishga tayyor bo‘lgan holatlar bundan mustasno."
         },
         "q3": {
-            "title": "Otryad butun O'zbekiston bo'ylab ishlaydimi?",
-            "desc": "UzAlert otryadi mablag' yig'maydi, hisob raqamlariga, virtual hamyonlarga ega emas va o'z faoliyatini beg'araz amalga oshiradi. Bizning vazifamiz — odamlarni qidirish va ularning yo'qolishining oldini olish."
+            "title": "Otryad butun O‘zbekiston bo‘ylab ishlaydimi?",
+            "desc": "Bugungi kunda, ishning katta qismi Toshkent shahrida olib borilmoqda. Ammo, bizning jamoada deyarli butun O‘zbekiston Respublikasining vakillari bor, shuning uchun, ha, otryadimiz butun O‘zbekiston bo‘ylab ishlaydi deyishimiz mumkin va yaqin vaqtda - biz viloyatlar bilan aloqalar o‘rnatishni rejalashtirmoqdamiz."
         },
         "q4": {
-            "title": "Qaysi hollarda otryad qidiruvni rad etadi?",
-            "desc": "UzAlert otryadi mablag' yig'maydi, hisob raqamlariga, virtual hamyonlarga ega emas va o'z faoliyatini beg'araz amalga oshiradi. Bizning vazifamiz — odamlarni qidirish va ularning yo'qolishining oldini olish."
+            "title": "Qaysi holatlarda otryad qidirishni rad etadi?",
+            "desc": "<ol><li>Arizachi militsiyaga ariza topshirmadi! Arizaning mavjudligi, biz uchun arizachining qidirish niyatining jiddiyligini tasdig‘i hisoblanadi, hamda ko‘ngillilar jamoasiga arizachining shaxsiy maqsadlari uchun insonni qidirishda bizdan foydalanish niyati yo‘qligiga ishonch hosil qilishga imkon beradi.</li> <li>Biz qonunbuzarlik qilgan va jinoiy qidiruvda bo‘lgan insonlarni qidirish bilan shug‘ullanmaymiz!</li> <li>Biz uchun, qidirish samaradorligi nuqtai nazaridan, inson yo‘qolishi muddati, 'qaynoq izlar', aynan esa: videokuzatuv kameralari, guvohlar va hokazolar sababi bo‘yicha muhimdir. Shuning uchun, biz ancha oldin yo‘qolgan insonlarni qidirish bilan shug‘ullanmaymiz. Bunday holatda, biz faqat ijtimoiy tarmoqlar bo‘yicha ma’lumotlarni tarqatish bilan yordam berishimiz mumkin (ariza mavjud bo‘lish holatida).</li> <li>Biz ajrashgan ota-ona o‘z oralarida bolalarni 'bo‘lisholmayotgan' vaqtdagi 'oilaviy ziddiyatlarda' yordam ko‘rsatmaymiz.</li> <li>Biz yo‘qolgan hayvonlarni qidirish bilan shug‘ullanmaymiz.</li></ol>"
         },
         "q5": {
-            "title": "Ko'ngillilardan qaysi yordam ko'pincha talab qilinadi?",
-            "desc": "UzAlert otryadi mablag' yig'maydi, hisob raqamlariga, virtual hamyonlarga ega emas va o'z faoliyatini beg'araz amalga oshiradi. Bizning vazifamiz — odamlarni qidirish va ularning yo'qolishining oldini olish."
+            "title": "Ko‘ngillilardan ko‘pincha qanday yordam zarur?",
+            "desc": "Qarindoshlar va instansiyalarga qo‘ng‘iroq qilib chiqish, haqqoniy ma’lumotlarni tuzib chiqish, qidirish hududida chiqish va yo‘qolgan inson haqidagi ma’lumotlarni yopishtirib chiqish, ijtimoiy tarmoqlar orqali yo‘qolgan inson haqidagi ma’lumotlarni tarqatish, aholi orasida so‘rovlarni o‘tkazish va hokazo."
         },
         "q6": {
-            "title": "Uyda o'tirib ham qidiruvga ko'maklashishim mumkinmi?",
-            "desc": "UzAlert otryadi mablag' yig'maydi, hisob raqamlariga, virtual hamyonlarga ega emas va o'z faoliyatini beg'araz amalga oshiradi. Bizning vazifamiz — odamlarni qidirish va ularning yo'qolishining oldini olish."
+            "title": "Men uyda o‘tirib qidirishga yordam berishim mumkinmi?",
+            "desc": "Ha, albatta. UzAlert bog‘liq ishni bajarishi mumkin bo‘lgan ko‘ngillilarda muhtojlik sezadi, masalan, instansiyalar va qarindoshlarga qo‘ng‘iroq qilib chiqish, yoki ishlarni fotoshopda bajarish. Biz har doim sizni ko‘nikmalaringiz, bilimlaringiz va bo‘sh vaqtingiz borligiga bog‘liq holda har qanday yordamni qabul qilishdan mamnun bo‘lamiz."
         },
         "q7": {
-            "title": "Yo'qolgan odamning tavsifiga o'xshash odamni ko'rsam, qanday harakat qilishim kerak?",
-            "desc": "UzAlert otryadi mablag' yig'maydi, hisob raqamlariga, virtual hamyonlarga ega emas va o'z faoliyatini beg'araz amalga oshiradi. Bizning vazifamiz — odamlarni qidirish va ularning yo'qolishining oldini olish."
+            "title": "Agar men yo‘qolgan insonga ta’riflar bo‘yicha o‘xshash insonni ko‘rib qolgan bo‘lsam, qanday harakat qilishim kerak?",
+            "desc": "Fotosuratga oling. Yo‘qolgan inson haqidagi ma’lumotnomada ko‘rsatilgan telefon raqamiga yoki 102ga zudlik bilan qo‘ng‘iroq qiling va UzAlert ko‘ngillilar guruhimizga xabar qiling. Agar siz xotira yo‘qolishidan aziyat chekayotgan insonni yoki yo‘qolgan bolani uchratib qolgan holatda - iloji bo‘lsa, yo‘qolgan insonni oldiga boring va qarindoshlari va militsiya yetib kelgunicha u bilan suhbatlashib turing."
         },
         "footer": "Agar siz kerakli javobni topa olmagan bo'lsangiz, <a class='link' href='https://t.me/UzAlert'>bizga yozing</a> va biz albatta javob beramiz"
     },
@@ -185,6 +193,8 @@
         "familyContacts": "Oila a'zolari aloqalari (raqam, telegram):",
         "familyContactsPlaceholder": "91 123 45 67, telegram nik",
         "uploadPhoto": "Foto yuklash (majburiy):",
+        "uploadPhotoError": "*Yo'qolgan odamning rasmini yuklang",
+        "uploadCanceled": "Yuklash bekor qilindi",
         "sendButton": "Yuborish"
     }
 }
