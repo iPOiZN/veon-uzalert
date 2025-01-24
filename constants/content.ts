@@ -88,7 +88,7 @@ export const useJoinContent = async () => {
 
 	await getVolunteerHelpTypes()
 
-	const JOIN =  computed<IJoin>(() => ({
+	const JOIN = computed<IJoin>(() => ({
 		title: t('join.title'),
 		help: {
 			title: t('join.helpTitle'),
@@ -98,33 +98,6 @@ export const useJoinContent = async () => {
 				label: t(`join.helps.${help.name}`),
 			})),
 			errorMsg: '*Выберите чем вы готовы помогать',
-			// checkboxes: [
-			// 	{
-			// 		id: 0,
-			// 		name: 'walking_search',
-			// 		label: t('join.helps.walk'),
-			// 	},
-			// 	{
-			// 		id: 1,
-			// 		name: 'car_search',
-			// 		label: t('join.helps.car'),
-			// 	},
-			// 	{
-			// 		id: 2,
-			// 		name: 'calling_hospitals',
-			// 		label: t('join.helps.calls'),
-			// 	},
-			// 	{
-			// 		id: 3,
-			// 		name: 'language_translator',
-			// 		label: t('join.helps.trans'),
-			// 	},
-			// 	{
-			// 		id: 4,
-			// 		name: 'posting_flyers',
-			// 		label: t('join.helps.flyers'),
-			// 	},
-			// ],
 		},
 		contacts: {
 			title: t('join.contact.title'),
@@ -172,7 +145,8 @@ export const useJoinContent = async () => {
 				'*Для продолжения вы должны согласиться с условиями и политикой обработки персональных данных',
 		},
 		submit: {
-			title: t('join.submit'),
+			title: t('join.submit.title'),
+			loading: t('join.submit.loading'),
 		},
 	}))
 
@@ -291,7 +265,7 @@ export const usePartnersContent = async () => {
 	// 	t('basics.months.december'),
 	// ]
 
-	const PARTNERS =  computed<IPartners>(() => ({
+	const PARTNERS = computed<IPartners>(() => ({
 		title: t('partners.title'),
 		items: [
 			{
@@ -499,7 +473,8 @@ export const useSearchRequestContent = async () => {
 			},
 		],
 		submitBtn: {
-			text: t('contactsRequest.sendButton'),
+			title: t('contactsRequest.sendButton.title'),
+			loading: t('contactsRequest.sendButton.loading'),
 		},
 	}))
 

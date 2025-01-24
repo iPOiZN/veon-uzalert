@@ -96,6 +96,7 @@ export interface IJoin {
 	}
 	submit: {
 		title: string
+		loading?: string
 	}
 }
 
@@ -173,7 +174,8 @@ export interface ISearchRequest {
 			// }
 		}[]
 	submitBtn: {
-		text: string
+		title: string
+		loading?: string
 	}
 }
 

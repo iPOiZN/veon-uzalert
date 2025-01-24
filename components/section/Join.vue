@@ -79,9 +79,19 @@
 							{{ JOIN.policy.errorMsg }}
 						</div>
 					</div>
-					<button type="submit" class="join__submit-btn" @click="v$Form.$touch">
-						{{ JOIN.submit.title }}
+					<button
+						type="submit"
+						class="join__submit-btn"
+						:class="{ disabled: volunteerLoading }"
+						@click="v$Form.$touch">
+						<span>{{ volunteerLoading ? JOIN.submit.loading : JOIN.submit.title }}</span>
+						<Icon v-if="volunteerLoading" name="svg-spinners:3-dots-scale" size="16" />
 					</button>
+					<template v-if="formStore.isJoinError">
+						<span v-for="(error, i) in formStore.joinErrorMessage" :key="i" style="color: red">
+							<b>Error</b> {{ error.field }}: {{ error.messages[0] }}
+						</span>
+					</template>
 				</div>
 			</form>
 		</div>
@@ -97,6 +107,7 @@
 	import type { IVolunteerInputs } from '~/types/content.interface'
 
 	const { locale } = useI18n()
+	const formStore = useFormStore()
 	const recaptchaInstance = useReCaptcha()
 	const recaptcha = async () => {
 		await recaptchaInstance?.recaptchaLoaded()
@@ -105,9 +116,10 @@
 	}
 
 	const privacyPolicyModal = ref()
+	// const submittedModal = ref()
 
 	const { JOIN } = await useJoinContent()
-	const { mutate: sendVolunteerForm } = useVolunteerMutation()
+	const { mutate: sendVolunteerForm, loading: volunteerLoading } = useVolunteerMutation()
 	const formData = reactive({} as IVolunteerInputs)
 
 	const formValidationRules: Partial<Record<keyof IVolunteerInputs, object>> = {
@@ -120,15 +132,27 @@
 	const v$Form = useVuelidate(formValidationRules, formData)
 
 	const handleSubmit = async () => {
+		formStore.joinErrorMessage = []
 		if (v$Form.value.$invalid) return
-		sendVolunteerForm({
+		await sendVolunteerForm({
 			...formData,
 			phone: +countryCode + +formData.phone,
 			captcha_token: await recaptcha(),
 		})
+		if (formStore.isJoined) {
+			v$Form.value.$reset()
+			formData.name = ''
+			formData.surname = ''
+			formData.phone = ''
+			formData.help_types = []
+			formData.agreement = false
+			formData.city = ''
+			formData.district = ''
+		}
 	}
 
-	function handlePrivacyPolicyModal() {
+	function handleModals() {
+		// submittedModal.value = document.querySelector('#submittedModal') as HTMLDialogElement
 		if (window.matchMedia('(min-width: 1198.98px)').matches) {
 			privacyPolicyModal.value = document.querySelector('#policyModal') as HTMLDialogElement
 			document.querySelector('.join__policy-checkbox .link')?.addEventListener('click', () => {
@@ -152,10 +176,7 @@
 	}
 
 	onMounted(() => {
-		handlePrivacyPolicyModal()
-	})
-
-	onMounted(() => {
+		handleModals()
 		formData['help_types'] = []
 	})
 </script>
@@ -297,6 +318,11 @@
 				0.3s border-color,
 				0.3s background-color,
 				0.3s color;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 10px;
+
 			&:hover {
 				background-color: var(--orange);
 				border-color: var(--orange);

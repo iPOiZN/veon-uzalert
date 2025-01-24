@@ -97,9 +97,21 @@
 					</div>
 				</div>
 				<div class="request__form-footer">
-					<button type="submit" class="request__button" @click="v$Form.$touch">
-						{{ SEARCH_REQUEST.submitBtn.text }}
+					<button
+						type="submit"
+						class="request__button"
+						:class="{ disabled: searchRequestLoading }"
+						@click="v$Form.$touch">
+						<span>{{
+							searchRequestLoading ? SEARCH_REQUEST.submitBtn.loading : SEARCH_REQUEST.submitBtn.title
+						}}</span>
+						<Icon v-if="searchRequestLoading" name="svg-spinners:3-dots-scale" size="16" />
 					</button>
+					<template v-if="formStore.isRequestError">
+						<span v-for="(error, i) in formStore.requestErrorMessage" :key="i" style="color: red">
+							<b>Error</b> {{ error.field }}: {{ error.messages[0] }}
+						</span>
+					</template>
 				</div>
 			</form>
 		</div>
@@ -115,6 +127,8 @@
 
 	const recaptchaInstance = useReCaptcha()
 
+	const formStore = useFormStore()
+
 	const recaptcha = async () => {
 		await recaptchaInstance?.recaptchaLoaded()
 		const token = await recaptchaInstance?.executeRecaptcha('')
@@ -123,7 +137,7 @@
 	// const [] = defineField('tel', { validateOnModelUpdate: true })
 
 	const { SEARCH_REQUEST } = await useSearchRequestContent()
-	const { mutate: searchRequestMutation } = useSearchRequestMutation()
+	const { mutate: searchRequestMutation, loading: searchRequestLoading } = useSearchRequestMutation()
 	const formData = reactive({} as ISearchRequestInputs)
 
 	const formValidationRules: Partial<Record<keyof ISearchRequestInputs, object>> = {
@@ -141,6 +155,8 @@
 	const v$Form = useVuelidate(formValidationRules, formData)
 
 	const handleSubmit = async () => {
+		formStore.requestErrorMessage = []
+
 		// if (!validateForm()) return
 		if (v$Form.value.$invalid) return
 		searchRequestMutation({
@@ -153,6 +169,14 @@
 			captcha_token: await recaptcha(),
 		} as ISearchRequestInputs)
 		// console.log(formData)
+		if (formStore.isRequested) {
+			v$Form.value.$reset()
+			for (const key in formData) {
+				if (key in formData) {
+					formData[key as keyof ISearchRequestInputs] = ''
+				}
+			}
+		}
 	}
 
 	const handleFileUpload = (fileSrc: string) => {
@@ -176,6 +200,12 @@
 			width: 100%;
 			// display: grid;
 			margin-top: 32px;
+			&-footer {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 24px;
+			}
 		}
 		&__form-inputs {
 			column-count: 2;
@@ -297,6 +327,10 @@
 			padding: 16px;
 			background-color: var(--orange);
 			transition: 0.3s background-color;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 10px;
 			&:hover {
 				background-color: var(--orange-hover);
 			}

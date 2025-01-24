@@ -9,4 +9,5 @@
 	<NuxtLayout>
 		<NuxtPage :page-key="(route: RouteLocationNormalized) => route.path" />
 	</NuxtLayout>
+	<BlocksSubmittedModal />
 </template>

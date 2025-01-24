@@ -12,10 +12,10 @@ body {
 			overflow: hidden;
 		}
 	}
-	&:has(dialog[open]){
+	&:has(dialog[open]),
+	&:has(.submitted-modal) {
 		overflow: hidden;
 	}
-	
 }
 
 .grecaptcha-badge {

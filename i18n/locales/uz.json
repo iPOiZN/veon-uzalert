@@ -1,200 +1,210 @@
 {
-    "basics": {
-        "lang": {
-            "ru": "Русский",
-            "uz": "O'zbek",
-            "en": "English"
-        },
-        "pages": {
-            "home": "Bosh sahifa",
-            "search": "Qidiruv so'rovi"
-        },
-        "menu": {
-            "home": "Bosh sahifa",
-            "about": "Biz haqimizda",
-            "questions": "Savollar",
-            "contacts": "Aloqa"
-        },
-        "date": {
-            "day": "Kun",
-            "month": "Oy",
-            "year": "Yil"
-        },
-        "regions": {
-            "1": "Toshkent shahri",
-            "10": "Toshkent viloyati",
-            "60": "Andijon viloyati",
-            "40": "Farg‘ona viloyati",
-            "50": "Namangan viloyati",
-            "20": "Sirdaryo viloyati",
-            "25": "Jizzax viloyati",
-            "30": "Samarqand viloyati",
-            "85": "Navoiy viloyati",
-            "80": "Buxoro viloyati",
-            "70": "Qashqadaryo viloyati",
-            "75": "Surxondaryo viloyati",
-            "90": "Xorazm viloyati",
-            "95": "Qoraqalpog‘iston Respublikasi"
-        },
-        "months": {
-            "january": "Yanvar",
-            "february": "Fevral",
-            "march": "Mart",
-            "april": "Aprel",
-            "may": "May",
-            "june": "Iyun",
-            "july": "Iyul",
-            "august": "Avgust",
-            "september": "Sentabr",
-            "november": "Noyabr",
-            "october": "Dekabr",
-            "december": "Dekabr"
-        },
-        "buttons": {
-            "send": "Юбориш",
-            "search": "Қидирув",
-            "cancel": "Бекор қилиш",
-            "delete": "Ўчириш",
-            "accept": "Қабул қилиш",
-            "close": "Қайтиш"
-        }
-    },
-    "intro": {
-        "title": "Inson insonga muhtoj",
-        "btnVol": "Volontyor bo'lish",
-        "btnSearch": "Qidiruv so'rovi"
-    },
-    "about": {
-        "title": "Biz kimmmiz",
-        "text": "UzAlert - bu yo'qolgan odamlarni qidirishda yordam beradigan volontyorlar guruhi, shuningdek O'zbekistonda yo'qolgan odamlarni qidirish bilan bog'liq masalalar bo'yicha murojaat qilish mumkin bo'lgan yagona bog'lovchi va yo'naltiruvchi ixtiyoriy guruh"
-    },
-    "search": {
-        "title": "Qidiruv bosqichlari",
-        "steps": {
-            "step1": "Aniq yo'naltirilgan portret yaratish uchun yo'qolgan shaxsning qarindoshlarini batafsil so'roq qilish",
-            "step2": "Tafsilotlar, odatlar, marshrutlarni o'rganish, tanishlar ro'yxatini tuzish. Yo'naltirishlarni rasmiylashtirish va chop etish",
-            "step3": "Hududlarni aylanib chiqish va yo'naltirishlarni yopishtirish uchun faollarni jalb qilish",
-            "step4": "Tibbiyot muassasalari (kasalxonalar, morglar), boshpanalar va diniy tashkilotlarni (monastirlar) muntazam qo'ng'iroq qilish. Ichki ishlar organlari bilan doimiy aloqa o'rnatish",
-            "step5": "Internetda ma'lumot tarqatish (Telegram, Facebook, Odnoklassniki, Instagram,Threads)",
-            "step6": "Yaqin odami yo'qolgan shaxslarga batafsil ko'rsatmalar, shuningdek muhtojlarga yordam ko'rsatish bo'yicha tavsiyalar berish"
-        }
-    },
-    "join": {
-        "title": "Bizga qo'shiling",
-        "helpTitle": "Qanday yordam bera olasiz",
-        "helps": {
-            "walking_search": "Piyoda qidiruv",
-            "car_search": "Avtoda qidiruv",
-            "calling_hospitals": "Kasalxonalarga qo'ng'iroq",
-            "language_translator": "Rus-o'zbek tarjimon",
-            "posting_flyers": "Flaerlarni bosib chiqarish yoki yopishtirish"
-        },
-        "contact": {
-            "title": "Aloqa ma'lumotlaringiz",
-            "name": "Ism",
-            "surname": "Familiya",
-            "phone": "Telefon raqami",
-            "city": "Shahar",
-            "district": "Tuman"
-        },
-        "policy": "<span class='link'>Shaxsiy ma'lumotlarni qayta ishlash shartlari va siyosatiga</span> roziman",
-        "submit": "Qo'shilish"
-    },
-    "faq": {
-        "title": "Ko'p beriladigan savollar",
-        "q1": {
-            "title": "Otryad pul yig‘adimi?",
-            "desc": "UzAlert otryadi pul yig'maydi, virtual hamyonlarga ega emas va o'z faoliyatini bepul amalga oshiradi, lekin Click to'lov tizimida xayriya doirasida shaxsiy hisob raqamiga ega."
-        },
-        "q2": {
-            "title": "Nima uchun otryad yo‘qolgan inson qanday, qayerda va qanday sharoitlarda topilgani haqidagi ma’lumotlar bilan bo‘lishmaydi?",
-            "desc": "Chunki ko‘pchilik holatlarda qidirish otryadining ma’muriyati ushbu ma’lumotlar bilan xabardor qilinmaydi. Bizning maqsadimiz daraksiz yo‘qolgan insonlar va ularning oila a’zolariga taalluqli shaxsiy ma’lumotlarni muhokama qilish va tarqatish emas, balki inson o‘z uyiga qaytib kelishiga yordam berishdan iboratdir. Insonlarni ogohlantirish uchun bizga ma’lumotlar ma’lum bo‘lgan va arizachi ular bilan bo‘lishishga tayyor bo‘lgan holatlar bundan mustasno."
-        },
-        "q3": {
-            "title": "Otryad butun O‘zbekiston bo‘ylab ishlaydimi?",
-            "desc": "Bugungi kunda, ishning katta qismi Toshkent shahrida olib borilmoqda. Ammo, bizning jamoada deyarli butun O‘zbekiston Respublikasining vakillari bor, shuning uchun, ha, otryadimiz butun O‘zbekiston bo‘ylab ishlaydi deyishimiz mumkin va yaqin vaqtda - biz viloyatlar bilan aloqalar o‘rnatishni rejalashtirmoqdamiz."
-        },
-        "q4": {
-            "title": "Qaysi holatlarda otryad qidirishni rad etadi?",
-            "desc": "<ol><li>Arizachi militsiyaga ariza topshirmadi! Arizaning mavjudligi, biz uchun arizachining qidirish niyatining jiddiyligini tasdig‘i hisoblanadi, hamda ko‘ngillilar jamoasiga arizachining shaxsiy maqsadlari uchun insonni qidirishda bizdan foydalanish niyati yo‘qligiga ishonch hosil qilishga imkon beradi.</li> <li>Biz qonunbuzarlik qilgan va jinoiy qidiruvda bo‘lgan insonlarni qidirish bilan shug‘ullanmaymiz!</li> <li>Biz uchun, qidiruv samaradorligi nuqtai nazaridan, odamning yo'qolgan davri, 'qaynoq izlar' muhim, ya'ni: videokuzatuv kameralari, guvohlar va boshqalar. Shuning uchun ilgari yo'qolgan odamlarni qidirmaymiz. Bizning vazifamiz - bedarak yo'qolgan odamlarni topish.</li> <li>Biz ajrashgan ota-ona o‘z oralarida bolalarni 'bo‘lisholmayotgan' vaqtdagi 'oilaviy ziddiyatlarda' yordam ko‘rsatmaymiz.</li> <li>Biz yo‘qolgan hayvonlarni qidirish bilan shug‘ullanmaymiz.</li></ol>"
-        },
-        "q5": {
-            "title": "Ko‘ngillilardan ko‘pincha qanday yordam zarur?",
-            "desc": "Qarindoshlar va instansiyalarga qo‘ng‘iroq qilib chiqish, haqqoniy ma’lumotlarni tuzib chiqish, qidirish hududida chiqish va yo‘qolgan inson haqidagi ma’lumotlarni yopishtirib chiqish, ijtimoiy tarmoqlar orqali yo‘qolgan inson haqidagi ma’lumotlarni tarqatish, aholi orasida so‘rovlarni o‘tkazish va hokazo."
-        },
-        "q6": {
-            "title": "Men uyda o‘tirib qidirishga yordam berishim mumkinmi?",
-            "desc": "Ha, albatta. UzAlert, masalan, instansiyalarga qo‘ng‘iroq qilish kabi ishlarni bajara oladigan ko'ngillilarga muhtoj. Biz har doim sizning ko'nikmalaringiz, mahoratingiz va bo'sh vaqtingiz mavjudligiga qarab har qanday yordamni qabul qilishdan va ijtimoiy tarmoqlarda mo‘ljallarni tarqatishdagi yordamingizdan xursand bo'lamiz."
-        },
-        "q7": {
-            "title": "Agar men yo‘qolgan insonga ta’riflar bo‘yicha o‘xshash insonni ko‘rib qolgan bo‘lsam, qanday harakat qilishim kerak?",
-            "desc": "Fotosuratga oling. Yo‘qolgan inson haqidagi ma’lumotnomada ko‘rsatilgan telefon raqamiga yoki 102ga zudlik bilan qo‘ng‘iroq qiling va UzAlert ko‘ngillilar guruhimizga xabar qiling. Agar siz xotira yo‘qolishidan aziyat chekayotgan insonni yoki yo‘qolgan bolani uchratib qolgan holatda - iloji bo‘lsa, yo‘qolgan insonni oldiga boring va qarindoshlari va militsiya yetib kelgunicha u bilan suhbatlashib turing."
-        },
-        "footer": "Agar siz kerakli javobni topa olmagan bo'lsangiz, <a class='link' href='https://t.me/UzAlert'>bizga yozing</a> va biz albatta javob beramiz"
-    },
-    "contact": {
-        "title": "Kontaktlar",
-        "desc": "Agar yaqiningiz yo'qolgan bo'lsa yoki yo'qolgan odam haqida ma'lumotga ega bo'lsangiz, savollaringiz bo'lsa yoki faoliyatimizda ishtirok etishni istasangiz, <a href='#'><b>hoziroq</b></a> ishonch telefon raqamlariga qo'ng'iroq qiling"
-    },
-    "partners": {
-        "title": "Hamkorlarimiz",
-        "btn": "Hamkor bo'lish"
-    },
-    "contactsRequest": {
-        "title": "Odamni izlash uchun ariza qoldiring:",
-        "applicantName": "Arizachi: F.I.Sh, qarindoshlik darajasi (majburiy):",
-        "applicantNamePlaceholder": "Masalan: Ivanov Ivan Ivanovich, aka",
-        "applicantNameError": "*Ismingiz va qarindoshlik darajangizni kiriting (Masalan: Ivanov Ivan Ivanovich, aka)",
-        "applicantPhone": "Arizachi aloqa raqami (majburiy):",
-        "applicantPhonePlaceholder": "91 123 45 67",
-        "applicantPhoneError": "*Aloqa telefon raqamingizni kiriting (Masalan: 91 123 45 67)",
-        "missingName": "Yo'qolgan shaxs F.I.Sh (majburiy):",
-        "missingNamePlaceholder": "Ivanov Pyotr Ivanovich",
-        "missingNameError": "*Yo'qolgan shaxs F.I.Sh ni kiriting (Masalan: Ivanov Pyotr Ivanovich)",
-        "missingGender": "Yo'qolgan shaxs jinsi:",
-        "missingGenderError": "*Yo'qolgan shaxs jinsini tanlang",
-        "genderMale": "Erkak",
-        "genderFemale": "Ayol",
-        "missingRegion": "Yo'qolgan joy viloyati:",
-        "missingRegionPlaceholder": "Viloyatni tanlang",
-        "missingDob": "Tug'ilgan sana:",
-        "dobPlaceholder": "Kun, oy, yil",
-        "additionalSearchArea": "Qo'shimcha qidiruv hududlari:",
-        "additionalSearchAreaPlaceholder": "Surxondaryo, Buxoro va h.k.",
-        "missingPhone": "Yo'qolgan shaxsning telefon raqami:",
-        "missingPhonePlaceholder": "91 123 45 67",
-        "missingAddress": "Yo'qolgan joy manzili/tuman:",
-        "missingAddressPlaceholder": "Amir Temur ko'chasi, 1-uy",
-        "missingDate": "Yo'qolgan sana (30 kundan oshmasin):",
-        "missingDateError": "*Yo'qolgan sanani tanlang (30 kundan oshmasin)",
-        "datePlaceholder": "Kun, oy, yil",
-        "missingTime": "Yo'qolgan vaqt:",
-        "timePlaceholder": "--:--",
-        "policeReport": "Militsiya bayonnomasi:",
-        "policeReportPlaceholder": "Mavjud emas",
-        "searchAreaType": "Qidiruv hududi turi:",
-        "searchAreaTypeError": "*Qidiruv hududi turini tanlang",
-        "areaCity": "Shahar",
-        "areaRegion": "Viloyat",
-        "missingCircumstances": "Yo'qolgan vaziyat:",
-        "missingCircumstancesPlaceholder": "Yo'qolgan vaziyatni batafsilroq tasvirlab bering",
-        "missingHealth": "Yo'qolgan shaxs sog'ligi: (majburiy):",
-        "missingHealthPlaceholder": "Sog'lom",
-        "missingHealthError": "*Yo'qolgan shaxs sog'ligini tanlang (Masalan: sog'lom)",
-        "missingClothes": "Yo'qolgan shaxs kiyimi:",
-        "missingClothesPlaceholder": "Oq futbolka, ko'k jinsi",
-        "missingFeatures": "Maxsus belgilari (majburiy):",
-        "missingFeaturesPlaceholder": "Ko'zoynak taqadi, chandiq bor va h.k.",
-        "missingFeaturesError": "*Maxsus belgilarni kiriting (Masalan: ko'zoynak taqadi, chandiq bor va h.k.)",
-        "missingCarryon": "Yo'qolgan shaxs bilan bo'lgan narsalar:",
-        "missingCarryonPlaceholder": "Ryukzak, sumka, kurtka va h.k.",
-        "additionalInfo": "Qo'shimcha ma'lumotlar:",
-        "additionalInfoPlaceholder": "Agar qo'shimcha ma'lumotlar bo'lsa, shu yerda qo'shing",
-        "familyContacts": "Oila a'zolari aloqalari (raqam, telegram):",
-        "familyContactsPlaceholder": "91 123 45 67, telegram nik",
-        "uploadPhoto": "Yo'qolgan odamning fotosuratini yuklash (majburiy):",
-        "uploadPhotoError": "*Yo'qolgan odamning rasmini yuklang",
-        "uploadCanceled": "Yuklash bekor qilindi",
-        "sendButton": "Yuborish"
-    }
+	"basics": {
+		"lang": {
+			"ru": "Русский",
+			"uz": "O'zbek",
+			"en": "English"
+		},
+		"pages": {
+			"home": "Bosh sahifa",
+			"search": "Qidiruv so'rovi"
+		},
+		"menu": {
+			"home": "Bosh sahifa",
+			"about": "Biz haqimizda",
+			"questions": "Savollar",
+			"contacts": "Aloqa"
+		},
+		"date": {
+			"day": "Kun",
+			"month": "Oy",
+			"year": "Yil"
+		},
+		"regions": {
+			"1": "Toshkent shahri",
+			"10": "Toshkent viloyati",
+			"60": "Andijon viloyati",
+			"40": "Farg‘ona viloyati",
+			"50": "Namangan viloyati",
+			"20": "Sirdaryo viloyati",
+			"25": "Jizzax viloyati",
+			"30": "Samarqand viloyati",
+			"85": "Navoiy viloyati",
+			"80": "Buxoro viloyati",
+			"70": "Qashqadaryo viloyati",
+			"75": "Surxondaryo viloyati",
+			"90": "Xorazm viloyati",
+			"95": "Qoraqalpog‘iston Respublikasi"
+		},
+		"months": {
+			"january": "Yanvar",
+			"february": "Fevral",
+			"march": "Mart",
+			"april": "Aprel",
+			"may": "May",
+			"june": "Iyun",
+			"july": "Iyul",
+			"august": "Avgust",
+			"september": "Sentabr",
+			"november": "Noyabr",
+			"october": "Dekabr",
+			"december": "Dekabr"
+		},
+		"buttons": {
+			"send": "Юбориш",
+			"search": "Қидирув",
+			"cancel": "Бекор қилиш",
+			"delete": "Ўчириш",
+			"accept": "Қабул қилиш",
+			"close": "Қайтиш"
+		}
+	},
+	"modal": {
+		"thanks": "Rahmat",
+		"inTouch": "Biz siz bilan bog'lanamiz!"
+	},
+	"intro": {
+		"title": "Inson insonga muhtoj",
+		"btnVol": "Volontyor bo'lish",
+		"btnSearch": "Qidiruv so'rovi"
+	},
+	"about": {
+		"title": "Biz kimmmiz",
+		"text": "UzAlert - bu yo'qolgan odamlarni qidirishda yordam beradigan volontyorlar guruhi, shuningdek O'zbekistonda yo'qolgan odamlarni qidirish bilan bog'liq masalalar bo'yicha murojaat qilish mumkin bo'lgan yagona bog'lovchi va yo'naltiruvchi ixtiyoriy guruh"
+	},
+	"search": {
+		"title": "Qidiruv bosqichlari",
+		"steps": {
+			"step1": "Aniq yo'naltirilgan portret yaratish uchun yo'qolgan shaxsning qarindoshlarini batafsil so'roq qilish",
+			"step2": "Tafsilotlar, odatlar, marshrutlarni o'rganish, tanishlar ro'yxatini tuzish. Yo'naltirishlarni rasmiylashtirish va chop etish",
+			"step3": "Hududlarni aylanib chiqish va yo'naltirishlarni yopishtirish uchun faollarni jalb qilish",
+			"step4": "Tibbiyot muassasalari (kasalxonalar, morglar), boshpanalar va diniy tashkilotlarni (monastirlar) muntazam qo'ng'iroq qilish. Ichki ishlar organlari bilan doimiy aloqa o'rnatish",
+			"step5": "Internetda ma'lumot tarqatish (Telegram, Facebook, Odnoklassniki, Instagram,Threads)",
+			"step6": "Yaqin odami yo'qolgan shaxslarga batafsil ko'rsatmalar, shuningdek muhtojlarga yordam ko'rsatish bo'yicha tavsiyalar berish"
+		}
+	},
+	"join": {
+		"title": "Bizga qo'shiling",
+		"helpTitle": "Qanday yordam bera olasiz",
+		"helps": {
+			"walking_search": "Piyoda qidiruv",
+			"car_search": "Avtoda qidiruv",
+			"calling_hospitals": "Kasalxonalarga qo'ng'iroq",
+			"language_translator": "Rus-o'zbek tarjimon",
+			"posting_flyers": "Flaerlarni bosib chiqarish yoki yopishtirish"
+		},
+		"contact": {
+			"title": "Aloqa ma'lumotlaringiz",
+			"name": "Ism",
+			"surname": "Familiya",
+			"phone": "Telefon raqami",
+			"city": "Shahar",
+			"district": "Tuman"
+		},
+		"policy": "<span class='link'>Shaxsiy ma'lumotlarni qayta ishlash shartlari va siyosatiga</span> roziman",
+		"submit": {
+			"title": "Qo'shish",
+			"loading": "Yuklanmoqda"
+		}
+	},
+	"faq": {
+		"title": "Ko'p beriladigan savollar",
+		"q1": {
+			"title": "Otryad pul yig‘adimi?",
+			"desc": "UzAlert otryadi pul yig'maydi, virtual hamyonlarga ega emas va o'z faoliyatini bepul amalga oshiradi, lekin Click to'lov tizimida xayriya doirasida shaxsiy hisob raqamiga ega."
+		},
+		"q2": {
+			"title": "Nima uchun otryad yo‘qolgan inson qanday, qayerda va qanday sharoitlarda topilgani haqidagi ma’lumotlar bilan bo‘lishmaydi?",
+			"desc": "Chunki ko‘pchilik holatlarda qidirish otryadining ma’muriyati ushbu ma’lumotlar bilan xabardor qilinmaydi. Bizning maqsadimiz daraksiz yo‘qolgan insonlar va ularning oila a’zolariga taalluqli shaxsiy ma’lumotlarni muhokama qilish va tarqatish emas, balki inson o‘z uyiga qaytib kelishiga yordam berishdan iboratdir. Insonlarni ogohlantirish uchun bizga ma’lumotlar ma’lum bo‘lgan va arizachi ular bilan bo‘lishishga tayyor bo‘lgan holatlar bundan mustasno."
+		},
+		"q3": {
+			"title": "Otryad butun O‘zbekiston bo‘ylab ishlaydimi?",
+			"desc": "Bugungi kunda, ishning katta qismi Toshkent shahrida olib borilmoqda. Ammo, bizning jamoada deyarli butun O‘zbekiston Respublikasining vakillari bor, shuning uchun, ha, otryadimiz butun O‘zbekiston bo‘ylab ishlaydi deyishimiz mumkin va yaqin vaqtda - biz viloyatlar bilan aloqalar o‘rnatishni rejalashtirmoqdamiz."
+		},
+		"q4": {
+			"title": "Qaysi holatlarda otryad qidirishni rad etadi?",
+			"desc": "<ol><li>Arizachi militsiyaga ariza topshirmadi! Arizaning mavjudligi, biz uchun arizachining qidirish niyatining jiddiyligini tasdig‘i hisoblanadi, hamda ko‘ngillilar jamoasiga arizachining shaxsiy maqsadlari uchun insonni qidirishda bizdan foydalanish niyati yo‘qligiga ishonch hosil qilishga imkon beradi.</li> <li>Biz qonunbuzarlik qilgan va jinoiy qidiruvda bo‘lgan insonlarni qidirish bilan shug‘ullanmaymiz!</li> <li>Biz uchun, qidiruv samaradorligi nuqtai nazaridan, odamning yo'qolgan davri, 'qaynoq izlar' muhim, ya'ni: videokuzatuv kameralari, guvohlar va boshqalar. Shuning uchun ilgari yo'qolgan odamlarni qidirmaymiz. Bizning vazifamiz - bedarak yo'qolgan odamlarni topish.</li> <li>Biz ajrashgan ota-ona o‘z oralarida bolalarni 'bo‘lisholmayotgan' vaqtdagi 'oilaviy ziddiyatlarda' yordam ko‘rsatmaymiz.</li> <li>Biz yo‘qolgan hayvonlarni qidirish bilan shug‘ullanmaymiz.</li></ol>"
+		},
+		"q5": {
+			"title": "Ko‘ngillilardan ko‘pincha qanday yordam zarur?",
+			"desc": "Qarindoshlar va instansiyalarga qo‘ng‘iroq qilib chiqish, haqqoniy ma’lumotlarni tuzib chiqish, qidirish hududida chiqish va yo‘qolgan inson haqidagi ma’lumotlarni yopishtirib chiqish, ijtimoiy tarmoqlar orqali yo‘qolgan inson haqidagi ma’lumotlarni tarqatish, aholi orasida so‘rovlarni o‘tkazish va hokazo."
+		},
+		"q6": {
+			"title": "Men uyda o‘tirib qidirishga yordam berishim mumkinmi?",
+			"desc": "Ha, albatta. UzAlert, masalan, instansiyalarga qo‘ng‘iroq qilish kabi ishlarni bajara oladigan ko'ngillilarga muhtoj. Biz har doim sizning ko'nikmalaringiz, mahoratingiz va bo'sh vaqtingiz mavjudligiga qarab har qanday yordamni qabul qilishdan va ijtimoiy tarmoqlarda mo‘ljallarni tarqatishdagi yordamingizdan xursand bo'lamiz."
+		},
+		"q7": {
+			"title": "Agar men yo‘qolgan insonga ta’riflar bo‘yicha o‘xshash insonni ko‘rib qolgan bo‘lsam, qanday harakat qilishim kerak?",
+			"desc": "Fotosuratga oling. Yo‘qolgan inson haqidagi ma’lumotnomada ko‘rsatilgan telefon raqamiga yoki 102ga zudlik bilan qo‘ng‘iroq qiling va UzAlert ko‘ngillilar guruhimizga xabar qiling. Agar siz xotira yo‘qolishidan aziyat chekayotgan insonni yoki yo‘qolgan bolani uchratib qolgan holatda - iloji bo‘lsa, yo‘qolgan insonni oldiga boring va qarindoshlari va militsiya yetib kelgunicha u bilan suhbatlashib turing."
+		},
+		"footer": "Agar siz kerakli javobni topa olmagan bo'lsangiz, <a class='link' href='https://t.me/UzAlert'>bizga yozing</a> va biz albatta javob beramiz"
+	},
+	"contact": {
+		"title": "Kontaktlar",
+		"desc": "Agar yaqiningiz yo'qolgan bo'lsa yoki yo'qolgan odam haqida ma'lumotga ega bo'lsangiz, savollaringiz bo'lsa yoki faoliyatimizda ishtirok etishni istasangiz, <a href='#'><b>hoziroq</b></a> ishonch telefon raqamlariga qo'ng'iroq qiling"
+	},
+	"partners": {
+		"title": "Hamkorlarimiz",
+		"btn": "Hamkor bo'lish"
+	},
+	"contactsRequest": {
+		"title": "Odamni izlash uchun ariza qoldiring:",
+		"applicantName": "Arizachi: F.I.Sh, qarindoshlik darajasi (majburiy):",
+		"applicantNamePlaceholder": "Masalan: Ivanov Ivan Ivanovich, aka",
+		"applicantNameError": "*Ismingiz va qarindoshlik darajangizni kiriting (Masalan: Ivanov Ivan Ivanovich, aka)",
+		"applicantPhone": "Arizachi aloqa raqami (majburiy):",
+		"applicantPhonePlaceholder": "91 123 45 67",
+		"applicantPhoneError": "*Aloqa telefon raqamingizni kiriting (Masalan: 91 123 45 67)",
+		"missingName": "Yo'qolgan shaxs F.I.Sh (majburiy):",
+		"missingNamePlaceholder": "Ivanov Pyotr Ivanovich",
+		"missingNameError": "*Yo'qolgan shaxs F.I.Sh ni kiriting (Masalan: Ivanov Pyotr Ivanovich)",
+		"missingGender": "Yo'qolgan shaxs jinsi:",
+		"missingGenderError": "*Yo'qolgan shaxs jinsini tanlang",
+		"genderMale": "Erkak",
+		"genderFemale": "Ayol",
+		"missingRegion": "Yo'qolgan joy viloyati:",
+		"missingRegionPlaceholder": "Viloyatni tanlang",
+		"missingDob": "Tug'ilgan sana:",
+		"dobPlaceholder": "Kun, oy, yil",
+		"additionalSearchArea": "Qo'shimcha qidiruv hududlari:",
+		"additionalSearchAreaPlaceholder": "Surxondaryo, Buxoro va h.k.",
+		"missingPhone": "Yo'qolgan shaxsning telefon raqami:",
+		"missingPhonePlaceholder": "91 123 45 67",
+		"missingAddress": "Yo'qolgan joy manzili/tuman:",
+		"missingAddressPlaceholder": "Amir Temur ko'chasi, 1-uy",
+		"missingDate": "Yo'qolgan sana (30 kundan oshmasin):",
+		"missingDateError": "*Yo'qolgan sanani tanlang (30 kundan oshmasin)",
+		"datePlaceholder": "Kun, oy, yil",
+		"missingTime": "Yo'qolgan vaqt:",
+		"timePlaceholder": "--:--",
+		"policeReport": "Militsiya bayonnomasi:",
+		"policeReportPlaceholder": "Mavjud emas",
+		"searchAreaType": "Qidiruv hududi turi:",
+		"searchAreaTypeError": "*Qidiruv hududi turini tanlang",
+		"areaCity": "Shahar",
+		"areaRegion": "Viloyat",
+		"missingCircumstances": "Yo'qolgan vaziyat:",
+		"missingCircumstancesPlaceholder": "Yo'qolgan vaziyatni batafsilroq tasvirlab bering",
+		"missingHealth": "Yo'qolgan shaxs sog'ligi: (majburiy):",
+		"missingHealthPlaceholder": "Sog'lom",
+		"missingHealthError": "*Yo'qolgan shaxs sog'ligini tanlang (Masalan: sog'lom)",
+		"missingClothes": "Yo'qolgan shaxs kiyimi:",
+		"missingClothesPlaceholder": "Oq futbolka, ko'k jinsi",
+		"missingFeatures": "Maxsus belgilari (majburiy):",
+		"missingFeaturesPlaceholder": "Ko'zoynak taqadi, chandiq bor va h.k.",
+		"missingFeaturesError": "*Maxsus belgilarni kiriting (Masalan: ko'zoynak taqadi, chandiq bor va h.k.)",
+		"missingCarryon": "Yo'qolgan shaxs bilan bo'lgan narsalar:",
+		"missingCarryonPlaceholder": "Ryukzak, sumka, kurtka va h.k.",
+		"additionalInfo": "Qo'shimcha ma'lumotlar:",
+		"additionalInfoPlaceholder": "Agar qo'shimcha ma'lumotlar bo'lsa, shu yerda qo'shing",
+		"familyContacts": "Oila a'zolari aloqalari (raqam, telegram):",
+		"familyContactsPlaceholder": "91 123 45 67, telegram nik",
+		"uploadPhoto": "Yo'qolgan odamning fotosuratini yuklash (majburiy):",
+		"uploadPhotoError": "*Yo'qolgan odamning rasmini yuklang",
+		"uploadCanceled": "Yuklash bekor qilindi",
+		"sendButton": {
+			"title": "Yuborish",
+			"loading": "Yuborilmoqda"
+		}
+	}
 }

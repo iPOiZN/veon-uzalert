@@ -4,6 +4,7 @@ import getRegionTypesQuery from '~/graphql/getRegionTypes.gql'
 import getVolunteerHelpTypesQuery from '~/graphql/getVolunteerHelpTypes.gql'
 import searchRequestMutation from '~/graphql/searchRequestMutation.gql'
 import volunteerMutation from '~/graphql/volunteerMutation.gql'
+import type { FormError } from '~/types/form.interface'
 
 export const useGetVolunteerHelpTypes = () => {
 	const { mutate, loading, onError, onDone } = useMutation(getVolunteerHelpTypesQuery)
@@ -27,28 +28,54 @@ export const useGetVolunteerHelpTypes = () => {
 }
 
 export const useVolunteerMutation = () => {
+	const formStore = useFormStore()
 	const { mutate, loading, onDone, onError } = useMutation(volunteerMutation)
 
 	onError((error) => {
 		console.log(error)
 	})
 
-	onDone((result) => {
-		console.log(result)
+	onDone(({ data }) => {
+		const response = data.volunteer.create
+		if (response.name) {
+			formStore.isJoined = true
+		} else if (response.errors) {
+			formStore.isJoined = false
+			formStore.isJoinError = true
+			response.errors.forEach((error: FormError) => {
+				formStore.joinErrorMessage.push({
+					field: error.field,
+					messages: error.messages,
+				})
+			})
+		}
 	})
 
 	return { mutate, loading }
 }
 
 export const useSearchRequestMutation = () => {
+	const formStore = useFormStore()
 	const { mutate, loading, onDone, onError } = useMutation(searchRequestMutation)
 
 	onError((error) => {
 		console.error(error)
 	})
 
-	onDone((result) => {
-		console.log(result)
+	onDone(({ data }) => {
+		const response = data.missing_people.create
+		if (response.applicant_full_name) {
+			formStore.isRequested = true
+		} else if (response.errors) {
+			formStore.isRequested = false
+			formStore.isRequestError = true
+			response.errors.forEach((error: FormError) => {
+				formStore.requestErrorMessage.push({
+					field: error.field,
+					messages: error.messages,
+				})
+			})
+		}
 	})
 
 	return { mutate, loading }
