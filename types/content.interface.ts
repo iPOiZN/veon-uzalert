@@ -104,8 +104,8 @@ export interface IFaq {
 	title: string
 	img: string
 	accordion: {
-		summary: string
-		description: string
+		question: string
+		answer: string
 		icon?: string
 	}[]
 	footer?: {

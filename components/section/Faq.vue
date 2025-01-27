@@ -10,10 +10,11 @@
 					<div class="faq__accordion">
 						<details v-for="(item, i) in FAQ.accordion" :key="i" class="faq__accordion-details">
 							<summary class="faq__accordion-summary">
-								{{ item.summary }}
+								{{ item.question }}
 								<Icon :name="item.icon ?? 'local:route'" size="18px" />
 							</summary>
-							<p v-dompurify-html="item.description" class="faq__accordion-description"></p>
+
+							<p v-dompurify-html="item.answer" class="faq__accordion-description"></p>
 						</details>
 					</div>
 				</div>

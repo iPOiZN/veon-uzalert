@@ -161,33 +161,41 @@ export const useFaqContent = async () => {
 		img: '/images/faq.jpg',
 		accordion: [
 			{
-				summary: t('faq.q1.title'),
-				description: t('faq.q1.desc'),
+				question: t('faq.q1.question'),
+				answer: t('faq.q1.answer'),
 			},
 			{
-				summary: t('faq.q2.title'),
-				description: t('faq.q2.desc'),
+				question: t('faq.q2.question'),
+				answer: t('faq.q2.answer'),
 			},
 			{
-				summary: t('faq.q3.title'),
-				description: t('faq.q3.desc'),
+				question: t('faq.q3.question'),
+				answer: t('faq.q3.answer'),
 			},
 			{
-				summary: t('faq.q4.title'),
-				description: t('faq.q4.desc'),
+				question: t('faq.q4.question'),
+				answer: t('faq.q4.answer'),
 			},
 			{
-				summary: t('faq.q5.title'),
-				description: t('faq.q5.desc'),
+				question: t('faq.q5.question'),
+				answer: t('faq.q5.answer'),
 			},
 			{
-				summary: t('faq.q6.title'),
-				description: t('faq.q6.desc'),
+				question: t('faq.q6.question'),
+				answer: t('faq.q6.answer'),
 			},
 			{
-				summary: t('faq.q7.title'),
-				description: t('faq.q7.desc'),
+				question: t('faq.q7.question'),
+				answer: t('faq.q7.answer'),
 			},
+			{
+				question: t('faq.q8.question'),
+				answer: t('faq.q8.answer', { tgNick: '@UzAlert' }),
+			},
+			{
+				question: t('faq.q9.question'),
+				answer: t('faq.q9.answer', { tgNick: '@UzAlert' }),
+			}
 		],
 		footer: {
 			text: t('faq.footer'),
