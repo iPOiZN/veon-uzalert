@@ -11,7 +11,7 @@ import type {
 
 // Create a composable to handle all the content
 
-export const countryCode = 998
+export const countryCode = '998'
 
 export const useIntroContent = async () => {
 	const { t } = useI18n()

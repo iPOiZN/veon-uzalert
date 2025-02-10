@@ -161,10 +161,10 @@
 		if (v$Form.value.$invalid) return
 		searchRequestMutation({
 			...formData,
-			applicant_phone: `${countryCode}${formData.applicant_phone}`,
+			applicant_phone: countryCode + formData.applicant_phone,
 			missing_gender: +formData.missing_gender,
 			missing_region: +formData.missing_region,
-			missing_phone: `${countryCode}${formData.missing_phone}`,
+			missing_phone: countryCode + formData.missing_phone,
 			search_area_type: +formData.search_area_type,
 			captcha_token: await recaptcha(),
 		} as ISearchRequestInputs)
