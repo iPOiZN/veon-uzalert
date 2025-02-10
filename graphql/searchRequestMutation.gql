@@ -1,9 +1,9 @@
 mutation Missing_people(
 	$applicant_full_name: String!
-	$applicant_phone: Int!
+	$applicant_phone: String!
 	$missing_full_name: String!
 	$missing_gender: Int!
-	$missing_phone: Int
+	$missing_phone: String
 	$missing_dob: String
 	$search_area_type: Int!
 	$circumstances_of_missing: String

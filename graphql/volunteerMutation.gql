@@ -1,7 +1,7 @@
 mutation Volunteer(
 	$name: String!
 	$surname: String
-	$phone: Int!
+	$phone: String!
 	$agreement: Boolean!
 	$city: String
 	$district: String

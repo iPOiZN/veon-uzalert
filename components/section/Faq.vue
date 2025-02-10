@@ -2,19 +2,44 @@
 	<section id="faq" class="faq">
 		<div class="faq__container container">
 			<UIHeading level="3" class="faq__title">{{ FAQ.title }}</UIHeading>
+
 			<div class="faq__content">
 				<div class="faq__block">
 					<NuxtImg :src="FAQ.img" format="webp" class="faq__block-img" height="500px" loading="lazy" />
 				</div>
 				<div class="faq__block">
 					<div class="faq__accordion">
-						<details v-for="(item, i) in FAQ.accordion" :key="i" class="faq__accordion-details">
+						<!-- <details v-for="(item, i) in FAQ.accordion" :key="i" class="faq__accordion-details">
 							<summary class="faq__accordion-summary">
 								{{ item.question }}
 								<Icon :name="item.icon ?? 'local:route'" size="18px" />
 							</summary>
 
 							<p v-dompurify-html="item.answer" class="faq__accordion-description"></p>
+						</details> -->
+						<details v-for="(item, i) in $tm('faq2.questions')" :key="i" class="faq__accordion-details">
+							<summary class="faq__accordion-summary">
+								{{ $rt(item.question) }}
+								<Icon :name="item.icon ?? 'local:route'" size="18px" />
+							</summary>
+							<template v-if="Array.isArray(item.answer)">
+								<span v-for="(answer, idx) in item.answer" :key="idx">
+									<template v-if="typeof answer?.loc?.source === 'string'">
+										{{ $rt(answer) }}
+									</template>
+									<template v-else>
+										<br />
+										<ol>
+											<li v-for="(listItem, index) in answer" :key="index">
+												{{ $rt(listItem) }}
+											</li>
+										</ol>
+									</template>
+								</span>
+							</template>
+							<template v-else>
+								{{ $rt(item.answer) }}
+							</template>
 						</details>
 					</div>
 				</div>
