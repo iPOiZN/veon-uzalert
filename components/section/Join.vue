@@ -136,7 +136,7 @@
 		if (v$Form.value.$invalid) return
 		await sendVolunteerForm({
 			...formData,
-			phone: `${countryCode} ${formData.phone}`,
+			phone: `${countryCode}${formData.phone}`,
 			captcha_token: await recaptcha(),
 		})
 		if (formStore.isJoined) {
