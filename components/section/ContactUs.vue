@@ -75,7 +75,10 @@
 				object-fit: cover;
 			}
 			&-contacts {
-				display: grid;
+				// display: grid;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
 				gap: 12px;
 				margin-top: 24px;
 				// @media (max-width: 767.98px) {

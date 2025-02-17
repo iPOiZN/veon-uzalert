@@ -1,13 +1,5 @@
-import type {
-	IContact,
-	IFaq,
-	IIntro,
-	IJoin,
-	IPartners,
-	ISearchRequest,
-	ISearchSteps,
-	IWhoWeAre,
-} from '~/types/content.interface'
+import type { IContact, IFaq, IIntro, IJoin, IPartners, ISearchRequest, ISearchSteps, IWhoWeAre } from '~/types/content.interface';
+
 
 // Create a composable to handle all the content
 
@@ -195,10 +187,20 @@ export const useFaqContent = async () => {
 			{
 				question: t('faq.q9.question'),
 				answer: t('faq.q9.answer', { tgNick: '@UzAlert' }),
-			}
+			},
 		],
 		footer: {
-			text: t('faq.footer'),
+			text: t('faq.footer.text'),
+			videos: [
+				{
+					src: '/videos/zabota.mp4',
+					btnText: t('faq.footer.videos.btnText1'),
+				},
+				{
+					src: '/videos/roditelyam.mp4',
+					btnText: t('faq.footer.videos.btnText2'),
+				},
+			],
 		},
 	}))
 

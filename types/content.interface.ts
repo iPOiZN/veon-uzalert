@@ -110,6 +110,10 @@ export interface IFaq {
 	}[]
 	footer?: {
 		text?: string
+		videos: {
+			src: string
+			btnText: string
+		}[]
 	}
 }
 
