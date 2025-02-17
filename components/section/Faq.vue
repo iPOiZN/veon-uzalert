@@ -183,7 +183,7 @@
 			height: inherit;
 			video {
 				width: 100%;
-				height: calc(100svh - 80px);
+				max-height: calc(100svh - 80px);
 
 				object-fit: contain;
 			}
