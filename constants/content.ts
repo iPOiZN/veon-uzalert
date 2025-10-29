@@ -289,10 +289,15 @@ export const usePartnersContent = async () => {
 				img: '/images/partners/yandex-go.svg',
 			},
 			{
-				id: 'veon_adtech',
+				id: 'veon_adtech_digital',
 				href: '#',
-				img: '/images/partners/veon-adtech.svg',
+				img: '/images/partners/veon_adtech_digital.svg',
 			},
+			{
+				id: 'adbus',
+				href: '#',
+				img: '/images/partners/adbus.png',
+			}
 		],
 		actionBtn: {
 			href: 'tel:+998 88 198 06 10',

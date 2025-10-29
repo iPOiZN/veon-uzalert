@@ -6,6 +6,7 @@
 				:autoplay="{
 					delay: 0.5,
 					disableOnInteraction: false,
+					pauseOnMouseEnter: true,
 				}"
 				:css-mode="false"
 				:modules="[Autoplay, FreeMode]"
@@ -15,6 +16,7 @@
 				:slides-per-view="PARTNERS.items.length > 3 ? 4 : 3"
 				:space-between="32"
 				:free-mode="false"
+				:breakpoints="swiperBreakpoints"
 				class="partners__carousel">
 				<!-- <div class="partners__carousel-content"> -->
 				<SwiperSlide
@@ -39,6 +41,12 @@
 	import { usePartnersContent } from '~/constants/content'
 
 	const { PARTNERS } = await usePartnersContent()
+
+	const swiperBreakpoints = {
+		575: {
+			spaceBetween: 64,
+		},
+	}
 </script>
 
 <style scoped lang="scss">
@@ -55,7 +63,7 @@
 		}
 		&__carousel {
 			// max-width: max-content;
-			max-width: 800px;
+			// max-width: 800px;
 			width: 100%;
 			position: relative;
 			&::before {
@@ -92,6 +100,8 @@
 				max-width: 200px;
 				width: 100%;
 				height: 100px;
+				object-fit: contain;
+				filter: grayscale(1);
 			}
 		}
 		&__action-btn {
